@@ -1,57 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   mem.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/04 17:34:27 by nivergne         ###   ########.fr       */
+/*   Created: 2019/01/04 17:10:08 by nivergne          #+#    #+#             */
+/*   Updated: 2019/01/04 17:34:22 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int		check_str(char *str)
+void	ft_bzero(void *s, size_t n)
 {
-	int		shift;
-
-	shift = 0;
-	if (str[0] == '%')
-	{
-
-	}
+	ft_memset(s, 0, n);
 }
 
-int		append_to_buff(char c)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	static int		index = 0;
-	static char		*buff = NULL;
-
-	if (!buff)
-	{
-		if (!(buff = ft_memalloc(4096)))
-			return (NULL);
-	}
-	buff[index] = c;
-	index++;
-}
-
-int		ft_printf(char *str)
-{
-	int		i;
+	size_t			i;
+	unsigned char	*tmp;
 
 	i = 0;
-
-	while (str[i])
+	tmp = (unsigned char *)b;
+	while (i < len)
 	{
-		if (str[i] == '%')
-			i = i + check_str(str + i);
-		else
-			append_to_buff(str[i]);
+		tmp[i] = (unsigned char)c;
 		i++;
 	}
-	return (0);
+	return (b);
 }
 
-//int		ft_printf(char *buff, ...)
+void	*ft_memalloc(size_t size)
+{
+	void	*p;
+
+	p = malloc(size);
+	if (!p)
+		return (NULL);
+	ft_bzero(p, size);
+	return (p);
+}
