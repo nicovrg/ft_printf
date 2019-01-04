@@ -6,21 +6,29 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/04 17:34:27 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/04 21:57:53 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int		check_str(char *str)
+int		check_flag(char c)
+{
+	if (c == ' ' || c == '-' || c == '+' || c == '#' || c == '0')
+		return (1);
+	return (0);
+}
+
+int		parse_str(char *str)
 {
 	int		shift;
 
-	shift = 0;
-	if (str[0] == '%')
+	shift = 1;
+	while (str[shift] == ' ')
 	{
-
+		shift++;
 	}
+	return (shift);
 }
 
 int		append_to_buff(char c)
@@ -46,7 +54,7 @@ int		ft_printf(char *str)
 	while (str[i])
 	{
 		if (str[i] == '%')
-			i = i + check_str(str + i);
+			i = i + parse_str(str + i);
 		else
 			append_to_buff(str[i]);
 		i++;
@@ -54,4 +62,16 @@ int		ft_printf(char *str)
 	return (0);
 }
 
-//int		ft_printf(char *buff, ...)
+
+/*
+%c	ft_putchar
+%s	ft_putstr
+%p	ft_putaddr
+%d	ft_putnbr
+%i	ft_putnbr
+%o	ft_putoct
+%u	ft_putuns
+%x	ft_puthexmin
+%X	ft_puthexmaj
+%f	ft_putfloat
+*/

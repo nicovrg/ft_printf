@@ -6,38 +6,69 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 02:16:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/04 17:34:25 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/04 23:23:40 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-void	ft_putchar(char c)
+void	ft_addchar(char c)
 {
-	write(1, &c, 1);
+	append_to_buff(c);
 }
 
-void	ft_putstr(char const *s)
+void	ft_addstr(char const *s)
 {
+	int	i;
+
+	i = 0;
 	if (s != NULL)
-		write(1, s, ft_strlen(s));
+	{
+		while (s[i])
+		{
+			append_to_buff(s[i]);
+			i++;
+		}
+	}
 }
 
-void	ft_putnbr(int n)
+void	ft_addnbr(int nb)
 {
 	unsigned int nbr;
 
-	if (n < 0)
+	if (nb < 0)
 	{
-		ft_putchar('-');
-		n = -n;
+		append_to_buff('-');
+		nb = -nb;
 	}
-	nbr = (unsigned int)n;
+	nbr = (unsigned int)nb;
 	if (nbr >= 10)
 	{
-		ft_putnbr(nbr / 10);
-		ft_putchar(nbr % 10 + '0');
+		ft_addnbr(nbr / 10);
+		append_to_buff(nbr % 10 + '0');
 	}
 	else
-		ft_putchar(nbr % 10 + '0');
+		append_to_buff(nbr % 10 + '0');
 }
+
+void    ft_adduns(unsigned nb)
+{
+	unsigned int nbr;
+
+	if (nb < 0)
+	{
+		append_to_buff('-');
+		nb = -nb;
+	}
+	nbr = (unsigned int)nb;
+	if (nbr >= 10)
+	{
+		ft_adduns(nbr / 10);
+		append_to_buff(nbr % 10 + '0');
+	}
+	else
+		append_to_buff(nbr % 10 + '0');
+}
+
+void    ft_addaddr()
+{}
