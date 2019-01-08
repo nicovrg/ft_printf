@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/07 20:49:50 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/08 18:20:30 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <unistd.h>
 //# include <string.h>
 //# include <stdarg.h>
+
+# include "libft.h"
+
 
 typedef struct s_info
 {
@@ -28,7 +31,7 @@ typedef struct s_info
     int     accuracy;
     int     type;
     char    conversion;
-} t_info;
+}              t_info;
 
 //main.c
 

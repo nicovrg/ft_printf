@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 02:16:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/04 23:45:06 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/08 18:27:22 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,16 @@ void	ft_addnbr(int nb)
 
 void    ft_adduns(unsigned nb)
 {
-if (nb < 0)
-	{
-		append_to_buff('-');
-		nb = -nb;
-	}
 	if (nb >= 10)
 	{
-		ft_putuns(nb / 10);
+		ft_adduns(nb / 10);
 		append_to_buff(nb % 10 + '0');
 	}
 	else
 		append_to_buff(nb % 10 + '0');
 }
 
-
-
 void    ft_addaddr()
-{}
+{
+
+}

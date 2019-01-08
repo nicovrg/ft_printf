@@ -6,9 +6,11 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 20:00:21 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/07 20:00:52 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/08 18:16:52 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../include/ft_printf.h"
 
 static int	get_size(int n, int base)
 {

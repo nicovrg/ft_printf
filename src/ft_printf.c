@@ -6,93 +6,45 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/07 20:50:53 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/08 20:07:24 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int		check_flag(char c, t_info *options)
+void	ft_put_info(t_info *info)
 {
-	if (c == '0')
-		options->zero = 1;
-	else if (c == '+')
-		options->plus = 1;
-	else if (c == '-')
-		options->minus = 1;
-	else if (c == ' ')
-		options->space = 1;
-	else if (c == '#')
-		options->hashtag = 1;
-	if (c == ' ' || c == '-' || c == '+' || c == '#' || c == '0')
-		return (1);
-	return (0);
-}
+	ft_putstr("// *********************************** \\\\ \n");
 
-int		check_width(char c, t_info *options)
-{
-	if (c >= '0' && c <= '9')
-	{
-		if (options->width == 0)
-			options->width = c - '0';
-		else
-			options->width = options->width * 10 + c - '0';
-	}
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
+	ft_putstr("|0 : ");
+	ft_putnbr((info->zero) ? 1 : 0);
+	ft_putstr("                                  |");
 
-int		check_accuracy(char c, t_info *options)
-{
-	static int check = 0;
+	ft_putstr("\n|+ : ");
+	ft_putnbr((info->plus) ? 1 : 0);
+	ft_putstr("                                  |");
 
-	if (check == 0 && c == '.')
-	{
-		check = 1;
-		return (1);
-	}
-	if (c >= '0' && c <= '9')
-	{
-		if (options->accuracy == 0)
-			options->accuracy = c - '0';
-		else
-			options->accuracy = options->accuracy * 10 + c - '0';
-	}
-	if (c >= '0' && c <= '9')
-		return (1);
-}
+	ft_putstr("\n|- : ");
+	ft_putnbr((info->minus) ? 1 : 0);
+	ft_putstr("                                  |");
 
-int		check_type(char c, t_info *options)
-{ 
-	if (c == 'h')
-	{
-		if (options->type == 1)
-			options->type = 3;
-		else
-			options->type = 1;
-	}
-	else if (c == 'l')
-	{
-		if (options->type == 2)
-			options->type = 4;
-		else
-			options->type = 2;
-	}
-	//cas d erreur mal gere
-	return (0);
-}
+	ft_putstr("\n|space : ");
+	ft_putnbr((info->space) ? 1 : 0);
+	ft_putstr("                              |");
 
-int		check_conversion(char c, t_info *options)
-{
+	ft_putstr("\n|# : ");
+	ft_putnbr((info->hashtag) ? 1 : 0);
+	ft_putstr("                                  |");
 
+	ft_putstr("\n\\\\ *********************************** // \n");
 }
 
 int		parse_str(char *str, t_info *options)
 {
 	int		shift;
 
-	shift = 1;
+	shift = 0;
+
 	while (check_flag(str[shift], options) == 1)
 		shift++;
 	while (check_width(str[shift], options) == 1)
@@ -103,6 +55,8 @@ int		parse_str(char *str, t_info *options)
 		shift++;
 	while (check_conversion(str[shift], options) == 1)
 		shift++;
+
+	ft_put_info(options);
 	return (shift);
 }
 
@@ -114,10 +68,11 @@ int		append_to_buff(char c)
 	if (!buff)
 	{
 		if (!(buff = ft_memalloc(4096)))
-			return (NULL);
+			return (0);
 	}
 	buff[index] = c;
 	index++;
+	return (index);
 }
 
 int		ft_printf(char *str)
@@ -129,7 +84,7 @@ int		ft_printf(char *str)
 	while (str[i])
 	{
 		if (str[i] == '%')
-			i = i + parse_str(str + i, &options);
+			i = i + parse_str(str + i + 1, &options);//			i = i + parse_str(str + i + 1, &options);
 		else
 			append_to_buff(str[i]);
 		i++;
