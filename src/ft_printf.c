@@ -6,45 +6,17 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/08 20:07:24 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/09 00:46:45 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-
-void	ft_put_info(t_info *info)
-{
-	ft_putstr("// *********************************** \\\\ \n");
-
-	ft_putstr("|0 : ");
-	ft_putnbr((info->zero) ? 1 : 0);
-	ft_putstr("                                  |");
-
-	ft_putstr("\n|+ : ");
-	ft_putnbr((info->plus) ? 1 : 0);
-	ft_putstr("                                  |");
-
-	ft_putstr("\n|- : ");
-	ft_putnbr((info->minus) ? 1 : 0);
-	ft_putstr("                                  |");
-
-	ft_putstr("\n|space : ");
-	ft_putnbr((info->space) ? 1 : 0);
-	ft_putstr("                              |");
-
-	ft_putstr("\n|# : ");
-	ft_putnbr((info->hashtag) ? 1 : 0);
-	ft_putstr("                                  |");
-
-	ft_putstr("\n\\\\ *********************************** // \n");
-}
 
 int		parse_str(char *str, t_info *options)
 {
 	int		shift;
 
 	shift = 0;
-
 	while (check_flag(str[shift], options) == 1)
 		shift++;
 	while (check_width(str[shift], options) == 1)
@@ -55,7 +27,6 @@ int		parse_str(char *str, t_info *options)
 		shift++;
 	while (check_conversion(str[shift], options) == 1)
 		shift++;
-
 	ft_put_info(options);
 	return (shift);
 }
@@ -81,17 +52,17 @@ int		ft_printf(char *str)
 	t_info	options;
 
 	i = 0;
+	t_info_init(&options);
 	while (str[i])
 	{
 		if (str[i] == '%')
-			i = i + parse_str(str + i + 1, &options);//			i = i + parse_str(str + i + 1, &options);
+			i = i + parse_str(str + i + 1, &options);
 		else
 			append_to_buff(str[i]);
 		i++;
 	}
 	return (0);
 }
-
 
 /*
 %c	ft_putchar
