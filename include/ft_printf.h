@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/11 03:21:36 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/11 22:31:36 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ void            ft_put_info(t_info *info);
 int             t_info_init(t_info *options);
 void	        ft_putstr(char const *s);
 
+//mem.c
+void            ft_bzero(void *s, size_t n);
+void            *ft_memset(void *b, int c, size_t len);
+void            *ft_memalloc(size_t size);
 
 //itoa_base.c
 long long       ft_abs(long long value);
@@ -47,11 +51,6 @@ long long       res_size(long long value, int base);
 char			*fill_base(int base, int l);
 char			*neg_int(long long value);
 char			*ft_itoa_base(long long value, int base, int l);
-
-//mem.c
-void            ft_bzero(void *s, size_t n);
-void            *ft_memset(void *b, int c, size_t len);
-void            *ft_memalloc(size_t size);
 
 //print_csp.c
 void            ft_addchar(va_list ap, t_info *options);
@@ -70,6 +69,10 @@ void            ft_addoct(va_list ap, t_info *options);
 void            ft_addhexmin(va_list ap, t_info *options);
 void            ft_addhexmaj(va_list ap, t_info *options);
 void            ft_addfloat(va_list ap, t_info *options);
+
+//padding.c
+//width.c
+
 
 //parse.c
 int		        check_flag(char c, t_info *options);

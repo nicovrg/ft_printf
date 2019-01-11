@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 02:16:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/11 05:07:23 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/11 22:41:41 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ void    ft_addaddr(va_list ap, t_info *options)
 	
 	cast_ap = va_arg(ap, unsigned long long);
 	addbuff("0x", options);	
-	addbuff(ft_itoa_base(cast_ap, 16, 0), options);
+	addbuff(ft_itoa_base(cast_ap, 16, 32), options);
 }

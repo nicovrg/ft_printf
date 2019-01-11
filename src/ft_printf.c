@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/11 01:33:04 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/11 20:23:03 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,6 @@ void	addbuff(char *str, t_info __unused *options)
 	}
 }
 
-int		parse_str(char *str, t_info *options)
-{
-	int		shift;
-
-	shift = 0;
-	while (check_flag(str[shift], options) == 1)
-		shift++;
-	while (check_width(str[shift], options) == 1)
-		shift++;
-	while (check_accuracy(str[shift], options) == 1)
-		shift++;
-	while (check_type(str[shift], options) == 1)
-		shift++;
-	while (check_conversion(str[shift], options) == 1)
-		shift++;
-	ft_put_info(options);
-	return (shift);
-}
 
 int		append_to_buff(char c, int print)
 {
@@ -76,8 +58,33 @@ int		append_to_buff(char c, int print)
 		ft_putstr(buff);
 		ft_bzero(buff, 4096);
 	}
+	else if (print == 2)
+	{
+		buff = NULL;
+		index = 0;
+		return (0);
+	}
 	index++;
 	return (index);
+}
+
+int		parse_str(char *str, t_info *options)
+{
+	int		shift;
+
+	shift = 0;
+	while (check_flag(str[shift], options) == 1)
+		shift++;
+	while (check_width(str[shift], options) == 1)
+		shift++;
+	while (check_accuracy(str[shift], options) == 1)
+		shift++;
+	while (check_type(str[shift], options) == 1)
+		shift++;
+	while (check_conversion(str[shift], options) == 1)
+		shift++;
+	//ft_put_info(options);
+	return (shift);
 }
 
 int		ft_printf(char *str, ...)
@@ -88,6 +95,7 @@ int		ft_printf(char *str, ...)
 
 	i = 0;
 	va_start(arg, str);
+	append_to_buff(0, 2);
 	t_info_init(&options);
 	while (str[i])
 	{
@@ -95,6 +103,7 @@ int		ft_printf(char *str, ...)
 		{
 			i = i + parse_str(str + i + 1, &options);
 			funptr[options.conversion](arg, &options);
+			t_info_init(&options);
 		}
 		else
 			append_to_buff(str[i], 0);
@@ -104,7 +113,7 @@ int		ft_printf(char *str, ...)
 	}
 	append_to_buff(0, 1);
 	va_end(arg);
-	return (0);
+	return (i);
 }
 
 /*

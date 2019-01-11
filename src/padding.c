@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   else.c                                             :+:      :+:    :+:   */
+/*   padding.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/08 22:16:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/11 22:35:22 by nivergne         ###   ########.fr       */
+/*   Created: 2019/01/11 22:11:15 by nivergne          #+#    #+#             */
+/*   Updated: 2019/01/11 22:31:33 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-int     t_info_init(t_info *options)
+void    flag_d(int , t_info *options)
 {
-    options->width = 0;
-    options->accuracy = 0;
-    options->type = 0;
-    options->conversion = 0;
-    return (0);
+    if (options->zero == 1)
+    if (options->space == 1)
+    if (options->plus == 1)
+    if (options->minus == 1)
 }
-
-// void	ft_putstr(char const *s)
-// {
-// 	if (s != NULL)
-// 		write(1, s, ft_strlen(s));
-// }

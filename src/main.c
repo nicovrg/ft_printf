@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/11 05:06:44 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/11 22:39:23 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,29 @@
 
 int		main(int __unused ac, char __unused **av)
 {
-	int		test_int;
-	char	test_char;
-	char	*test_string;
- 
-	test_int = 42;
-	test_char = 'c';
-	test_string = "here for the long run";
+	int				t_int;
+	int				t_int2;
+	char			t_char;
+	unsigned int	t_uns;
+	char			*t_string;
+	int				t_oct;
+	long long		t_hexmin;
+	long long		t_hexmax;
 
-	ft_printf("bonjour\n%+-#- 0+12.1234hhs\n%00d\n", test_string, test_int);
+	t_int = 42;
+	t_int2 = 43;
+	t_char = 'c';
+	t_string = "here for the long run";
+	t_uns = 44;
+	t_oct = 45;
+	t_hexmin = 45;
+	t_hexmax = 45;
 	
+	ft_printf("hello\nchar\t\t\t:\t\t%c\nstring\t\t\t:\t\t%s\naddress\t\t\t:\t\t%p\ninteger\t\t\t:\t\t%d\ninteger\t\t\t:\t\t%i\noctal\t\t\t:\t\t%o\nunsigned integer\t:\t\t%u\nhexamin\t\t\t:\t\t%x\nhexamaj\t\t\t:\t\t%X\n\n", t_char, t_string, t_string, t_int, t_int2, t_oct, t_uns, t_hexmin, t_hexmax);
+	printf("\n\n\n\nhello\nchar\t\t\t:\t\t%c\nstring\t\t\t:\t\t%s\naddress\t\t\t:\t\t%p\ninteger\t\t\t:\t\t%d\ninteger\t\t\t:\t\t%i\noctal\t\t\t:\t\t%o\nunsigned integer\t:\t\t%u\nhexamin\t\t\t:\t\t%x\nhexamaj\t\t\t:\t\t%X\n\n", t_char, t_string, t_string, t_int, t_int2, t_oct, t_uns, t_hexmin, t_hexmax);
+	//ft_printf("bonjour\n%+-#- 0+12.1234hhs\n%00d\n", t_string, t_int);
 	//FIRST TEST
-	//ft_printf("Testons donc cette fonction, %d\n%c\n%s\n", test_int, test_char, test_string);
+	//ft_printf("Testons donc cette fonction, %d\n%c\n%s\n", t_int, t_char, t_string);
 	return (0);
 }
 

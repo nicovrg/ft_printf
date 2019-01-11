@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 20:00:21 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/09 22:59:45 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/11 18:36:33 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char			*neg_int(long long value)
 {
 	char	*res;
 	int		i;
-
+	
 	i = res_size(value, 10) + 1;
 	if (!(res = (char *)malloc(sizeof(char) * i)))
 		return (NULL);

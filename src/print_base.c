@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 21:51:28 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/11 03:17:35 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/11 18:30:13 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,3 +46,5 @@ void    ft_addhexmaj(va_list ap, t_info *options)
 }
 
 //void    ft_addfloat(int nb){}
+
+//00000000
