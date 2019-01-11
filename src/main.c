@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/10 18:50:16 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/11 05:06:44 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int		main(int __unused ac, char __unused **av)
 	test_char = 'c';
 	test_string = "here for the long run";
 
-	ft_printf("bonjour%+-#- 0+12.1234hhs");
-
+	ft_printf("bonjour\n%+-#- 0+12.1234hhs\n%00d\n", test_string, test_int);
+	
 	//FIRST TEST
 	//ft_printf("Testons donc cette fonction, %d\n%c\n%s\n", test_int, test_char, test_string);
 	return (0);
