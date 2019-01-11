@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 19:01:31 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/08 21:46:04 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/10 18:56:01 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,12 @@ int		check_conversion(char c, t_info *options)
 	char	*str;
 
 	i = 0;
-	str = "cspdiouxX";
+	str = "cspdiouxXb";
 	while (str[i])
 	{
 		if (c == str[i])
 		{
-			options->conversion = str[i];
+			options->conversion = i;
 			return (1);
 		}
 		i++;

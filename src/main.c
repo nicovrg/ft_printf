@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/09 01:02:59 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/10 18:50:16 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int		main(int __unused ac, char __unused **av)
 	int		test_int;
 	char	test_char;
 	char	*test_string;
-
+ 
 	test_int = 42;
 	test_char = 'c';
 	test_string = "here for the long run";
 
-	ft_printf("%+-#- 0+12.1234hhs");
+	ft_printf("bonjour%+-#- 0+12.1234hhs");
 
 	//FIRST TEST
 	//ft_printf("Testons donc cette fonction, %d\n%c\n%s\n", test_int, test_char, test_string);
@@ -48,3 +48,4 @@ printf(NULL);
 printf("Testons donc cette fonction, %d\n%c\n%s\n", test_int, test_char, test_string);
 printf("que % se passe t il quand j'écris des %\n");
 */
+
