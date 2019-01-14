@@ -6,20 +6,23 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 22:26:09 by nivergne          #+#    #+#              #
-#    Updated: 2019/01/11 22:35:43 by nivergne         ###   ########.fr        #
+#    Updated: 2019/01/14 15:19:30 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS =	ft_printf.c \
+SRCS =	main.c \
+		test.c \
 		else.c \
 		itoa_base.c \
-		parse.c \
-		print_base.c \
 		print_csp.c \
 		print_ui.c \
-		witdth.c
+		print_base.c \
+		padding.c \
+		witdth.c \
+		parse.c \
+		ft_printf.c \
 		#padding.c \
 		mem.c \
 

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/11 20:23:03 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/14 15:16:35 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,16 +115,3 @@ int		ft_printf(char *str, ...)
 	va_end(arg);
 	return (i);
 }
-
-/*
-%c	ft_putchar
-%s	ft_putstr
-%p	ft_putaddr
-%d	ft_putnbr
-%i	ft_putnbr
-%o	ft_putoct
-%u	ft_putuns
-%x	ft_puthexmin
-%X	ft_puthexmaj
-%f	ft_putfloat
-*/
