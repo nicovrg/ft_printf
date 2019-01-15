@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/14 15:16:35 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/15 16:32:04 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ int		parse_str(char *str, t_info *options)
 	int		shift;
 
 	shift = 0;
+	if (str[shift] == '%')
+	{
+		append_to_buff('%', 0);
+		shift++;
+	}
 	while (check_flag(str[shift], options) == 1)
 		shift++;
 	while (check_width(str[shift], options) == 1)

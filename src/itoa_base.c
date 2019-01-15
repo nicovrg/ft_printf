@@ -6,36 +6,36 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 20:00:21 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/11 18:36:33 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/15 15:11:50 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-long long	ft_abs(long long value)
+long long	abs_value(long long value)
 {
 	return (value < 0 ? -value : value);
 }
 
-long long	res_size(long long value, int base)
+long long	get_size(long long value, int base)
 {
-	int		i;
+	int		size;
 
-	i = 0;
-	if (!(value))
+	size = 0;
+	if (value == 0)
 		return (1);
 	while (value)
 	{
 		value = value / (long long)base;
-		i++;
+		size++;
 	}
-	return (i);
+	return (size);
 }
 
 char			*fill_base(int base, int l)
 {
-	char	*base_arr;
 	int		i;
+	char	*base_arr;
 
 	i = 0;
 	if (!(base_arr = (char *)malloc(sizeof(char) * (base + 1))))
@@ -59,7 +59,7 @@ char			*neg_int(long long value)
 	char	*res;
 	int		i;
 	
-	i = res_size(value, 10) + 1;
+	i = get_size(value, 10) + 1;
 	if (!(res = (char *)malloc(sizeof(char) * i)))
 		return (NULL);
 	res[i] = '\0';
@@ -76,13 +76,13 @@ char			*neg_int(long long value)
 
 char			*ft_itoa_base(long long value, int base, int l)
 {
-	char				*base_arr;
-	char				*base_res;
 	int					i;
 	unsigned long long	uns;
+	char				*base_arr;
+	char				*base_res;
 
-	uns = ft_abs(value);
-	i = res_size(uns, base);
+	uns = abs_value(value);
+	i = get_size(uns, base);
 	if (value < 0 && base == 10)
 	{
 		base_res = neg_int(value);
@@ -95,7 +95,7 @@ char			*ft_itoa_base(long long value, int base, int l)
 	base_res[i] = '\0';
 	i--;
 	while (i >= 0)
-	{
+	{ 
 		base_res[i] = base_arr[uns % (unsigned long long)base];
 		uns = uns / (unsigned long long)base;
 		i--;

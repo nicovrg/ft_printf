@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/11 22:31:36 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/15 16:08:56 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct  s_info
     int         minus : 1;
     int         space : 1;
     int         hashtag : 1;
+    int         percent : 1;
     int         width;
     int         accuracy;
     int         type;
@@ -106,4 +107,4 @@ int		        ft_printf(char *buff, ...);
 //penser au %%
 //afficher le \0
 
-//gcc -Wall -Werror -Wextra conv.c ft_printf.c itoa_base.c main.c mem.c parse.c print.c else.c test.c libft.a && ./a.out
+//gcc -Wall -Werror -Wextra print_base.c print_csp.c print_ui.c ft_printf.c itoa_base.c main.c mem.c parse.c else.c test.c libft.a && ./a.out
