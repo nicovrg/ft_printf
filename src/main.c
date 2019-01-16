@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/16 01:05:37 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/16 02:07:28 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ int		main(int __unused ac, char __unused **av)
 	
 	//TEST: flag char
 	//gestion du '-' et width
-	//ft_printf("printf1%-42c\n", t_char);
-	//printf("printf2%-42c\n", t_char);
+	//ft_printf("printf1%42c\n", t_char);
+	//printf("printf2%42c\n", t_char);
 
 	//TEST: flag string
 	//gestion du '-' et width
-	ft_printf("%25s\n", t_string);
-	printf("%25s\n", t_string);
+	ft_printf("%-255s\n", t_string);
+	printf("%-255s\n", t_string);
 	
 	//TEST: cspdiouxX
 	//ft_printf("hello\nchar\t\t\t:\t\t%c\nstring\t\t\t:\t\t%s\naddress\t\t\t:\t\t%p\ninteger\t\t\t:\t\t%d\ninteger\t\t\t:\t\t%i\noctal\t\t\t:\t\t%o\nunsigned integer\t:\t\t%u\nhexamin\t\t\t:\t\t%x\nhexamaj\t\t\t:\t\t%X\n\n", t_char, t_string, t_string, t_int, t_int2, t_oct, t_uns, t_hexmin, t_hexmax);

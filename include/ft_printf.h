@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/16 01:06:25 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/16 02:05:48 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void            ft_addfloat(va_list ap, t_info *options);
 //padding.c
 //width.c
 void            addwidth_char(int nb);
-void            addwidth_string(int nb);
+void            addwidth_string(int nb, char *cast_ap);
 
 //parse.c
 int		        check_flag(char c, t_info *options);
