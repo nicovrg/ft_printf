@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 19:01:31 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/11 18:30:03 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/15 23:02:48 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int		check_type(char c, t_info *options)
 			options->type = 2;
 		return (1);
 	}
+	else if (c == 'q')
+		return (1);
 	return (0);
 }
 
@@ -90,7 +92,7 @@ int		check_conversion(char c, t_info *options)
 	char	*str;
 
 	i = 0;
-	str = "cspdiouxXb";
+	str = "cspdiouxXb%";
 	while (str[i])
 	{
 		if (c == str[i])

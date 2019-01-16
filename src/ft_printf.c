@@ -6,13 +6,13 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/15 16:32:04 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/16 00:04:08 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-void    (*funptr[10])(va_list, t_info *) = {
+void    (*funptr[11])(va_list, t_info *) = {
     &ft_addchar,
     &ft_addstr,
     &ft_addaddr,
@@ -23,6 +23,7 @@ void    (*funptr[10])(va_list, t_info *) = {
     &ft_addhexmin,
     &ft_addhexmaj,
     &ft_addbin,
+	&ft_addpercent,
 };
 
 void	addbuff(char *str, t_info __unused *options)
@@ -49,7 +50,7 @@ int		append_to_buff(char c, int print)
 	if (!buff)
 	{
 		if (!(buff = ft_memalloc(4096)))
-			return (0);
+			exit(0);
 	}
 	if (print == 0)
 		buff[index] = c;
@@ -73,11 +74,6 @@ int		parse_str(char *str, t_info *options)
 	int		shift;
 
 	shift = 0;
-	if (str[shift] == '%')
-	{
-		append_to_buff('%', 0);
-		shift++;
-	}
 	while (check_flag(str[shift], options) == 1)
 		shift++;
 	while (check_width(str[shift], options) == 1)
@@ -86,11 +82,17 @@ int		parse_str(char *str, t_info *options)
 		shift++;
 	while (check_type(str[shift], options) == 1)
 		shift++;
-	while (check_conversion(str[shift], options) == 1)
+	if (check_conversion(str[shift], options) == 1)
 		shift++;
-	//ft_put_info(options);
+	else
+	{
+		usage();
+		exit(1); //exit in usage?
+	}
+	ft_put_info(options);
 	return (shift);
 }
+
 
 int		ft_printf(char *str, ...)
 {
@@ -101,14 +103,13 @@ int		ft_printf(char *str, ...)
 	i = 0;
 	va_start(arg, str);
 	append_to_buff(0, 2);
-	t_info_init(&options);
 	while (str[i])
 	{
 		if (str[i] == '%')
 		{
+			t_info_init(&options);
 			i = i + parse_str(str + i + 1, &options);
 			funptr[options.conversion](arg, &options);
-			t_info_init(&options);
 		}
 		else
 			append_to_buff(str[i], 0);

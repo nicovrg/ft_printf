@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 21:51:28 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/15 16:02:46 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/16 00:54:34 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void    ft_addoct(va_list ap, t_info *options)
     unsigned long long cast_ap;
 
     cast_ap = va_arg(ap, unsigned long long);
-    //printf("check:%s\n", ft_itoa_base(cast_ap, 8, 0));
     addbuff(ft_itoa_base(cast_ap, 8, 0), options);
 }
 

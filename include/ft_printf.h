@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/15 16:08:56 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/16 01:06:25 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 
 typedef struct  s_info
 {
-    int         zero : 1;
-    int         plus : 1;
-    int         minus : 1;
-    int         space : 1;
-    int         hashtag : 1;
-    int         percent : 1;
+    int         zero;
+    int         plus;
+    int         minus;
+    int         space;
+    int         hashtag;
+    int         percent;
     int         width;
     int         accuracy;
     int         type;
@@ -33,12 +33,13 @@ typedef struct  s_info
 }               t_info;
 
 //main.c
-
 //test.c
+
 void            ft_put_info(t_info *info);
 
 //else.c
 int             t_info_init(t_info *options);
+void            usage();
 void	        ft_putstr(char const *s);
 
 //mem.c
@@ -57,6 +58,7 @@ char			*ft_itoa_base(long long value, int base, int l);
 void            ft_addchar(va_list ap, t_info *options);
 void            ft_addstr(va_list ap, t_info *options);
 void            ft_addaddr(va_list ap, t_info *options);
+void            ft_addpercent();
 
 //print_ui.c
 void            ft_addnbr_core(long long nb, t_info *options);
@@ -73,7 +75,8 @@ void            ft_addfloat(va_list ap, t_info *options);
 
 //padding.c
 //width.c
-
+void            addwidth_char(int nb);
+void            addwidth_string(int nb);
 
 //parse.c
 int		        check_flag(char c, t_info *options);
@@ -83,7 +86,7 @@ int		        check_type(char c, t_info *options);
 int		        check_conversion(char c, t_info *options);
 
 //ft_printf.c
-void            (*funptr[10])(va_list, t_info *);
+void            (*funptr[11])(va_list, t_info *);
 void	        addbuff(char *str, t_info *options);
 int		        parse_str(char *buff, t_info *options);
 int		        append_to_buff(char c, int print);
