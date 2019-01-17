@@ -1,21 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   padding.c                                          :+:      :+:    :+:   */
+/*   width_ui.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:15 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/15 19:48:43 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/16 23:32:45 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
-// void    flag_d(int , t_info *options)
-// {
-//     if (options->zero == 1)
-//     if (options->space == 1)
-//     if (options->plus == 1)
-//     if (options->minus == 1)
-// }

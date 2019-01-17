@@ -6,10 +6,11 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 19:01:31 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/15 23:02:48 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/17 00:26:06 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
 int		check_flag(char c, t_info *options)
@@ -33,13 +34,12 @@ int		check_width(char c, t_info *options)
 {
 	if (c >= '0' && c <= '9')
 	{
-		if (options->width == 0)
+		if (options->width == -1)
 			options->width = c - '0';
 		else
 			options->width = options->width * 10 + c - '0';
-	}
-	if (c >= '0' && c <= '9')
 		return (1);
+	}
 	return (0);
 }
 
@@ -54,7 +54,7 @@ int		check_accuracy(char c, t_info *options)
 	}
 	if (c >= '0' && c <= '9')
 	{
-		if (options->accuracy == 0)
+		if (options->accuracy == -1)
 			options->accuracy = c - '0';
 		else
 			options->accuracy = options->accuracy * 10 + c - '0';

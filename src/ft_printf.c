@@ -6,18 +6,20 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/16 00:04:08 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/17 01:28:08 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include "ft_printf.h"
 #include "../include/ft_printf.h"
+
 
 void    (*funptr[11])(va_list, t_info *) = {
     &ft_addchar,
     &ft_addstr,
     &ft_addaddr,
-    &ft_addnbr,
-    &ft_addnbr,
+    &ft_nbr,
+    &ft_nbr,
     &ft_addoct,
     &ft_adduns,
     &ft_addhexmin,
@@ -45,13 +47,10 @@ void	addbuff(char *str, t_info __unused *options)
 int		append_to_buff(char c, int print)
 {
 	static int		index = 0;
-	static char		*buff = NULL;
+	static char		buff[4096];
 
-	if (!buff)
-	{
-		if (!(buff = ft_memalloc(4096)))
-			exit(0);
-	}
+	if (!index)
+		ft_bzero(buff, 4096);
 	if (print == 0)
 		buff[index] = c;
 	else if (print == 1 && ft_strlen(buff) != 0)
@@ -61,7 +60,6 @@ int		append_to_buff(char c, int print)
 	}
 	else if (print == 2)
 	{
-		buff = NULL;
 		index = 0;
 		return (0);
 	}
