@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/17 01:28:08 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/17 03:27:29 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void    (*funptr[11])(va_list, t_info *) = {
     &ft_addaddr,
     &ft_nbr,
     &ft_nbr,
-    &ft_addoct,
+    &ft_oct,
     &ft_adduns,
     &ft_addhexmin,
     &ft_addhexmaj,
@@ -48,6 +48,7 @@ int		append_to_buff(char c, int print)
 {
 	static int		index = 0;
 	static char		buff[4096];
+	static int		ret = 0;
 
 	if (!index)
 		ft_bzero(buff, 4096);
@@ -64,7 +65,7 @@ int		append_to_buff(char c, int print)
 		return (0);
 	}
 	index++;
-	return (index);
+	return (ret++);
 }
 
 int		parse_str(char *str, t_info *options)
@@ -87,7 +88,7 @@ int		parse_str(char *str, t_info *options)
 		usage();
 		exit(1); //exit in usage?
 	}
-	ft_put_info(options);
+	//ft_put_info(options);
 	return (shift);
 }
 
@@ -115,7 +116,6 @@ int		ft_printf(char *str, ...)
 			append_to_buff(0, 1);
 		i++;
 	}
-	append_to_buff(0, 1);
 	va_end(arg);
-	return (i);
+	return (append_to_buff(0, 1));
 }

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 03:18:33 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/17 01:48:27 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/17 04:42:30 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ void	ft_addnbr(long long cast_ap, t_info *options)
 {
 	int 		size;
 	
-	size = width_size(options, cast_ap);
+	size = width_size(options, cast_ap, 10);
+
 	options->plus && options->minus && cast_ap >= 0 ? append_to_buff('+', 0) : 0;
+	//options->space && options->minus && !options->plus ? append_to_buff(' ', 0) : 0;
 	options->accuracy > 0 && options->minus ? ft_accuracy(options) : 0;
 	if (options->minus == 1)
 		ft_addnbr_core(cast_ap, options);
@@ -38,6 +40,7 @@ void	ft_addnbr(long long cast_ap, t_info *options)
 		while (size--)
 			append_to_buff(options->zero && !options->minus ? '0' : ' ', 0);
 	options->plus && !options->minus && cast_ap >= 0 ? append_to_buff('+', 0) : 0;
+	//options->space && !options->minus && !options->plus ? append_to_buff(' ', 0) : 0;
 	options->accuracy > 0 && !options->minus ? ft_accuracy(options) : 0;
 	if (options->minus == 0)
 		ft_addnbr_core(cast_ap, options);

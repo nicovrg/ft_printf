@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/17 02:01:35 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/17 03:27:14 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void            ft_put_info(t_info *info);
 
 //else.c
 int             t_info_init(t_info *options);
-int             width_size(t_info *options, long long cast_ap);
+int             width_size(t_info *options, long long cast_ap, int base);
 int             ft_accuracy(t_info *options);
 void            usage();
 
@@ -74,10 +74,11 @@ void	        ft_nbr(va_list ap, t_info *options);
 
 //print_base.c
 void            ft_addbin(va_list ap, t_info *options);
-void            ft_addoct(va_list ap, t_info *options);
+void            ft_addoct(long long cast_ap, t_info *options);
 void            ft_addhexmin(va_list ap, t_info *options);
 void            ft_addhexmaj(va_list ap, t_info *options);
 void            ft_addfloat(va_list ap, t_info *options);
+void	        ft_oct(va_list ap, t_info *options);
 
 //width_csp.c
 void            addwidth_char(int nb);
