@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/18 00:48:22 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/18 03:55:53 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,62 +40,133 @@ int		main(int __unused ac, char __unused **av)
 	//printf("true :% d\n", 42);
 	//printf("true :% 05d\n", t_int);
 
-
-
 	//TEST: CHAR
 	//gestion du '-' et width
-	printf("-------------------------------------------\n\n");
-	ft_printf("%42c\n", t_char);
-	printf("%42c\n", t_char);
-	printf("-------------------------------------------\n\n");
-	ft_printf("%-42c\n", t_char);
-	printf("%-42c\n", t_char);
-	printf("-------------------------------------------\n\n");
+	//printf("----------------\n");	
+	//-------------------------------------------
+	//ft_printf("%42c\n", t_char);
+	//	printf("%42c\n", t_char);
+	//	-------------------------------------------
+	//ft_printf("%-42c\n", t_char);
+	//printf("%-42c\n", t_char);
+	//-------------------------------------------
 	
-	
+
 	
 	//TEST: STRING
 	//gestion du '-' et width
-	printf("-------------------------------------------\n\n");
-	ft_printf("%42s\n", t_string);
-	printf("%42s\n", t_string);
-	printf("-------------------------------------------\n\n");
-	ft_printf("%-42s\n", t_string);
-	printf("%-42s\n", t_string);
-	printf("-------------------------------------------\n\n");
+	//-------------------------------------------
+	//ft_printf("%42s\n", t_string);
+	//printf("%42s\n", t_string);
+	//-------------------------------------------
+	//ft_printf("%-42s\n", t_string);
+	//printf("%-42s\n", t_string);
+	//-------------------------------------------
 
 
 
 	//TEST: POINTER
 	//gestion du '-' et width
-	printf("-------------------------------------------\n\n");
-	ft_printf("%42p\n", t_string);
-	printf("%42p\n", t_string);
-	printf("-------------------------------------------\n\n");
-	ft_printf("%-42p\n", t_string);
-	printf("%-42p\n", t_string);
-	printf("-------------------------------------------\n\n");
+	//-------------------------------------------
+	//ft_printf("%42p\n", t_string);
+	//printf("%42p\n", t_string);
+	//-------------------------------------------
+	//ft_printf("%-42p\n", t_string);
+	//printf("%-42p\n", t_string);
+	//-------------------------------------------
 
 
 
 	//TEST: INTEGER
 	//gestion de '0', ' ', '+', '-' 
-	printf("-------------------------------------------\n\n");
-	ft_printf("%-42d\n", t_int);
-	printf("%-42d\n", t_int);
-	printf("-------------------------------------------\n\n");
-	ft_printf("%+10.55d\n", t_int);
-	printf("%+10.55d\n", t_int);
-	printf("-------------------------------------------\n\n");
-	ft_printf("%+d\n", t_int);
-	printf("%+d\n", t_int);
-	printf("-------------------------------------------\n\n");
-	ft_printf("%+-42d\n", t_int);
-	printf("%+-42d\n", t_int);
-	printf("-------------------------------------------\n\n");
-	
+	//-------------------------------------------
 	//ft_printf("%-42d\n", t_int);
 	//printf("%-42d\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%+10.55d\n", t_int);
+	//printf("%+10.55d\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%+d\n", t_int);
+	//printf("%+d\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%+-42d\n", t_int);
+	//printf("%+-42d\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%-42d\n", t_int);
+	//printf("%-42d\n", t_int);
+	//-------------------------------------------
+
+
+	//TEST: UNSIGNED INTEGER
+	//gestion de 
+	//-------------------------------------------
+	//ft_printf("%-42u\n", t_int);
+	//printf("%-42u\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%+10.55d\n", t_int);
+	//printf("%+10.55d\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%0u\n", t_int);
+	//printf("%0u\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%+-42d\n", t_int);
+	//printf("%+-42d\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%-42d\n", t_int);
+	//printf("%-42d\n", t_int);
+	//-------------------------------------------
+	
+
+
+	//TEST: OCTAL
+	//gestion de  
+	//-------------------------------------------
+	//ft_printf("%-42o\n", t_int);
+	//printf("%-42o\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%010.55o\n", t_int);
+	//printf("%010.55o\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%#o\n", t_int);
+	//printf("%#o\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%42o\n", t_int);
+	//printf("%42o\n", t_int);
+	//-------------------------------------------
+	//ft_printf("% .42o\n", t_int);
+	//printf("% .42o\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%ll42o\n", t_int);
+	//printf("%ll42o\n", t_int);
+
+
+
+	//TEST: Hexa
+	//gestion de  
+	//-------------------------------------------
+	ft_printf("%-42x\n", t_int);
+	printf("%-42x\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%-42x\n", t_int);
+	//printf("%-42x\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%010.55x\n", t_int);
+	//printf("%010.55x\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%#x\n", t_int);
+	//printf("%#x\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%42x\n", t_int);
+	//printf("%42x\n", t_int);
+	//-------------------------------------------
+	//ft_printf("% .42x\n", t_int);
+	//printf("% .42x\n", t_int);
+	//-------------------------------------------
+	//ft_printf("%ll42x\n", t_int);
+	//printf("%ll42x\n", t_int);
+
+
+
 
 	//TEST: cspdiouxX
 	//ft_printf("hello\nchar\t\t\t:\t\t%c\nstring\t\t\t:\t\t%s\naddress\t\t\t:\t\t%p\ninteger\t\t\t:\t\t%d\ninteger\t\t\t:\t\t%i\noctal\t\t\t:\t\t%o\nunsigned integer\t:\t\t%u\nhexamin\t\t\t:\t\t%x\nhexamaj\t\t\t:\t\t%X\n\n", t_char, t_string, t_string, t_int, t_int2, t_oct, t_uns, t_hexmin, t_hexmax);

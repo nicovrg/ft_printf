@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/18 00:31:42 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/18 03:52:46 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void    (*funptr[11])(va_list, t_info *) = {
     &ft_nbr,
     &ft_nbr,
     &ft_oct,
-    &ft_adduns,
-    &ft_addhexmin,
-    &ft_addhexmaj,
+    &ft_uns,
+    &ft_hex,
+    &ft_hex,
     &ft_addbin,
 	&ft_addpercent,
 };
@@ -45,9 +45,9 @@ void	addbuff(char *str, t_info __unused *options)
 
 int		append_to_buff(char c, int print)
 {
+	static int		ret = 0;
 	static int		index = 0;
 	static char		buff[4096];
-	static int		ret = 0;
 
 	if (!index)
 		ft_bzero(buff, 4096);
