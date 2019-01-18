@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 17:10:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/16 23:35:39 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/17 19:17:11 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,31 @@ void	ft_putnbr(int n)
 	}
 	else
 		ft_putchar(nbr % 10 + '0');
+}
+
+int		ft_atoi(const char *str)
+{
+	size_t		i;
+	int			sign;
+	size_t		result;
+
+	i = 0;
+	sign = 1;
+	result = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-')
+		sign = -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + str[i] - '0';
+		if (sign == 1 && result > INT64_MAX)
+			return (-1);
+		if (sign == -1 && result > (size_t)(INT64_MAX) + 1)
+			return (0);
+		i++;
+	}
+	return ((int)result * sign);
 }

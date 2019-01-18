@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/17 03:27:14 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/18 00:50:27 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void            ft_putchar(char c);
 void            ft_putstr(char const *s);
 void            ft_putnbr(int n);
 size_t          ft_strlen(const char *s);
+int		        ft_atoi(const char *str);
 
 //itoa_base.c
 long long       ft_abs(long long value);
@@ -59,26 +60,39 @@ char			*fill_base(int base, int l);
 char			*neg_int(long long value);
 char			*ft_itoa_base(long long value, int base, int l);
 
-//print_csp.c
-void            ft_addchar(va_list ap, t_info *options);
-void            ft_addstr(va_list ap, t_info *options);
-void            ft_addaddr(va_list ap, t_info *options);
+//print_%.c
 void            ft_addpercent(va_list ap, t_info *options);
 
-//print_ui.c
+//print_c.c
+void            ft_addchar(va_list ap, t_info *options);
+
+//print_s.c
+void            ft_addstr(va_list ap, t_info *options);
+
+//print_p.c
+void            ft_addaddr(va_list ap, t_info *options);
+
+//print_i.c
+void	        ft_nbr(va_list ap, t_info *options);
 void            ft_addnbr_core(long long nb, t_info *options);
 void            ft_addnbr(long long cast_ap, t_info *options);
+
+//print_u.c
 void            ft_adduns_core(unsigned long long nb, t_info *options);
 void            ft_adduns(va_list ap, t_info *options);
-void	        ft_nbr(va_list ap, t_info *options);
 
-//print_base.c
-void            ft_addbin(va_list ap, t_info *options);
+//print_o.c
+void	        ft_oct(va_list ap, t_info *options);
 void            ft_addoct(long long cast_ap, t_info *options);
+
+//print_x.c
 void            ft_addhexmin(va_list ap, t_info *options);
 void            ft_addhexmaj(va_list ap, t_info *options);
-void            ft_addfloat(va_list ap, t_info *options);
-void	        ft_oct(va_list ap, t_info *options);
+
+//print_b.c
+void            ft_addbin(va_list ap, t_info *options);
+
+
 
 //width_csp.c
 void            addwidth_char(int nb);

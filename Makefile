@@ -6,29 +6,36 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 22:26:09 by nivergne          #+#    #+#              #
-#    Updated: 2019/01/17 02:20:28 by nivergne         ###   ########.fr        #
+#    Updated: 2019/01/18 00:55:29 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS =	src/test.c \
+SRCS =	src/mem.c \
+		src/test.c \
 		src/else.c \
-		src/mem.c \
-		src/parse.c \
-		src/itoa_base.c \
+		src/print_%.c \
+		src/print_c.c \
+		src/print_s.c \
+		src/print_p.c \
+		src/print_i.c \
+		src/print_o.c \
+		src/print_u.c \
+		src/print_x.c \
 		src/width_csp.c \
-		src/width_ui.c \
-		src/print_csp.c \
-		src/print_ui.c \
-		src/print_base.c \
-		src/ft_printf.c \
+		src/width_dioux.c \
+		src/itoa_base.c \
+		src/parse.c \
+		src/ft_printf.c
 
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wextra -Werror -Wall -I./include/
+CFLAGS = -Wextra -Werror -Wall -I ../include/
+
+#CFLAGS = -Wextra -Werror -Wall -I./include/
 
 all: $(NAME)
 

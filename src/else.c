@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 22:16:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/17 04:33:44 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/17 23:22:54 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,24 @@ void    usage()
 {
     ft_putstr("ft_printf usage:\n");
     ft_putstr("write usage\n");
+    exit(-1);
 }
 
-long long      ft_convert_base(long long value, int base)
-{
-    long long ret;
+// long long      ft_convert_base(long long value, int base)
+// {
+//     long long ret;
 
-    ret = 0;
-    while (value)
-    {
-        if (ret % 10 >= base)
-        {
-            ret /= 10;
-            ret++;
-            ret *= 10;
-        }
-        ret++;
-        value--;
-    }
-    return (ret);
-}
+//     ret = 0;
+//     while (value)
+//     {
+//         if (ret % 10 >= base)
+//         {
+//             ret /= 10;
+//             ret++;
+//             ret *= 10;
+//         }
+//         ret++;
+//         value--;
+//     }
+//     return (ret);
+//}

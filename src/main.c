@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/17 04:40:22 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/18 00:48:22 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,65 +36,63 @@ int		main(int __unused ac, char __unused **av)
 	t_hexmax = 42;
 
 	//TEST: BEHAVIOUR
-	ft_printf("mine :% d\n", 42);
-	printf("true :% d\n", 42);
+	//ft_printf("mine :% d\n", 42);
+	//printf("true :% d\n", 42);
 	//printf("true :% 05d\n", t_int);
 
 
 
 	//TEST: CHAR
 	//gestion du '-' et width
-	//-------------------------------------------
-	//ft_printf("%42c\n", t_char);
-	//printf("%42c\n", t_char);
-	//-------------------------------------------
-	//ft_printf("%-42c\n", t_char);
-	//printf("%-42c\n", t_char);
-	//-------------------------------------------
+	printf("-------------------------------------------\n\n");
+	ft_printf("%42c\n", t_char);
+	printf("%42c\n", t_char);
+	printf("-------------------------------------------\n\n");
+	ft_printf("%-42c\n", t_char);
+	printf("%-42c\n", t_char);
+	printf("-------------------------------------------\n\n");
 	
 	
 	
 	//TEST: STRING
 	//gestion du '-' et width
-	//-------------------------------------------	
-	//ft_printf("%42s\n", t_string);
-	//printf("%42s\n", t_string);
-	//-------------------------------------------
-	//ft_printf("%-42s\n", t_string);
-	//printf("%-42s\n", t_string);
-	//-------------------------------------------
+	printf("-------------------------------------------\n\n");
+	ft_printf("%42s\n", t_string);
+	printf("%42s\n", t_string);
+	printf("-------------------------------------------\n\n");
+	ft_printf("%-42s\n", t_string);
+	printf("%-42s\n", t_string);
+	printf("-------------------------------------------\n\n");
 
 
 
 	//TEST: POINTER
 	//gestion du '-' et width
-	//-------------------------------------------	
-	//ft_printf("%42p\n", t_string);
-	//printf("%42p\n", t_string);
-	//-------------------------------------------
-	//ft_printf("%-42p\n", t_string);
-	//printf("%-42p\n", t_string);
-	//-------------------------------------------
+	printf("-------------------------------------------\n\n");
+	ft_printf("%42p\n", t_string);
+	printf("%42p\n", t_string);
+	printf("-------------------------------------------\n\n");
+	ft_printf("%-42p\n", t_string);
+	printf("%-42p\n", t_string);
+	printf("-------------------------------------------\n\n");
 
 
 
 	//TEST: INTEGER
 	//gestion de '0', ' ', '+', '-' 
-	//-------------------------------------------
-	//ft_printf("%-42d\n", t_int);
-	//printf("%-42d\n", t_int);
-	//-------------------------------------------
-	//ft_printf("%+10.55d\n", t_int);
-	//printf("%+10.55d\n", t_int);
-	//-------------------------------------------
-	//ft_printf("%+d\n", t_int);
-	//printf("%+d\n", t_int);
-	//-------------------------------------------
-	//-------------------------------------------
-	//-------------------------------------------
-	//ft_printf("% +-042d\n", t_int);
-	//printf("% +-042d\n", t_int);
-	//-------------------------------------------
+	printf("-------------------------------------------\n\n");
+	ft_printf("%-42d\n", t_int);
+	printf("%-42d\n", t_int);
+	printf("-------------------------------------------\n\n");
+	ft_printf("%+10.55d\n", t_int);
+	printf("%+10.55d\n", t_int);
+	printf("-------------------------------------------\n\n");
+	ft_printf("%+d\n", t_int);
+	printf("%+d\n", t_int);
+	printf("-------------------------------------------\n\n");
+	ft_printf("%+-42d\n", t_int);
+	printf("%+-42d\n", t_int);
+	printf("-------------------------------------------\n\n");
 	
 	//ft_printf("%-42d\n", t_int);
 	//printf("%-42d\n", t_int);
@@ -128,6 +126,6 @@ int		main(int __unused ac, char __unused **av)
 /*
 Bonus: gestion de buffer, couleur, multi fd (write(fd, ..., ...)), %* (padding sur le 1er arg), binaire etc ...
 Gestion: printf(NULL);
-gcc -Wall -Werror -Wextra print_base.c print_csp.c print_ui.c ft_printf.c itoa_base.c main.c mem.c parse.c else.c test.c width_csp.c width_ui.c -o test && ./test | cat -e
+gcc -Wall -Wextra print_b.c print_c.c print_i.c print_u.c print_s.c print_p.c print_o.c print_x.c print_%.c ft_printf.c itoa_base.c main.c mem.c parse.c else.c test.c width_csp.c width_dioux.c -o test && ./test | cat -e
 */
 

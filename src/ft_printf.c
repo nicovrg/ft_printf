@@ -6,13 +6,12 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/17 03:27:29 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/18 00:31:42 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
-
 
 void    (*funptr[11])(va_list, t_info *) = {
     &ft_addchar,
@@ -84,10 +83,7 @@ int		parse_str(char *str, t_info *options)
 	if (check_conversion(str[shift], options) == 1)
 		shift++;
 	else
-	{
 		usage();
-		exit(1); //exit in usage?
-	}
 	//ft_put_info(options);
 	return (shift);
 }
