@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:33:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/17 23:36:36 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/18 19:10:30 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void    ft_addoct(long long cast_ap, t_info *options)
 {
     int 		size;
 	
-	size = width_size(options, cast_ap, 8);
+	size = width_size_diou(options, cast_ap, 8);
 	options->accuracy > 0 && options->minus ? ft_accuracy(options) : 0;
     options->hashtag && options->minus ? append_to_buff('0', 0) : 0;
 	if (options->minus == 1)

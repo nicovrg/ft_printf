@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 22:16:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/17 23:22:54 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/18 20:18:59 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,29 +28,6 @@ int     t_info_init(t_info *options)
     return (0);
 }
 
-int     width_size(t_info *options, long long cast_ap, int base)
-{
-    int width;
-    int size_nb;
-
-    size_nb = 0;
-    width = options->width;
-    if (cast_ap < 0)
-    {
-        size_nb++;
-        cast_ap *= -1;
-    }
-    while (cast_ap > 0)
-    {
-        cast_ap /= base;
-        size_nb++;
-    }
-    width = width - (options->accuracy > size_nb ? options->accuracy : size_nb)
-        - (options->plus == 1 ? 1 : 0);
-    options->accuracy = options->accuracy - size_nb;
-    return (width);
-}
-
 int     ft_accuracy(t_info *options)
 {
     while(options->accuracy--)
@@ -64,22 +41,3 @@ void    usage()
     ft_putstr("write usage\n");
     exit(-1);
 }
-
-// long long      ft_convert_base(long long value, int base)
-// {
-//     long long ret;
-
-//     ret = 0;
-//     while (value)
-//     {
-//         if (ret % 10 >= base)
-//         {
-//             ret /= 10;
-//             ret++;
-//             ret *= 10;
-//         }
-//         ret++;
-//         value--;
-//     }
-//     return (ret);
-//}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_d.c                                          :+:      :+:    :+:   */
+/*   print_i.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 03:18:33 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/17 23:36:31 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/18 19:10:34 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_addnbr(long long cast_ap, t_info *options)
 {
 	int 		size;
 	
-	size = width_size(options, cast_ap, 10);
+	size = width_size_diou(options, cast_ap, 10);
 
 	options->plus && options->minus && cast_ap >= 0 ? append_to_buff('+', 0) : 0;
 	//options->space && options->minus && !options->plus ? append_to_buff(' ', 0) : 0;

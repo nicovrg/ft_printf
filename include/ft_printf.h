@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/18 03:56:06 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/18 20:40:05 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void            ft_put_info(t_info *info);
 
 //else.c
 int             t_info_init(t_info *options);
-int             width_size(t_info *options, long long cast_ap, int base);
 int             ft_accuracy(t_info *options);
 void            usage();
 
@@ -88,8 +87,8 @@ void            ft_addoct(long long cast_ap, t_info *options);
 
 //print_x.c
 void            ft_hex(va_list ap, t_info *options);
-void            ft_addhexmin(long long cast_ap, t_info *options);
-void            ft_addhexmaj(long long cast_ap, t_info *options);
+void            ft_addhexmin(char *cast_ap, t_info *options);
+void            ft_addhexmaj(char *cast_ap, t_info *options);
 
 //print_b.c
 void            ft_addbin(va_list ap, t_info *options);
@@ -99,8 +98,8 @@ void            addwidth_char(int nb);
 void            addwidth_string(int nb, char *cast_ap);
 void            addwidth_pointer(int nb, char * __unused cast_ap);
 
-//width_ui.c
-
+//width_diou.c
+int             width_size_diou(t_info *options, long long cast_ap, int base);
 
 //parse.c
 int		        check_flag(char c, t_info *options);

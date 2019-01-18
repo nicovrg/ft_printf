@@ -6,7 +6,7 @@
 #    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 22:26:09 by nivergne          #+#    #+#              #
-#    Updated: 2019/01/18 00:55:29 by nivergne         ###   ########.fr        #
+#    Updated: 2019/01/18 20:11:16 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCS =	src/mem.c \
 		src/test.c \
 		src/else.c \
 		src/print_%.c \
+		src/print_b.c \
 		src/print_c.c \
 		src/print_s.c \
 		src/print_p.c \
@@ -24,7 +25,7 @@ SRCS =	src/mem.c \
 		src/print_u.c \
 		src/print_x.c \
 		src/width_csp.c \
-		src/width_dioux.c \
+		src/width_diou.c \
 		src/itoa_base.c \
 		src/parse.c \
 		src/ft_printf.c

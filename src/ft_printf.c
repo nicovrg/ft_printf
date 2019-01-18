@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/18 03:52:46 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/18 18:48:22 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ int		parse_str(char *str, t_info *options)
 	if (check_conversion(str[shift], options) == 1)
 		shift++;
 	else
-		usage();
+		exit(-1);
+		//usage();
 	//ft_put_info(options);
 	return (shift);
 }
