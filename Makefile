@@ -3,63 +3,97 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
+#    By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 22:26:09 by nivergne          #+#    #+#              #
-#    Updated: 2019/01/18 20:11:16 by nivergne         ###   ########.fr        #
+#    Updated: 2019/01/21 15:58:13 by jquivogn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-
-SRCS =	src/mem.c \
-		src/test.c \
-		src/else.c \
-		src/print_%.c \
-		src/print_b.c \
-		src/print_c.c \
-		src/print_s.c \
-		src/print_p.c \
-		src/print_i.c \
-		src/print_o.c \
-		src/print_u.c \
-		src/print_x.c \
-		src/width_csp.c \
-		src/width_diou.c \
-		src/itoa_base.c \
-		src/parse.c \
-		src/ft_printf.c
-
-OBJS = $(SRCS:.c=.o)
+.PHONY: all clean fclean re norme
 
 CC = gcc
 
-CFLAGS = -Wextra -Werror -Wall -I ../include/
+FLAGS = -Wall -Wextra -Werror
 
-#CFLAGS = -Wextra -Werror -Wall -I./include/
+CPP_FLAGS = -Iinclude
+
+NAME = libftprintf.a
+
+SRC_PATH = ./src
+#LIB_PATH = ./libft
+INC_PATH = ./include
+OBJ_PATH = ./obj
+#OBJLIB_PATH = ./obj
+
+SRC_NAME =	./mem.c \
+			./test.c \
+			./else.c \
+			./print_%.c \
+			./print_b.c \
+			./print_c.c \
+			./print_s.c \
+			./print_p.c \
+			./print_i.c \
+			./print_o.c \
+			./print_u.c \
+			./print_x.c \
+			./width_csp.c \
+			./width_diou.c \
+			./itoa_base.c \
+			./parse.c \
+			./ft_printf.c
+
+#LIB_NAME = 	ft_atoi.c\
+			ft_isdigit.c\
+			ft_itoa_base.c\
+			ft_strlen.c\
+			ft_strsub.c\
+			ft_wcharlen.c\
+			ft_strlwr.c\
+			ft_wstrlen.c\
+			ft_wstrsub.c
+
+INC_NAME = ft_printf.h
+
+OBJ_NAME = $(SRC_NAME:.c=.o)
+#OBJLIB_NAME = $(LIB_NAME:.c=.o)
+
+SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
+#LIB = $(addprefix $(LIB_PATH)/, $(LIB_NAME))
+INC = $(addprefix $(INC_PATH)/, $(INC_NAME))
+OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
+#OBJLIB = $(addprefix $(OBJLIB_PATH)/,$(OBJLIB_NAME))
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	#make -C libft/
-	#@cp libft/libft.a ./$(NAME)
-	@mkdir objs
-	$(CC) $(CFLAGS) -c $(SRCS)
-	@ar rc $(NAME) $(OBJS)
+$(NAME): $(OBJ) #$(OBJLIB)
+	@ar rc $(NAME) $(OBJ) $(OBJLIB)
 	@ranlib $(NAME)
-	@mv ./src/*.o ./objs/
-	@rm -rf ./*.o
+	@echo "__, ___      __, __, _ _, _ ___ __,"
+	@echo "|_   |       |_) |_) | |\ |  |  |_ "
+	@echo "|    |       |   | \ | | \|  |  |  "
+	@echo "~    ~  ~~~~ ~   ~ ~ ~ ~  ~  ~  ~  "
+	@echo "\033[1;34mft_printf\t\033[1;33mCompilation\t\033[0;32m[OK]\033[0m"
+
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+	@mkdir $(OBJ_PATH) 2> /dev/null || true
+	@$(CC) -o $@ -c $<
+
+#$(OBJLIB_PATH)/%.o: $(LIB_PATH)/%.c
+#	@mkdir $(OBJLIB_PATH) 2> /dev/null || true
+#	@$(CC) -o $@ -c $<
 
 clean:
-	@rm -rf $(OBJS)
-	@rm -rf ./objs/
-	#make clean -C libft/
+	@rm -rf $(OBJ) #$(OBJLIB)
+	@echo "\033[1;34mft_printf\t\033[1;33mCleaning obj\t\033[0;32m[OK]\033[0m"
 
 fclean: clean
-	@rm -rf $(NAME)
-	#make fclean -C libft/
+	@rm -rf ./obj $(NAME)
+	@echo "\033[1;34mft_printf\t\033[1;33mCleaning lib\t\033[0;32m[OK]\033[0m"
 
 re: fclean all
 
-.PHONY: all clean fcean re
-
+norme:
+	@norminette $(SRC) $(LIB) $(INC)
+	@echo "\033[1;34mft_printf\t\033[1;33mNorminette\t\033[0;32m[OK]\033[0m"
