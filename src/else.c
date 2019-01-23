@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 22:16:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/18 20:18:59 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/23 19:41:07 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int     t_info_init(t_info *options)
     options->space = 0;
     options->hashtag = 0;
     options->percent = 0;
+    options->neg = 0;
     options->width = -1;
     options->accuracy = -1;
     options->type = 0;

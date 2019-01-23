@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/23 16:06:54 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/23 20:29:29 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct  s_info
     int         accuracy;
     int         type;
     int         conversion;
+    int         neg;
 }               t_info;
 
 //main.c
@@ -73,6 +74,7 @@ void            ft_addaddr(va_list ap, t_info *options);
 
 //print_i.c
 void	        ft_nbr(va_list ap, t_info *options);
+void    		ft_nbrsign(t_info *options);
 void            ft_addnbr(long long cast_ap, t_info *options);
 void            ft_addnbr_core(long long nb, t_info *options);
 
@@ -98,7 +100,7 @@ void            addwidth_char(int nb);
 void            addwidth_string(int nb, char *cast_ap);
 void            addwidth_pointer(int nb, char * __unused cast_ap);
 
-//width_diou.c
+//width_dioux.c
 int             width_size_diou(t_info *options, long long cast_ap, int base);
 int             width_size_x(t_info *options, char *cast_ap);
 

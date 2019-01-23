@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+         #
+#    By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/11 22:26:09 by nivergne          #+#    #+#              #
-#    Updated: 2019/01/21 15:58:13 by jquivogn         ###   ########.fr        #
+#    Updated: 2019/01/23 18:25:43 by nivergne         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ SRC_NAME =	./mem.c \
 			./print_u.c \
 			./print_x.c \
 			./width_csp.c \
-			./width_diou.c \
+			./width_dioux.c \
 			./itoa_base.c \
 			./parse.c \
 			./ft_printf.c

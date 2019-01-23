@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 21:51:28 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/23 16:42:40 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/23 20:25:00 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,44 +39,54 @@ void	ft_hex(va_list ap, t_info *options)
 
 void    ft_addhexmin(char *cast_ap, t_info *options)
 {
-	int			count;
-	
-	count = width_size_x(options, cast_ap);
-	printf("count = %d\n", count);
-	if (options->hashtag == 1)
+	int			size;
+
+	size = width_size_x(options, cast_ap);
+	if (options->hashtag == 1  && options->accuracy < 0 && options->zero == 1 && size > 0)
+	{
 		addbuff("0x", options);
+		options->hashtag = 0;
+	}	
 	if (options->minus == 1)
 	{
-		if (options->accuracy > -1)
-			while (options->accuracy--)
-				append_to_buff(' ', 0);
+		options->hashtag == 1  && cast_ap[0] != '0' ? addbuff("0x", options) : 0;
+		options->accuracy > 0 ? ft_accuracy(options) : 0;
 		addbuff(cast_ap, options);
-	}		
-	while (options->width-- > 0)
-	{
-			if (options->minus == 0 && options->width > count)
-				append_to_buff(options->zero ? '0' : ' ', 0);
-			else
-				append_to_buff(' ', 0);
 	}
-	if (options->accuracy >= 0 && options->accuracy > count)
-		options->accuracy -= count;
-	//while (options->accuracy-- > 0)
-	//		append_to_buff('0', 0);
-	options->minus == 1 ? 0 : addbuff(cast_ap, options);
+	if (options->width >= 0 && size > 0)
+		while (size--)
+			append_to_buff(options->zero == 1 && options->minus == 0 ? '0' : ' ', 0);
+	if (options->minus == 0)
+	{
+		options->hashtag == 1  && cast_ap[0] != '0' ? addbuff("0x", options) : 0;
+		options->accuracy > 0 ? ft_accuracy(options) : 0;
+		addbuff(cast_ap, options);
+	}
 }
 
 void    ft_addhexmaj(char *cast_ap, t_info *options)
 {
-    int 		size;
-	
+	int			size;
+
 	size = width_size_x(options, cast_ap);
-	options->plus && options->minus && cast_ap >= 0 ? append_to_buff('+', 0) : 0;
-	options->accuracy > 0 && options->minus ? ft_accuracy(options) : 0;
+	if (options->hashtag == 1  && options->accuracy < 0 && options->zero == 1 && size > 0)
+	{
+		addbuff("0X", options);
+		options->hashtag = 0;
+	}	
+	if (options->minus == 1)
+	{
+		options->hashtag == 1  && cast_ap[0] != '0' ? addbuff("0X", options) : 0;
+		options->accuracy > 0 ? ft_accuracy(options) : 0;
+		addbuff(cast_ap, options);
+	}
 	if (options->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(options->zero && !options->minus ? '0' : ' ', 0);
-	options->plus && !options->minus && cast_ap >= 0 ? append_to_buff('+', 0) : 0;
-	options->accuracy > 0 && !options->minus ? ft_accuracy(options) : 0;
-	addbuff(cast_ap, options);
+			append_to_buff(options->zero == 1 && options->minus == 0 ? '0' : ' ', 0);
+	if (options->minus == 0)
+	{
+		options->hashtag == 1  && cast_ap[0] != '0' ? addbuff("0X", options) : 0;
+		options->accuracy > 0 ? ft_accuracy(options) : 0;
+		addbuff(cast_ap, options);
+	}
 }
