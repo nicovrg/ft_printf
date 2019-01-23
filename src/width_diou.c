@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:15 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/18 20:14:41 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/23 16:04:46 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,18 @@ int     width_size_diou(t_info *options, long long cast_ap, int base)
     }
     width = width - (options->accuracy > size_nb ? options->accuracy : size_nb)
         - (options->plus == 1 ? 1 : 0);
+    options->accuracy = options->accuracy - size_nb;
+    return (width);
+}
+
+int     width_size_x(t_info *options, char *cast_ap)
+{
+    int width;
+    int size_nb;
+
+    width = options->width;
+    size_nb = ft_strlen(cast_ap) + options->hashtag == 1 ? 2 : 0;
+    width = width - (options->accuracy > size_nb ? options->accuracy : size_nb);
     options->accuracy = options->accuracy - size_nb;
     return (width);
 }

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/18 20:39:54 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/23 16:41:06 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,9 @@ int		main(int __unused ac, char __unused **av)
 
 	// TEST: Hexa
 	// gestion de  
+	//ft_printf("%010x\n", 542);
+	//printf("%010x\n", 542);
+	//fflush(stdout);
 	// -------------------------------------------
 	// ft_printf("%x\n", t_int);
 	// printf("%x\n", t_int);
@@ -180,9 +183,10 @@ int		main(int __unused ac, char __unused **av)
 	// printf("%42x\n", t_int);
 	// fflush(stdout);
 	// -------------------------------------------
-	ft_printf("%012.5x\n", t_int);
-	printf("%012.5x\n", t_int);
-	fflush(stdout);
+	 ft_printf("%12.5x\n", t_int);
+	 printf("%12.5x\n", t_int);
+	 fflush(stdout);
+	
 	// -------------------------------------------
 	// ft_printf("%#x\n", t_int);
 	// printf("%#x\n", t_int);

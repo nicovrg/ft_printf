@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/18 20:40:05 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/23 16:06:54 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void            addwidth_pointer(int nb, char * __unused cast_ap);
 
 //width_diou.c
 int             width_size_diou(t_info *options, long long cast_ap, int base);
+int             width_size_x(t_info *options, char *cast_ap);
 
 //parse.c
 int		        check_flag(char c, t_info *options);
