@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/23 20:53:24 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/24 00:17:04 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,8 +183,8 @@ int		main(int __unused ac, char __unused **av)
 	// printf("%42x\n", t_int);
 	// fflush(stdout);
 	// -------------------------------------------
-	ft_printf("%lld\n", -9223372036854775808);
-	printf("%lld\n", -9223372036854775808);
+	ft_printf("%hhu\n", -53);
+	printf("%hhu\n", -53);
 	fflush(stdout);
 	// -------------------------------------------
 	// ft_printf("%#x\n", t_int);

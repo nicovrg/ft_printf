@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_i.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 03:18:33 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/23 20:37:44 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/23 23:46:47 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,17 @@ void	ft_nbr(va_list ap, t_info *options)
 	long long	cast_ap;
 
 	cast_ap = (options->type == 0 ? va_arg(ap, int) : 0);
-	cast_ap = (options->type == 1 ? va_arg(ap, short) : cast_ap);
-	cast_ap = (options->type == 3 ? va_arg(ap, signed char) : cast_ap);
+	cast_ap = (options->type == 1 ? (short)va_arg(ap, int) : cast_ap);
+	cast_ap = (options->type == 3 ? (signed char)va_arg(ap, int) : cast_ap);
 	cast_ap = (options->type == 2 ? va_arg(ap, long) : cast_ap);
 	cast_ap = (options->type == 4 ? va_arg(ap, long long) : cast_ap);
 	if (cast_ap < 0)
 	{
+		if (cast_ap == (long long)-9223372036854775808)
+		{
+			cast_ap = -922337203685477580;
+			options->llmin = 1;
+		}
 		cast_ap *= -1;
 		options->neg = 1;
 	}
@@ -46,18 +51,18 @@ void	ft_addnbr(long long cast_ap, t_info *options)
 	!options->plus && options->minus && !options->neg && options->space ? append_to_buff(' ', 0) : 0;
 	options->neg && options->minus ? append_to_buff('-', 0) : 0;
 	options->accuracy > 0 && options->minus ? ft_accuracy(options) : 0;
-	if (options->minus == 1)
-		ft_addnbr_core(cast_ap, options);
+	options->minus == 1 ? ft_addnbr_core(cast_ap, options) : 0;
+	options->minus == 1 && options->llmin == 1 ? ft_addnbr_core(8, options) : 0;
 	if (options->zero)
 		ft_nbrsign(options);
 	if (options->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(options->zero && !options->minus ? '0' : ' ', 0);
+			append_to_buff(options->zero && !options->minus && options->accuracy < 0 ? '0' : ' ', 0);
 	if (!options->zero)
 		ft_nbrsign(options);
 	options->accuracy > 0 && !options->minus ? ft_accuracy(options) : 0;
-	if (options->minus == 0)
-		ft_addnbr_core(cast_ap, options);
+	options->minus == 0 ? ft_addnbr_core(cast_ap, options) : 0;
+	options->minus == 0 && options->llmin == 1 ? ft_addnbr_core(8, options) : 0;
 }
 
 void	ft_addnbr_core(long long nb, t_info *options)

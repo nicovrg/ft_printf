@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 19:01:31 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/18 20:14:32 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/23 23:51:56 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ int		check_type(char c, t_info *options)
 			options->type = 4;
 		else
 			options->type = 2;
+		return (1);
+	}
+	else if (c == 'j' || c == 'z')
+	{
+		options->type = 4;
 		return (1);
 	}
 	else if (c == 'q')

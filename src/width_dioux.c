@@ -3,49 +3,71 @@
 /*                                                        :::      ::::::::   */
 /*   width_dioux.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:15 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/23 20:07:59 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/24 00:32:03 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
-int     width_size_diou(t_info *options, long long cast_ap, int base)
+int		width_size_diou(t_info *options, long long cast_ap, int base)
 {
-    int width;
-    int size_nb;
+	int width;
+	int size_nb;
 
-    size_nb = 0;
-    width = options->width;
-    if (cast_ap < 0)
-    {
-        cast_ap *= -1;
-        size_nb++;
-    }
-    while (cast_ap > 0)
-    {
-        cast_ap /= base;
-        size_nb++;
-    }
-    width = width - (options->accuracy > size_nb ? options->accuracy : size_nb)
-        - (options->plus == 1 && options->neg == 0 ? 1 : 0) - (options->neg == 1 ? 1 : 0) - (options->space == 1 ? 1 : 0);
-    options->accuracy = options->accuracy - size_nb;
-    return (width);
+	size_nb = cast_ap == 0 ? 1 : 0;
+	width = options->width;
+	if (cast_ap < 0)
+	{
+		cast_ap *= -1;
+		size_nb++;
+	}
+	while (cast_ap > 0)
+	{
+		cast_ap /= base;
+		size_nb++;
+	}
+	width = width - (options->accuracy > size_nb ? options->accuracy : size_nb)
+		- (options->plus == 1 && options->neg == 0 ? 1 : 0) - (options->neg == 1 ? 1 : 0) - (options->space == 1 ? 1 : 0);
+	options->accuracy = options->accuracy - size_nb;
+	return (width);
 }
 
-int     width_size_x(t_info *options, char *cast_ap)
+int		width_size_x(t_info *options, char *cast_ap)
 {
-    int width;
-    int accuracy;
-    int size_ap;
+	int width;
+	int accuracy;
+	int size_ap;
 
-    width = options->width;
-    accuracy = options->accuracy;
-    size_ap = ft_strlen(cast_ap);
-    width = width - (accuracy > size_ap ? accuracy : size_ap) - (options->hashtag == 1 ? 2 : 0);
-    options->accuracy = options->accuracy - size_ap;
-    return (width);
+	width = options->width;
+	accuracy = options->accuracy;
+	size_ap = ft_strlen(cast_ap);
+	width = width - (accuracy > size_ap ? accuracy : size_ap) - (options->hashtag == 1 ? 2 : 0);
+	options->accuracy = options->accuracy - size_ap;
+	return (width);
+}
+
+int		width_size_o(t_info *options, unsigned long long cast_ap)
+{
+	int width;
+	int size_nb;
+
+	size_nb = cast_ap == 0 ? 1 : 0;
+	width = options->width;
+	if (cast_ap < 0)
+	{
+		cast_ap *= -1;
+		size_nb++;
+	}
+	while (cast_ap > 0)
+	{
+		cast_ap /= 10;
+		size_nb++;
+	}
+	width = width - (options->accuracy > size_nb ? options->accuracy : size_nb) - (options->hashtag == 1 ? 1 : 0);
+	options->accuracy = options->accuracy - size_nb - (options->hashtag == 1 ? 1 : 0);
+	return (width);
 }

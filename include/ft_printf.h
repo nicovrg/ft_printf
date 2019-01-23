@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/23 20:29:29 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/24 00:17:31 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct  s_info
     int         type;
     int         conversion;
     int         neg;
+    int         llmin;
 }               t_info;
 
 //main.c
@@ -103,6 +104,7 @@ void            addwidth_pointer(int nb, char * __unused cast_ap);
 //width_dioux.c
 int             width_size_diou(t_info *options, long long cast_ap, int base);
 int             width_size_x(t_info *options, char *cast_ap);
+int             width_size_o(t_info *options, unsigned long long cast_ap);
 
 //parse.c
 int		        check_flag(char c, t_info *options);
