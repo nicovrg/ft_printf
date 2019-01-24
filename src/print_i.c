@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_i.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 03:18:33 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/23 23:46:47 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/24 19:15:56 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,14 @@ void	ft_nbr(va_list ap, t_info *options)
 	cast_ap = (options->type == 3 ? (signed char)va_arg(ap, int) : cast_ap);
 	cast_ap = (options->type == 2 ? va_arg(ap, long) : cast_ap);
 	cast_ap = (options->type == 4 ? va_arg(ap, long long) : cast_ap);
+	if (cast_ap == 0 && options->accuracy == 0)
+	{
+		width_for_null(options);
+		return ;
+	}
 	if (cast_ap < 0)
 	{
-		if (cast_ap == (long long)-9223372036854775808)
+		if (options->type == 4 && (cast_ap <= -9223372036854775807 && cast_ap > 9223372036854775807))
 		{
 			cast_ap = -922337203685477580;
 			options->llmin = 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 19:01:31 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/23 23:51:56 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/24 18:55:47 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,21 @@ int		check_width(char c, t_info *options)
 	return (0);
 }
 
-int		check_accuracy(char c, t_info *options)
+int		check_accuracy_one(char c, t_info *options)
 {
-	static int check = 0;
-
-	if (check == 0 && c == '.')
+	if (c == '.')
 	{
-		check = 1;
+		options->accuracy = 0;
 		return (1);
 	}
+	return (0);
+}
+
+int		check_accuracy_two(char c, t_info *options)
+{
 	if (c >= '0' && c <= '9')
 	{
-		if (options->accuracy == -1)
-			options->accuracy = c - '0';
-		else
-			options->accuracy = options->accuracy * 10 + c - '0';
+		options->accuracy = options->accuracy * 10 + c - '0';
 		return (1);
 	}
 	return (0);

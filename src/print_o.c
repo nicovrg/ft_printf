@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_o.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:33:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/24 00:24:43 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/24 19:14:26 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	ft_oct(va_list ap, t_info *options)
 	cast = (options->type == 1 ? ft_atoi(ft_itoa_base(va_arg(ap, int), 8, 0)) : cast);
 	cast = (options->type == 2 ? ft_atoi(ft_itoa_base(va_arg(ap, long), 8, 0)) : cast);
 	cast = (options->type == 4 ? ft_atoi(ft_itoa_base(va_arg(ap, long long), 8, 0)) : cast);
+	if (cast == 0 && options->accuracy == 0)
+	{
+		width_for_null(options);
+		return ;
+	}
 	ft_addoct(cast, options);
 }
 
@@ -30,7 +35,6 @@ void	ft_addoct(long long cast_ap, t_info *options)
 	int 		size;
 	
 	size = width_size_o(options, cast_ap);
-	!options->plus && options->minus && !options->neg && options->space ? append_to_buff(' ', 0) : 0;
 	options->accuracy > 0 && options->minus ? ft_accuracy(options) : 0;
 	options->minus == 1 && options->hashtag == 1 ? ft_addnbr_core(0, options) : 0;
 	options->minus == 1 ? ft_addnbr_core(cast_ap, options) : 0;

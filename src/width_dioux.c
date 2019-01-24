@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_dioux.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:15 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/24 00:32:03 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/24 19:19:16 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,6 @@ int		width_size_o(t_info *options, unsigned long long cast_ap)
 
 	size_nb = cast_ap == 0 ? 1 : 0;
 	width = options->width;
-	if (cast_ap < 0)
-	{
-		cast_ap *= -1;
-		size_nb++;
-	}
 	while (cast_ap > 0)
 	{
 		cast_ap /= 10;
@@ -70,4 +65,12 @@ int		width_size_o(t_info *options, unsigned long long cast_ap)
 	width = width - (options->accuracy > size_nb ? options->accuracy : size_nb) - (options->hashtag == 1 ? 1 : 0);
 	options->accuracy = options->accuracy - size_nb - (options->hashtag == 1 ? 1 : 0);
 	return (width);
+}
+
+void	width_for_null(t_info *options)
+{
+	options->minus == 1 && options->hashtag == 1 && options->conversion == 5 ? ft_addnbr_core(0, options) : 0;
+	while (options->width-- > 0)
+		append_to_buff(' ', 0);
+	options->minus == 0 && options->hashtag == 1 && options->conversion == 5 ? ft_addnbr_core(0, options) : 0;
 }

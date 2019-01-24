@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/18 18:48:22 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/24 18:54:15 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ int		parse_str(char *str, t_info *options)
 		shift++;
 	while (check_width(str[shift], options) == 1)
 		shift++;
-	while (check_accuracy(str[shift], options) == 1)
+	if (check_accuracy_one(str[shift], options) == 1)
+		shift++;
+	while (check_accuracy_two(str[shift], options) == 1)
 		shift++;
 	while (check_type(str[shift], options) == 1)
 		shift++;

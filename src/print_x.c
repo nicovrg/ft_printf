@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_x.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 21:51:28 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/23 20:25:00 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/24 19:22:53 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	ft_hex(va_list ap, t_info *options)
 		cast = (options->type == 1 ? ft_itoa_base(va_arg(ap, unsigned int), 16, 1) : cast);
 		cast = (options->type == 2 ? ft_itoa_base(va_arg(ap, unsigned long), 16, 1) : cast);
 		cast = (options->type == 4 ? ft_itoa_base(va_arg(ap, unsigned long long), 16, 1) : cast);
+		if (cast[0] == '0' && options->accuracy == 0)
+		{
+			width_for_null(options);
+			return ;
+		}
 		ft_addhexmin(cast, options);
 	}
 	else if (options->conversion == 8)
@@ -33,6 +38,11 @@ void	ft_hex(va_list ap, t_info *options)
 		cast = (options->type == 1 ? ft_itoa_base(va_arg(ap, unsigned int), 16, 0) : cast);
 		cast = (options->type == 2 ? ft_itoa_base(va_arg(ap, unsigned long), 16, 0) : cast);
 		cast = (options->type == 4 ? ft_itoa_base(va_arg(ap, unsigned long long), 16, 0) : cast);
+		if (cast[0] == '0' && options->accuracy == 0)
+		{
+			width_for_null(options);
+			return ;
+		}
 		ft_addhexmaj(cast, options);
 	}
 }
