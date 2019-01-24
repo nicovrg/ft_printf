@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:27:52 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/24 00:04:33 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/24 21:44:18 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void    ft_adduns(long long cast_ap, t_info *options)
 		ft_adduns_core(cast_ap, options);
 	if (options->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(options->zero && !options->minus ? '0' : ' ', 0);
+			append_to_buff(options->zero && !options->minus ? '0' : ' ', 0, options);
 	options->accuracy > 0 && !options->minus ? ft_accuracy(options) : 0;
 	if (options->minus == 0)
 		ft_adduns_core(cast_ap, options);
@@ -46,8 +46,8 @@ void    ft_adduns_core(unsigned long long nb, t_info *options)
 	if (nb >= 10)
 	{
 		ft_adduns_core(nb / 10, options);
-		append_to_buff(nb % 10 + '0', 0);
+		append_to_buff(nb % 10 + '0', 0, options);
 	}
 	else
-		append_to_buff(nb % 10 + '0', 0);
+		append_to_buff(nb % 10 + '0', 0, options);
 }

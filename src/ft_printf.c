@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/24 18:54:15 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/24 23:15:34 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,37 +34,12 @@ void	addbuff(char *str, t_info __unused *options)
 	i = 0;
 	if (str != NULL)
 	{
-		while (str[i])
+		while (str[i] != '\0')
 		{
-			append_to_buff(str[i], 0);
+			append_to_buff(str[i], 0, options);
 			i++;
 		}
 	}
-}
-
-
-int		append_to_buff(char c, int print)
-{
-	static int		ret = 0;
-	static int		index = 0;
-	static char		buff[4096];
-
-	if (!index)
-		ft_bzero(buff, 4096);
-	if (print == 0)
-		buff[index] = c;
-	else if (print == 1 && ft_strlen(buff) != 0)
-	{
-		ft_putstr(buff);
-		ft_bzero(buff, 4096);
-	}
-	else if (print == 2)
-	{
-		index = 0;
-		return (0);
-	}
-	index++;
-	return (ret++);
 }
 
 int		parse_str(char *str, t_info *options)
@@ -91,30 +66,45 @@ int		parse_str(char *str, t_info *options)
 	return (shift);
 }
 
+int		append_to_buff(char c, int print, t_info *options)
+{
+	if (print == 0)
+		options->buff[options->index] = c;
+	else if (print == 1 && ft_strlen(options->buff) != 0)
+	{
+		options->index = -1;
+		ft_putstr(options->buff);
+		ft_bzero(options->buff, 4096);
+	}
+	options->index++;
+	return (options->ret++);
+}
 
 int		ft_printf(char *str, ...)
 {
 	int		i;
+	int		j;
 	va_list	arg;
 	t_info	options;
 
 	i = 0;
+	j = 0;
 	va_start(arg, str);
-	append_to_buff(0, 2);
+	t_info_init(&options, i);
 	while (str[i])
 	{
 		if (str[i] == '%')
 		{
-			t_info_init(&options);
+			t_info_init(&options, i);
 			i = i + parse_str(str + i + 1, &options);
 			funptr[options.conversion](arg, &options);
 		}
 		else
-			append_to_buff(str[i], 0);
-		if (i == 4096)
-			append_to_buff(0, 1);
+			append_to_buff(str[i], 0, &options);
+		i == 4096 ? append_to_buff(0, 1, &options) : 0;
 		i++;
+		j++;
 	}
 	va_end(arg);
-	return (append_to_buff(0, 1));
+	return (append_to_buff(0, 1, &options));
 }

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:15 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/24 19:35:52 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/24 21:45:48 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ void	width_for_null(t_info *options)
 	options->minus == 1 && options->hashtag == 1 && options->conversion == 5 ? ft_addnbr_core(0, options) : 0;
 	options->conversion == 5 && options->hashtag == 1 ? options->width-- : 0;
 	while (options->width-- > 0)
-		append_to_buff(' ', 0);
+		append_to_buff(' ', 0, options);
 	options->minus == 0 && options->hashtag == 1 && options->conversion == 5 ? ft_addnbr_core(0, options) : 0;
 }

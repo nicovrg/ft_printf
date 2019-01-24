@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/24 19:33:36 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/24 21:57:14 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,22 @@
 
 typedef struct  s_info
 {
-	int		 zero;
-	int		 plus;
-	int		 minus;
-	int		 space;
-	int		 hashtag;
-	int		 percent;
-	int		 width;
-	int		 accuracy;
-	int		 type;
-	int		 conversion;
-	int		 neg;
-	int		 llmin;
+	int     zero;
+	int     plus;
+	int     minus;
+	int     space;
+	int     hashtag;
+	int     percent;
+	int     width;
+	int     accuracy;
+	int     type;
+	int     conversion;
+	int     neg;
+	int     llmin;
+    int     init;
+    int     ret;
+    int     index;
+    char    buff[4096];
 }			   t_info;
 
 //main.c
@@ -40,8 +44,8 @@ typedef struct  s_info
 void			ft_put_info(t_info *info);
 
 //else.c
-int			 t_info_init(t_info *options);
-int			 ft_accuracy(t_info *options);
+int			    t_info_init(t_info *options, int i);
+int			    ft_accuracy(t_info *options);
 void			usage();
 
 //mem.c
@@ -55,8 +59,8 @@ size_t          ft_strlen(const char *s);
 int				ft_atoi(const char *str);
 
 //itoa_base.c
-long long	   ft_abs(long long value);
-long long	   res_size(long long value, int base);
+long long	    ft_abs(long long value);
+long long	    res_size(long long value, int base);
 char			*fill_base(int base, int l);
 char			*neg_int(long long value);
 char			*ft_itoa_base(long long value, int base, int l);
@@ -97,9 +101,9 @@ void			ft_addhexmaj(char *cast_ap, t_info *options);
 void			ft_addbin(va_list ap, t_info *options);
 
 //width_csp.c
-void			addwidth_char(int nb);
-void			addwidth_string(int nb, char *cast_ap);
-void			addwidth_pointer(int nb, char * __unused cast_ap);
+void			addwidth_char(int nb, t_info *options);
+void			addwidth_string(int nb, char *cast_ap, t_info *options);
+void			addwidth_pointer(int nb, char * __unused cast_ap, t_info *options);
 
 //width_dioux.c
 int				width_size_diou(t_info *options, long long cast_ap, int base);
@@ -119,7 +123,7 @@ int				check_conversion(char c, t_info *options);
 void			(*funptr[11])(va_list, t_info *);
 void			addbuff(char *str, t_info *options);
 int				parse_str(char *buff, t_info *options);
-int				append_to_buff(char c, int print);
+int				append_to_buff(char c, int print, t_info *options);
 int				ft_printf(char *buff, ...); 
 
 // mettre attribute __attribute__ ((format (printf, 1, 2))) 

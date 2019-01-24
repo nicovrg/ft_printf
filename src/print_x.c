@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_x.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 21:51:28 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/24 19:22:53 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/24 21:44:57 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void    ft_addhexmin(char *cast_ap, t_info *options)
 	}
 	if (options->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(options->zero == 1 && options->minus == 0 ? '0' : ' ', 0);
+			append_to_buff(options->zero == 1 && options->minus == 0 ? '0' : ' ', 0, options);
 	if (options->minus == 0)
 	{
 		options->hashtag == 1  && cast_ap[0] != '0' ? addbuff("0x", options) : 0;
@@ -92,7 +92,7 @@ void    ft_addhexmaj(char *cast_ap, t_info *options)
 	}
 	if (options->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(options->zero == 1 && options->minus == 0 ? '0' : ' ', 0);
+			append_to_buff(options->zero == 1 && options->minus == 0 ? '0' : ' ', 0, options);
 	if (options->minus == 0)
 	{
 		options->hashtag == 1  && cast_ap[0] != '0' ? addbuff("0X", options) : 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_s.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 02:16:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/23 23:18:37 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/24 22:43:05 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,10 @@ void	ft_addstr(va_list ap, t_info *options)
 		cast_ap[options->accuracy] = '\0';
 	if (options->width > 0)
 	{
-		if (options->minus == 1)
-		{
-			addbuff(cast_ap, options);
-			addwidth_string(options->width, tmp);		
-		}
-		else
-		{
-			addwidth_string(options->width, tmp);		
-			addbuff(cast_ap, options);
-		}
+		options->minus == 1 ? addbuff(cast_ap, options) : 0;
+		addwidth_string(options->width, tmp, options);				
+		options->minus == 0 ? addbuff(cast_ap, options) : 0;
 	}
 	else if (options->width == -1)
-		addbuff(cast_ap, options);		
+		addbuff(cast_ap, options);
 }

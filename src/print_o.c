@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_o.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:33:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/24 19:14:26 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/24 21:43:46 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_addoct(long long cast_ap, t_info *options)
 	options->minus == 1 ? ft_addnbr_core(cast_ap, options) : 0;
 	if (options->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(options->zero && !options->minus && options->accuracy < 0 ? '0' : ' ', 0);
+			append_to_buff(options->zero && !options->minus && options->accuracy < 0 ? '0' : ' ', 0, options);
 	options->accuracy > 0 && !options->minus ? ft_accuracy(options) : 0;
 	options->minus == 0 && options->hashtag == 1 ? ft_addnbr_core(0, options) : 0;
 	options->minus == 0 ? ft_addnbr_core(cast_ap, options) : 0;
