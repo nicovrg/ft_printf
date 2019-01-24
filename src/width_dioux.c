@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_dioux.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:15 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/24 19:19:16 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/24 19:35:52 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int		width_size_o(t_info *options, unsigned long long cast_ap)
 void	width_for_null(t_info *options)
 {
 	options->minus == 1 && options->hashtag == 1 && options->conversion == 5 ? ft_addnbr_core(0, options) : 0;
+	options->conversion == 5 && options->hashtag == 1 ? options->width-- : 0;
 	while (options->width-- > 0)
 		append_to_buff(' ', 0);
 	options->minus == 0 && options->hashtag == 1 && options->conversion == 5 ? ft_addnbr_core(0, options) : 0;

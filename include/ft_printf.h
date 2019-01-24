@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/24 19:14:51 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/24 19:33:36 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			*ft_memalloc(size_t size);
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
 void			ft_putnbr(int n);
-size_t		  ft_strlen(const char *s);
+size_t          ft_strlen(const char *s);
 int				ft_atoi(const char *str);
 
 //itoa_base.c
