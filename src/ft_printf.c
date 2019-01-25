@@ -6,7 +6,7 @@
 /*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/26 00:14:32 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/26 00:46:05 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int		append_to_buff(char c, int print, t_info *options)
 	{
 		options->index = -1;
 		ft_putstr(options->buff);
-		ft_bzero(options->buff, 4096);
+		ft_bzero(options->buff, BUFF_SIZE);
 	}
 	options->index++;
 	return (options->ret++);

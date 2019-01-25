@@ -6,7 +6,7 @@
 /*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 22:16:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/25 23:34:23 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/26 00:46:33 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		t_info_init(t_info *options, int i)
 	{
 		options->ret = 0;
 		options->index = 0;
-		ft_bzero(&options->buff, 4096);
+		ft_bzero(&options->buff, BUFF_SIZE);
 	}
 	return (0);
 }

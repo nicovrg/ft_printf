@@ -6,7 +6,7 @@
 /*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/26 00:06:20 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/26 00:55:14 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdarg.h>
 //# include <string.h>
 # include "libft.h"
+
+# define BUFF_SIZE 64
 
 typedef struct	s_info
 {
@@ -35,8 +37,8 @@ typedef struct	s_info
 	int		init;
 	int		ret;
 	int		index;
-	char	buff[4096];
-}			t_info;
+	char	buff[BUFF_SIZE];
+}				t_info;
 
 //main.c
 
