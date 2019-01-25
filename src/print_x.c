@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_x.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 21:51:28 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/24 21:44:57 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/26 00:06:17 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	ft_hex(va_list ap, t_info *options)
 {
-    char *cast;
+	char *cast;
 
 	if (options->conversion == 7)
 	{
@@ -47,7 +47,7 @@ void	ft_hex(va_list ap, t_info *options)
 	}
 }
 
-void    ft_addhexmin(char *cast_ap, t_info *options)
+void	ft_addhexmin(char *cast_ap, t_info *options)
 {
 	int			size;
 
@@ -74,7 +74,7 @@ void    ft_addhexmin(char *cast_ap, t_info *options)
 	}
 }
 
-void    ft_addhexmaj(char *cast_ap, t_info *options)
+void	ft_addhexmaj(char *cast_ap, t_info *options)
 {
 	int			size;
 

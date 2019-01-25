@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   else.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 22:16:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/24 22:14:52 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/25 23:34:23 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		t_info_init(t_info *options, int i)
 	options->width = -1;
 	options->accuracy = -1;
 	options->type = 0;
-	options->conversion = 0;
+	options->conversion = -1;
 	options->llmin = 0;
 	if (i == 0)
 	{
