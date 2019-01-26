@@ -6,7 +6,7 @@
 /*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:33:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/25 22:43:05 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/26 14:51:22 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	ft_oct(va_list ap, t_info *options)
 {
 	long long   cast;
 
-	cast = (options->type == 0 ? ft_atoi(ft_itoa_base(va_arg(ap, int), 8, 0)) : 0);
-	cast = (options->type == 3 ? ft_atoi(ft_itoa_base(va_arg(ap, int), 8, 0)) : cast);
-	cast = (options->type == 1 ? ft_atoi(ft_itoa_base(va_arg(ap, int), 8, 0)) : cast);
-	cast = (options->type == 2 ? ft_atoi(ft_itoa_base(va_arg(ap, long), 8, 0)) : cast);
-	cast = (options->type == 4 ? ft_atoi(ft_itoa_base(va_arg(ap, long long), 8, 0)) : cast);
+	cast = (options->type == 0 ? itooct(va_arg(ap, int)) : 0);
+	cast = (options->type == 3 ? itooct(va_arg(ap, int)) : cast);
+	cast = (options->type == 1 ? itooct(va_arg(ap, int)) : cast);
+	cast = (options->type == 2 ? itooct(va_arg(ap, long)) : cast);
+	cast = (options->type == 4 ? itooct(va_arg(ap, long long)) : cast);
 	if (cast == 0 && options->accuracy == 0)
 	{
 		width_for_null(options);

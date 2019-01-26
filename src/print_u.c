@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:27:52 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/24 21:44:18 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/26 14:56:37 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_uns(va_list ap, t_info *options)
 	ft_adduns(cast_ap, options);
 }
 
-void    ft_adduns(long long cast_ap, t_info *options)
+void	ft_adduns(long long cast_ap, t_info *options)
 {
 	int 		size;
 	
