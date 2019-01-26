@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/25 23:56:31 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/26 20:33:42 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@ int		main(int __unused ac, char __unused **av)
 	t_hexmax = 42;
 
 	// TEST: BEHAVIOUR
-	ft_printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
-	printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
+	// ft_printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
+	// printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
+	// fflush(stdout);
+	ft_printf("coucou %.42d\n", t_int);
+	printf("coucou %.42d\n", t_int);
 	fflush(stdout);
 	// ft_printf("mine :% d\n", 42);
 	// printf("true :% d\n", 42);

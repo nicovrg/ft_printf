@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/26 14:51:38 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/26 20:34:11 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int				width_size_diou(t_info *options, long long cast_ap, int base);
 int				width_size_x(t_info *options, char *cast_ap);
 int				width_size_o(t_info *options, unsigned long long cast_ap);
 void			width_for_null(t_info *options);
-int				itioct(int nb);
+int				itooct(int nb);
 
 //parse.c
 int				check_flag(char c, t_info *options);
