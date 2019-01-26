@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/26 20:34:11 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/26 23:40:48 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ typedef struct	s_info
 }				t_info;
 
 //main.c
+
+//print_f.c
+void    		ft_addfloat(float nb, t_info *options);
+
 
 //test.c
 void			ft_put_info(t_info *info);

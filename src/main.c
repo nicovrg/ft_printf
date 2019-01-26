@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/26 20:33:42 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/26 22:42:03 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		main(int __unused ac, char __unused **av)
 	int				t_int2;
 	char			t_char;
 	char			*t_string;
+	float			t_float;
 	long long		t_uns;
 	long long		t_oct;
 	long long		t_hexmin;
@@ -34,13 +35,17 @@ int		main(int __unused ac, char __unused **av)
 	t_oct = 420;
 	t_hexmin = 42;
 	t_hexmax = 42;
+	t_float = 42.424242424242;
 
+	int i = sizeof(float);
 	// TEST: BEHAVIOUR
 	// ft_printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
 	// printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
 	// fflush(stdout);
-	ft_printf("coucou %.42d\n", t_int);
-	printf("coucou %.42d\n", t_int);
+	// ft_printf("coucou %.42d\n", t_int);
+	// printf("coucou %.42d\n", t_int);
+	printf("coucou %.12f\n", t_float);
+	printf("%d\n", i);
 	fflush(stdout);
 	// ft_printf("mine :% d\n", 42);
 	// printf("true :% d\n", 42);

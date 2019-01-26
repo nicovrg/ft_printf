@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_csp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:13 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/25 23:45:49 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/26 23:04:36 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void		char_null(t_info *options)
 {
 	options->ret++;
 	options->buff[options->index++] = '^';
+	if (options->index == BUFF_SIZE)
+		append_to_buff(0, 1, options);
 	options->buff[options->index++] = '@';
 }

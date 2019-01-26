@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_p.c                                          :+:      :+:    :+:   */
+/*   print_f.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 23:29:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/26 23:41:51 by nivergne         ###   ########.fr       */
+/*   Created: 2019/01/26 21:19:05 by nivergne          #+#    #+#             */
+/*   Updated: 2019/01/27 00:01:39 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
-void    ft_addaddr(va_list ap, t_info *options)
+void    ft_addfloat(float nb, t_info *options)
 {
-    unsigned long long    cast_ap;
-    
-    cast_ap = va_arg(ap, unsigned long long);
-    addbuff("0x", options);    
-    addbuff(ft_itoa_base(cast_ap, 16, 32), options);
+    int i;
+    int tmp;
+
+    i = 0;
+    tmp = 0;
+    if ((uint32_t)nb & 1 << 31)
+        append_to_buff('-', 0, options);
+    while ((uint32_t)nb & 1 << 23 + i)
+    {
+        if ((uint32_t)nb & 1 << 23 + i)
+            ;
+        i++;
+    }
+
 }
