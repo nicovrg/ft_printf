@@ -6,7 +6,7 @@
 /*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/26 00:46:05 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/27 13:42:59 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int		ft_printf(char *str, ...)
 		}
 		else
 			append_to_buff(str[i], 0, &options);
-		i == 4096 ? append_to_buff(0, 1, &options) : 0;
+		i == BUFF_SIZE ? append_to_buff(0, 1, &options) : 0;
 		j++;
 		i++;
 	}

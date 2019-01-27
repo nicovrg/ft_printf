@@ -6,7 +6,7 @@
 /*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 21:51:28 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/26 00:06:17 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/27 13:48:41 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,27 @@ void	ft_addhexmin(char *cast_ap, t_info *options)
 	int			size;
 
 	size = width_size_x(options, cast_ap);
-	if (options->hashtag == 1  && options->accuracy < 0 && options->zero == 1 && size > 0)
+	if (options->hashtag && options->accuracy < 0 && options->zero && size > 0)
 	{
 		addbuff("0x", options);
 		options->hashtag = 0;
 	}	
-	if (options->minus == 1)
+	if (options->minus)
 	{
-		options->hashtag == 1  && cast_ap[0] != '0' ? addbuff("0x", options) : 0;
+		options->hashtag && cast_ap[0] != '0' ? addbuff("0x", options) : 0;
 		options->accuracy > 0 ? ft_accuracy(options) : 0;
 		addbuff(cast_ap, options);
 	}
 	if (options->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(options->zero == 1 && options->minus == 0 ? '0' : ' ', 0, options);
-	if (options->minus == 0)
+			append_to_buff(options->zero && !options->minus ? '0' : ' ', 0, options);
+	if (!options->minus)
 	{
-		options->hashtag == 1  && cast_ap[0] != '0' ? addbuff("0x", options) : 0;
+		options->hashtag && cast_ap[0] != '0' ? addbuff("0x", options) : 0;
 		options->accuracy > 0 ? ft_accuracy(options) : 0;
 		addbuff(cast_ap, options);
 	}
+	free(cast_ap);
 }
 
 void	ft_addhexmaj(char *cast_ap, t_info *options)
@@ -79,24 +80,25 @@ void	ft_addhexmaj(char *cast_ap, t_info *options)
 	int			size;
 
 	size = width_size_x(options, cast_ap);
-	if (options->hashtag == 1  && options->accuracy < 0 && options->zero == 1 && size > 0)
+	if (options->hashtag && options->accuracy < 0 && options->zero && size > 0)
 	{
 		addbuff("0X", options);
 		options->hashtag = 0;
 	}	
 	if (options->minus == 1)
 	{
-		options->hashtag == 1  && cast_ap[0] != '0' ? addbuff("0X", options) : 0;
+		options->hashtag && cast_ap[0] != '0' ? addbuff("0X", options) : 0;
 		options->accuracy > 0 ? ft_accuracy(options) : 0;
 		addbuff(cast_ap, options);
 	}
 	if (options->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(options->zero == 1 && options->minus == 0 ? '0' : ' ', 0, options);
-	if (options->minus == 0)
+			append_to_buff(options->zero && !options->minus ? '0' : ' ', 0, options);
+	if (!options->minus)
 	{
-		options->hashtag == 1  && cast_ap[0] != '0' ? addbuff("0X", options) : 0;
+		options->hashtag && cast_ap[0] != '0' ? addbuff("0X", options) : 0;
 		options->accuracy > 0 ? ft_accuracy(options) : 0;
 		addbuff(cast_ap, options);
 	}
+	free(cast_ap);
 }

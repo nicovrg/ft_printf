@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_csp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:13 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/26 23:04:36 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/27 14:05:13 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,19 @@ void		addwidth_pointer(int nb, char * __unused cast_ap, t_info *options)
 	}
 }
 
-void		char_null(t_info *options)
+void		char_null(int cast_ap, t_info *options)
 {
 	options->ret++;
 	options->buff[options->index++] = '^';
 	if (options->index == BUFF_SIZE)
 		append_to_buff(0, 1, options);
-	options->buff[options->index++] = '@';
+	options->buff[options->index++] = '@' + cast_ap;
+}
+
+char		*string_for_null(char *cast_ap)
+{
+	char	str[6] = "(null)";
+
+	cast_ap = str;
+	return (cast_ap);
 }

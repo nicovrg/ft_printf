@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/26 23:40:48 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/27 14:48:07 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,8 @@ void			ft_addbin(va_list ap, t_info *options);
 void			addwidth_char(int nb, t_info *options);
 void			addwidth_string(int nb, char *cast_ap, t_info *options);
 void			addwidth_pointer(int nb, char * __unused cast_ap, t_info *options);
-void			char_null(t_info *options);
+void			char_null(int cast_ap, t_info *options);
+char			*string_for_null(char *cast_ap);
 
 //width_dioux.c
 int				width_size_diou(t_info *options, long long cast_ap, int base);

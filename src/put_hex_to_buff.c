@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   itoa_base.c                                        :+:      :+:    :+:   */
+/*   put_hex_to_buff.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/07 20:00:21 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/27 14:47:47 by julesqvgn        ###   ########.fr       */
+/*   Created: 2019/01/27 14:47:08 by julesqvgn         #+#    #+#             */
+/*   Updated: 2019/01/27 14:47:20 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,51 +55,24 @@ char			*fill_base(int base, int l)
 	return (base_arr);
 }
 
-char			*neg_int(long long value)
-{
-	char	*res;
-	int		i;
-	
-	i = get_size(value, 10) + 1;
-	if (!(res = (char *)malloc(sizeof(char) * i)))
-		return (NULL);
-	res[i] = '\0';
-	res[0] = '-';
-	i--;
-	while (i > 0)
-	{
-		res[i] = (value % 10) * -1 + '0';
-		value = value / 10;
-		i--;
-	}
-	return (res);
-}
-
-char			*ft_itoa_base(long long value, int base, int l)
+void			ft_itoa_base(long long value, int base, int l, t_info *opts)
 {
 	int					i;
 	unsigned long long	uns;
 	char				*base_arr;
-	char				*base_res;
 
 	uns = abs_value(value);
 	i = get_size(uns, base);
-	if (value < 0 && base == 10)
-	{
-		base_res = neg_int(value);
-		return (base_res);
-	}
 	if (!(base_arr = fill_base(base, l)))
 		return (NULL);
-	if (!(base_res = (char *)malloc(sizeof(char) * (i + 1))))
-		return (NULL);
-	base_res[i] = '\0';
 	i--;
 	while (i >= 0)
 	{ 
-		base_res[i] = base_arr[uns % (unsigned long long)base];
+		opts->buff[opts->index++] = base_arr[uns % (unsigned long long)base];
+		if (opts->index == BUFF_SIZE)
+			append_to_buff(0, 1, opts);
 		uns = uns / (unsigned long long)base;
 		i--;
 	}
-	return (base_res);
+	free(base_arr);
 }
