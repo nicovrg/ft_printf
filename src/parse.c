@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 19:01:31 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/26 00:14:25 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/27 19:53:14 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int		check_conversion(char c, t_info *options)
 	char	*str;
 
 	i = 0;
-	str = "cspdiouxXb%CSPDIOU";
+	str = "cspdiouxXb%fCSPDIOU";
 	while (str[i])
 	{
 		if (c == str[i])

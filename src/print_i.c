@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_i.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 03:18:33 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/27 13:40:34 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/27 19:54:36 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_addnbr(long long cast_ap, t_info *options)
 		ft_nbrsign(options);
 	if (options->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(options->zero && !options->minus && options->accuracy < 0 ? '0' : ' ', 0, options);
+			append_to_buff(options->zero && !options->minus && options->accuracy <= 0 ? '0' : ' ', 0, options);
 	if (!options->zero)
 		ft_nbrsign(options);
 	options->accuracy > 0 && !options->minus ? ft_accuracy(options) : 0;
