@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/27 19:54:51 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/28 00:40:02 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
-void	(*funptr[12])(va_list, t_info *) = {
+void	(*funptr[11])(va_list, t_info *) = {
 	&ft_addchar,
 	&ft_addstr,
 	&ft_addaddr,
@@ -25,7 +25,7 @@ void	(*funptr[12])(va_list, t_info *) = {
 	&ft_hex,
 	&ft_addbin,
 	&ft_addpercent,
-	&ft_addfloat,
+	//&ft_addfloat,
 };
 
 void	addbuff(char *str, t_info __unused *options)
@@ -77,11 +77,14 @@ int		append_to_buff(char c, int print, t_info *options)
 		options->buff[options->index] = c;
 	else if (print == 1 && ft_strlen(options->buff) != 0)
 	{
-		options->index = -1;
+		options->index = 0;
 		ft_putstr(options->buff);
 		ft_bzero(options->buff, BUFF_SIZE);
+		return (options->ret);
 	}
 	options->index++;
+	if (options->index == BUFF_SIZE)
+		append_to_buff(0, 1, options);
 	return (options->ret++);
 }
 
@@ -102,7 +105,7 @@ int		ft_printf(char *str, ...)
 		{
 			t_info_init(&options, i);
 			i = i + parse_str(str + i + 1, &options);
-			options.conversion != -1 ? funptr[options.conversion % 12](arg, &options): 0 ;
+			options.conversion != -1 ? funptr[options.conversion % 11](arg, &options): 0 ;
 		}
 		else
 			append_to_buff(str[i], 0, &options);

@@ -6,7 +6,7 @@
 /*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:15 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/27 13:42:40 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/28 01:47:56 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		width_size_diou(t_info *options, long long cast_ap, int base)
 		size_nb++;
 	}
 	width = width - (options->accuracy > size_nb ? options->accuracy : size_nb)
-		- (options->plus && !options->neg ? 1 : 0) - (options->neg ? 1 : 0) - (options->space == 1 && !options->minus ? 1 : 0);
+		- (options->plus && !options->neg ? 1 : 0) - (options->neg ? 1 : 0) - (options->space == 1 && !options->plus && !options->neg ? 1 : 0);
 	if (options->accuracy != -1)
 	{
 		if (options->accuracy - size_nb < 0)
@@ -77,10 +77,20 @@ int		width_size_o(t_info *options, unsigned long long cast_ap)
 
 void	width_for_null(t_info *options)
 {
+	if (options->minus)
+	{
+		options->plus && !options->neg ? append_to_buff('+', 0, options) : 0;
+		options->space && !options->plus && !options->neg ? append_to_buff(' ', 0, options) : 0;
+	}
 	options->minus == 1 && options->hashtag == 1 && options->conversion == 5 ? ft_addnbr_core(0, options) : 0;
 	options->conversion == 5 && options->hashtag == 1 ? options->width-- : 0;
 	while (options->width-- > 0)
 		append_to_buff(' ', 0, options);
+	if (!options->minus)
+	{
+		options->plus && !options->neg ? append_to_buff('+', 0, options) : 0;
+		options->space && !options->plus && !options->neg ? append_to_buff(' ', 0, options) : 0;
+	}
 	options->minus == 0 && options->hashtag == 1 && options->conversion == 5 ? ft_addnbr_core(0, options) : 0;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/27 19:55:15 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/28 00:40:29 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int				check_type(char c, t_info *options);
 int				check_conversion(char c, t_info *options);
 
 //ft_printf.c
-void			(*funptr[12])(va_list, t_info *);
+void			(*funptr[11])(va_list, t_info *);
 void			addbuff(char *str, t_info *options);
 int				parse_str(char *buff, t_info *options);
 int				append_to_buff(char c, int print, t_info *options);

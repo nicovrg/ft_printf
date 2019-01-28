@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/27 19:57:15 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/28 01:59:51 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
+#include <limits.h>
 
 #include <stdio.h>
 
@@ -48,8 +49,8 @@ int		main(int __unused ac, char __unused **av)
 	// printf("%d\n", i);
 	// fflush(stdout);
 
-	ft_printf("%05d\n", 42);
-	printf("%05d\n", 42);
+	ft_printf("hello %ld this is a test\n", LONG_MIN);
+	printf("hello %ld this is a test\n", LONG_MIN);
 	fflush(stdout);
 	
 	//ft_printf("%hU\n", 4294967296);
