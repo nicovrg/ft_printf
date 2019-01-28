@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:27:52 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/26 14:56:37 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/28 18:50:21 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	ft_adduns(long long cast_ap, t_info *options)
 		ft_adduns_core(cast_ap, options);
 	if (options->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(options->zero && !options->minus ? '0' : ' ', 0, options);
+			append_to_buff(options->zero && !options->minus &&
+				options->accuracy < 0 ? '0' : ' ', 0, options);
 	options->accuracy > 0 && !options->minus ? ft_accuracy(options) : 0;
 	if (options->minus == 0)
 		ft_adduns_core(cast_ap, options);

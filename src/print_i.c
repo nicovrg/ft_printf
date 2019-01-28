@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_i.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 03:18:33 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/28 01:54:05 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/28 15:54:55 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_nbr(va_list ap, t_info *options)
 	tmp = cast_ap;
 	if (cast_ap < 0)
 	{
-		if (options->type == 4 && tmp == 9223372036854775808)
+		if (options->type == 4/* && (tmp == 9223372036854775808)*/)
 		{
 			cast_ap = -922337203685477580;
 			options->llmin = 1;
@@ -47,18 +47,21 @@ void	ft_nbrsign(t_info *options)
 	if (!options->minus)
 	{
 		options->plus && !options->neg ? append_to_buff('+', 0, options) : 0;
-		options->space && !options->plus && !options->neg ? append_to_buff(' ', 0, options) : 0;
+		options->space && !options->plus && !options->neg ?
+			append_to_buff(' ', 0, options) : 0;
 		options->neg ? append_to_buff('-', 0, options) : 0;
 	}
 }
 
 void	ft_addnbr(long long cast_ap, t_info *options)
 {
-	int 		size;
-	
+	int		size;
+
 	size = width_size_diou(options, cast_ap, 10);
-	options->plus && options->minus && !options->neg ? append_to_buff('+', 0, options) : 0;
-	!options->plus && options->minus && !options->neg && options->space ? append_to_buff(' ', 0, options) : 0;
+	options->plus && options->minus && !options->neg ?
+		append_to_buff('+', 0, options) : 0;
+	!options->plus && options->minus && !options->neg && options->space ?
+		append_to_buff(' ', 0, options) : 0;
 	options->neg && options->minus ? append_to_buff('-', 0, options) : 0;
 	options->accuracy > 0 && options->minus ? ft_accuracy(options) : 0;
 	options->minus == 1 ? ft_addnbr_core(cast_ap, options) : 0;
@@ -67,7 +70,8 @@ void	ft_addnbr(long long cast_ap, t_info *options)
 		ft_nbrsign(options);
 	if (options->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(options->zero && !options->minus && options->accuracy < 0 ? '0' : ' ', 0, options);
+			append_to_buff(options->zero && !options->minus &&
+				options->accuracy < 0 ? '0' : ' ', 0, options);
 	if (!(options->zero && options->accuracy == -1))
 		ft_nbrsign(options);
 	options->accuracy > 0 && !options->minus ? ft_accuracy(options) : 0;

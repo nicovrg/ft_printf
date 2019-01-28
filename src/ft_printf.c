@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/28 00:40:02 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/28 18:21:46 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		append_to_buff(char c, int print, t_info *options)
 		return (options->ret);
 	}
 	options->index++;
-	if (options->index == BUFF_SIZE)
+	if (options->index == BUFF_SIZE - 1)
 		append_to_buff(0, 1, options);
 	return (options->ret++);
 }
@@ -109,7 +109,7 @@ int		ft_printf(char *str, ...)
 		}
 		else
 			append_to_buff(str[i], 0, &options);
-		i == BUFF_SIZE ? append_to_buff(0, 1, &options) : 0;
+		i == BUFF_SIZE - 1 ? append_to_buff(0, 1, &options) : 0;
 		j++;
 		i++;
 	}

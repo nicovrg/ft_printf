@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_dioux.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:15 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/28 01:47:56 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/28 19:50:04 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int		width_size_diou(t_info *options, long long cast_ap, int base)
 		size_nb++;
 	}
 	width = width - (options->accuracy > size_nb ? options->accuracy : size_nb)
-		- (options->plus && !options->neg ? 1 : 0) - (options->neg ? 1 : 0) - (options->space == 1 && !options->plus && !options->neg ? 1 : 0);
+		- (options->plus && !options->neg ? 1 : 0) - (options->neg ? 1 : 0) -
+		(options->space == 1 && !options->plus && !options->neg ? 1 : 0);
 	if (options->accuracy != -1)
 	{
 		if (options->accuracy - size_nb < 0)
@@ -94,18 +95,38 @@ void	width_for_null(t_info *options)
 	options->minus == 0 && options->hashtag == 1 && options->conversion == 5 ? ft_addnbr_core(0, options) : 0;
 }
 
-int		itooct(int nb)
+unsigned long long	itooct(unsigned long long nb)
 {
-	int	octnbr;
-	int	i;
+	unsigned long long	octnbr;
+	unsigned long long	i;
 
 	octnbr = 0;
 	i = 1;
-	while (nb != 0)
+	while (nb > 0)
 	{
 		octnbr += (nb % 8) * i;
 		nb /= 8;
 		i *= 10;
 	}
 	return (octnbr);
+}
+
+int		width_bin(t_info *options)
+{
+	int		width;
+	int		size_nb;
+
+	size_nb = 8;
+	width = options->width;
+	width -= (options->accuracy > size_nb ? options->accuracy : size_nb) - options->space;
+	if (options->accuracy != -1)
+	{
+		if (options->accuracy - size_nb < 0)
+			options->accuracy = 0;
+		else
+		{
+			options->accuracy = options->accuracy - size_nb;
+		}
+	}
+	return (width);
 }

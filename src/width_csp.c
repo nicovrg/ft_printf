@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_csp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:13 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/27 14:05:13 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/28 18:03:17 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,16 @@ void		addwidth_char(int nb, t_info *options)
 
 void		addwidth_string(int nb, char *cast_ap, t_info *options)
 {
-	int len;
+	int	len;
+	int	size;
 
-	len = nb - ft_strlen(cast_ap);
+	size = ft_strlen(cast_ap);
+	if (options->accuracy > 0)
+		len = nb - (size > options->accuracy ? options->accuracy : size);
+	else if (options->accuracy == -1)
+		len = nb - size;
+	else
+		len = nb;
 	while (len > 0)
 	{
 		append_to_buff(options->zero && !options->minus && options->accuracy < 0 ? '0' : ' ', 0, options);
@@ -55,10 +62,12 @@ void		char_null(int cast_ap, t_info *options)
 	options->buff[options->index++] = '@' + cast_ap;
 }
 
-char		*string_for_null(char *cast_ap)
+char	*string_for_null(void)
 {
-	char	str[6] = "(null)";
+	char	*str;
 
-	cast_ap = str;
-	return (cast_ap);
+	if (!(str = (char *)malloc(sizeof(char) * 6)))
+		return (NULL);
+	str = ft_strcpy(str, "(null)");
+	return (str);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/28 00:40:29 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/28 19:37:09 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void			ft_adduns_core(unsigned long long nb, t_info *options);
 
 //print_o.c
 void			ft_oct(va_list ap, t_info *options);
-void			ft_addoct(long long cast_ap, t_info *options);
+void			ft_addoct(unsigned long long cast_ap, t_info *options);
 
 //print_x.c
 void			ft_hex(va_list ap, t_info *options);
@@ -110,14 +110,15 @@ void			addwidth_char(int nb, t_info *options);
 void			addwidth_string(int nb, char *cast_ap, t_info *options);
 void			addwidth_pointer(int nb, char * __unused cast_ap, t_info *options);
 void			char_null(int cast_ap, t_info *options);
-char			*string_for_null(char *cast_ap);
+char			*string_for_null(void);
 
 //width_dioux.c
 int				width_size_diou(t_info *options, long long cast_ap, int base);
 int				width_size_x(t_info *options, char *cast_ap);
 int				width_size_o(t_info *options, unsigned long long cast_ap);
 void			width_for_null(t_info *options);
-int				itooct(int nb);
+unsigned long long	itooct(unsigned long long nb);
+int				width_bin(t_info *options);
 
 //parse.c
 int				check_flag(char c, t_info *options);

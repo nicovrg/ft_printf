@@ -3,33 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   print_s.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 02:16:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/27 13:26:56 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/28 18:21:34 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
-void	ft_addstr(va_list ap, t_info *options)
-{	
-	char	*cast_ap;
-	char	*tmp;
+char	*ft_strcpy(char *dest, const char *src)
+{
+	int i;
 
-	cast_ap = va_arg(ap, char *);
-	if (!cast_ap)
-		cast_ap = "(null)";
-	tmp = cast_ap;
-	if (options->accuracy > 0)
+	i = 0;
+	while (*src)
+	{
+		*dest = *src;
+		dest++;
+		src++;
+		i++;
+	}
+	*dest = '\0';
+	return (dest - i);
+}
+
+void	ft_addstr(va_list ap, t_info *options)
+{
+	char		*cast_ap;
+	const char	*tmp = va_arg(ap, char *);
+	int			size;
+	int			len;
+
+	if (!tmp)
+	{
+		if (!(cast_ap = string_for_null()))
+			return ;
+	}
+	else
+	{
+		len = ft_strlen(tmp);
+		if (!(cast_ap = (char *)malloc(sizeof(char) * len)))
+			return ;
+		cast_ap = ft_strcpy(cast_ap, tmp);
+	}
+	size = ft_strlen(cast_ap);
+	if (options->accuracy > 0 && options->accuracy < size)
 		cast_ap[options->accuracy] = '\0';
 	if (options->width > 0)
 	{
-		options->minus == 1 ? addbuff(cast_ap, options) : 0;
-		addwidth_string(options->width, tmp, options);
-		options->minus == 0 ? addbuff(cast_ap, options) : 0;
+		if (options->accuracy)
+			options->minus == 1 ? addbuff(cast_ap, options) : 0;
+		addwidth_string(options->width, cast_ap, options);
+		if (options->accuracy)
+			options->minus == 0 ? addbuff(cast_ap, options) : 0;
 	}
-	else if (options->width == -1)
+	else if (options->width == -1 && options->accuracy)
 		addbuff(cast_ap, options);
+	free(cast_ap);
 }
