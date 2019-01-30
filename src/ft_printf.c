@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/28 18:21:46 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/29 21:14:27 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
-void	(*funptr[11])(va_list, t_info *) = {
+void	(*funptr[12])(va_list, t_info *) = {
 	&ft_addchar,
 	&ft_addstr,
 	&ft_addaddr,
@@ -24,8 +24,8 @@ void	(*funptr[11])(va_list, t_info *) = {
 	&ft_hex,
 	&ft_hex,
 	&ft_addbin,
+	&ft_addfloat,
 	&ft_addpercent,
-	//&ft_addfloat,
 };
 
 void	addbuff(char *str, t_info __unused *options)
@@ -105,7 +105,7 @@ int		ft_printf(char *str, ...)
 		{
 			t_info_init(&options, i);
 			i = i + parse_str(str + i + 1, &options);
-			options.conversion != -1 ? funptr[options.conversion % 11](arg, &options): 0 ;
+			options.conversion != -1 ? funptr[options.conversion % 12](arg, &options): 0;
 		}
 		else
 			append_to_buff(str[i], 0, &options);

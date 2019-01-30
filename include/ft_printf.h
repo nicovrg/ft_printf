@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/28 19:37:09 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/30 01:11:34 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@
 # include "libft.h"
 
 # define BUFF_SIZE 64
+
+typedef struct	s_float
+{
+	int		i;
+	int		sign;
+	int		power_two[15];
+	char	exponent[15];
+	char	mantis[64];
+
+}				t_float;
 
 typedef struct	s_info
 {
@@ -38,12 +48,21 @@ typedef struct	s_info
 	int		ret;
 	int		index;
 	char	buff[BUFF_SIZE];
+	t_float	f;
 }				t_info;
 
 //main.c
 
 //print_f.c
 void			ft_addfloat(va_list ap, t_info *options);
+
+//print_ff.c
+int				ft_initfloat(t_info *options);
+int				ft_signfloat(unsigned long long cast_ap, t_info *options);
+int				ft_expofloat(unsigned long long cast_ap, t_info *options);
+int				ft_mantfloat(unsigned long long cast_ap, t_info *options);
+int				ft_printfbin(unsigned long long __unused cast_ap, t_info *options);
+
 
 //test.c
 void			ft_put_info(t_info *info);
@@ -129,7 +148,7 @@ int				check_type(char c, t_info *options);
 int				check_conversion(char c, t_info *options);
 
 //ft_printf.c
-void			(*funptr[11])(va_list, t_info *);
+void			(*funptr[12])(va_list, t_info *);
 void			addbuff(char *str, t_info *options);
 int				parse_str(char *buff, t_info *options);
 int				append_to_buff(char c, int print, t_info *options);

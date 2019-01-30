@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/28 19:57:41 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/30 01:08:10 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,12 @@ int		main(int __unused ac, char __unused **av)
 	// fflush(stdout);
 	// ft_printf("coucou %.42d\n", t_int);
 	// printf("coucou %.42d\n", t_int);
-	// ft_printf("coucou %.12f\n", t_float);
-	// printf("coucou %.12f\n", t_float);
+	printf("coucou %f\n", t_float);
+	fflush(stdout);
+	ft_printf("coucou %f\n", t_float);
 	// printf("%d\n", i);
 	// fflush(stdout);
 
-	ft_printf("%ho\n", 308325996);
-	printf("%ho\n", 308325996);
-	//fflush(stdout);
 	
 	//ft_printf("%hU\n", 4294967296);
 	//printf("%hU\n", 4294967296);
@@ -252,10 +250,13 @@ int		main(int __unused ac, char __unused **av)
 
 
 /*
+
+
+gcc -Wall -Werror -Wextra print_b.c print_c.c print_i.c print_u.c print_s.c print_p.c print_o.c print_x.c print_%.c print_f.c print_ff.c ft_printf.c itoa_base.c main.c mem.c parse.c else.c test.c width_csp.c width_dioux.c -g3 -fsanitize=address -o test && ./test | cat -e
+
+
 Bonus: gestion de buffer, couleur, multi fd (write(fd, ..., ...)), %* (padding sur le 1er arg), binaire etc ...
 Gestion: printf(NULL);
-gcc -Wall -Werror -Wextra print_b.c print_c.c print_i.c print_u.c print_s.c print_p.c print_o.c print_x.c print_%.c ft_printf.c itoa_base.c main.c mem.c parse.c else.c test.c width_csp.c width_diou.c -o test && ./test | cat -e*/
-
 // long long      ft_convert_base(long long value, int base)
 // {
 //     long long ret;
@@ -274,3 +275,4 @@ gcc -Wall -Werror -Wextra print_b.c print_c.c print_i.c print_u.c print_s.c prin
 //     }
 //     return (ret);
 //}
+*/
