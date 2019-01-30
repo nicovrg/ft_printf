@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/30 01:08:10 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/30 09:34:37 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int		main(int __unused ac, char __unused **av)
 	// fflush(stdout);
 	// ft_printf("coucou %.42d\n", t_int);
 	// printf("coucou %.42d\n", t_int);
-	printf("coucou %f\n", t_float);
+	printf("{%03c}\n", 0);
 	fflush(stdout);
-	ft_printf("coucou %f\n", t_float);
+	ft_printf("{%03c}\n", 0);
 	// printf("%d\n", i);
 	// fflush(stdout);
 
