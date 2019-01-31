@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/30 09:34:37 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/31 17:24:42 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		main(int __unused ac, char __unused **av)
 	t_oct = 420;
 	t_hexmin = 42;
 	t_hexmax = 42;
-	t_float = 42.424242424242;
+	t_float = 42.424242424242f;
 
 	// TEST: BEHAVIOUR
 	// ft_printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
@@ -44,9 +44,9 @@ int		main(int __unused ac, char __unused **av)
 	// fflush(stdout);
 	// ft_printf("coucou %.42d\n", t_int);
 	// printf("coucou %.42d\n", t_int);
-	printf("{%03c}\n", 0);
+	printf("\\!/%#2.2ho\\!/\n", 0);
 	fflush(stdout);
-	ft_printf("{%03c}\n", 0);
+	ft_printf("\\!/%#2.2ho\\!/\n", 0);
 	// printf("%d\n", i);
 	// fflush(stdout);
 

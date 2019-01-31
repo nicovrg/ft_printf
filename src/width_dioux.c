@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:15 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/28 19:50:04 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/31 16:49:41 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int		width_size_o(t_info *options, unsigned long long cast_ap)
 	int width;
 	int size_nb;
 
+	cast_ap = itooct(cast_ap);
 	size_nb = cast_ap == 0 ? 1 : 0;
 	width = options->width;
 	while (cast_ap > 0)
@@ -71,8 +72,16 @@ int		width_size_o(t_info *options, unsigned long long cast_ap)
 		cast_ap /= 10;
 		size_nb++;
 	}
-	width = width - (options->accuracy > size_nb ? options->accuracy : size_nb) - (options->hashtag == 1 ? 1 : 0);
-	options->accuracy = options->accuracy - size_nb - (options->hashtag == 1 ? 1 : 0);
+	width = width - (options->accuracy > size_nb + options->hashtag ? options->accuracy : size_nb + options->hashtag);
+	if (options->accuracy != -1)
+	{
+		if (options->accuracy - size_nb  - (options->hashtag == 1 ? 1 : 0) < 0)
+			options->accuracy = 0;
+		else
+		{
+			options->accuracy = options->accuracy - size_nb - (options->hashtag == 1 ? 1 : 0);
+		}
+	}
 	return (width);
 }
 
@@ -83,16 +92,13 @@ void	width_for_null(t_info *options)
 		options->plus && !options->neg ? append_to_buff('+', 0, options) : 0;
 		options->space && !options->plus && !options->neg ? append_to_buff(' ', 0, options) : 0;
 	}
-	options->minus == 1 && options->hashtag == 1 && options->conversion == 5 ? ft_addnbr_core(0, options) : 0;
-	options->conversion == 5 && options->hashtag == 1 ? options->width-- : 0;
-	while (options->width-- > 0)
+	while (options->width--)
 		append_to_buff(' ', 0, options);
 	if (!options->minus)
 	{
 		options->plus && !options->neg ? append_to_buff('+', 0, options) : 0;
 		options->space && !options->plus && !options->neg ? append_to_buff(' ', 0, options) : 0;
 	}
-	options->minus == 0 && options->hashtag == 1 && options->conversion == 5 ? ft_addnbr_core(0, options) : 0;
 }
 
 unsigned long long	itooct(unsigned long long nb)

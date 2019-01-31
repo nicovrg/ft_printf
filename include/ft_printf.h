@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/30 01:11:34 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/31 16:50:03 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,12 @@ void			ft_addnbr_core(long long nb, t_info *options);
 //print_u.c
 void			ft_uns(va_list ap, t_info *options);
 void			ft_adduns(long long cast_ap, t_info *options);
-void			ft_adduns_core(unsigned long long nb, t_info *options);
+void			ft_adduns_core(unsigned long long nb, t_info *options, int base);
 
 //print_o.c
 void			ft_oct(va_list ap, t_info *options);
 void			ft_addoct(unsigned long long cast_ap, t_info *options);
+void			oct_for_null(t_info *options);
 
 //print_x.c
 void			ft_hex(va_list ap, t_info *options);
