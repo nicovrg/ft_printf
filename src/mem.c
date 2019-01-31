@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mem.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 17:10:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/17 19:17:11 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/01/31 21:26:09 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,29 @@ int		ft_atoi(const char *str)
 		i++;
 	}
 	return ((int)result * sign);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		i;
+	int		c;
+	char	*str;
+
+	c = -1;
+	if (!(s1) || !(s2))
+		return (NULL);
+	i = ft_strlen(s1) + ft_strlen(s2) + 1;
+	if (!(str = ft_memalloc(i)))
+		return (NULL);
+	while (s1[++c])
+		str[c] = s1[c];
+	i = 0;
+	while (s2[i])
+	{
+		str[c] = s2[i];
+		c++;
+		i++;
+	}
+	str[c] = '\0';
+	return (str);
 }

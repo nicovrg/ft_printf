@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/31 17:24:42 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/31 21:21:46 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,11 @@ int		main(int __unused ac, char __unused **av)
 	// fflush(stdout);
 	// ft_printf("coucou %.42d\n", t_int);
 	// printf("coucou %.42d\n", t_int);
-	printf("\\!/%#2.2ho\\!/\n", 0);
+	printf("true : %d\n", printf("%#.24x\n", 670551290));
 	fflush(stdout);
-	ft_printf("\\!/%#2.2ho\\!/\n", 0);
+	printf("mine : %d\n", ft_printf("%#.24x\n", 670551290));
 	// printf("%d\n", i);
 	// fflush(stdout);
-
-	
 	//ft_printf("%hU\n", 4294967296);
 	//printf("%hU\n", 4294967296);
 	//fflush(stdout);

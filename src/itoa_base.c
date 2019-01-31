@@ -3,22 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   itoa_base.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 20:00:21 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/27 14:47:47 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/01/31 19:24:37 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
-long long	abs_value(long long value)
-{
-	return (value < 0 ? -value : value);
-}
-
-long long	get_size(long long value, int base)
+unsigned long long	get_size(unsigned long long value, int base)
 {
 	int		size;
 
@@ -55,40 +50,15 @@ char			*fill_base(int base, int l)
 	return (base_arr);
 }
 
-char			*neg_int(long long value)
-{
-	char	*res;
-	int		i;
-	
-	i = get_size(value, 10) + 1;
-	if (!(res = (char *)malloc(sizeof(char) * i)))
-		return (NULL);
-	res[i] = '\0';
-	res[0] = '-';
-	i--;
-	while (i > 0)
-	{
-		res[i] = (value % 10) * -1 + '0';
-		value = value / 10;
-		i--;
-	}
-	return (res);
-}
-
-char			*ft_itoa_base(long long value, int base, int l)
+char			*ft_itoa_base(unsigned long long value, int base, int l)
 {
 	int					i;
 	unsigned long long	uns;
 	char				*base_arr;
 	char				*base_res;
 
-	uns = abs_value(value);
+	uns = value;
 	i = get_size(uns, base);
-	if (value < 0 && base == 10)
-	{
-		base_res = neg_int(value);
-		return (base_res);
-	}
 	if (!(base_arr = fill_base(base, l)))
 		return (NULL);
 	if (!(base_res = (char *)malloc(sizeof(char) * (i + 1))))
@@ -101,5 +71,6 @@ char			*ft_itoa_base(long long value, int base, int l)
 		uns = uns / (unsigned long long)base;
 		i--;
 	}
+	free(base_arr);
 	return (base_res);
 }

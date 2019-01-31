@@ -6,17 +6,18 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 03:18:33 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/28 15:54:55 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/31 18:09:25 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
+#include <limits.h>
 #include "../include/ft_printf.h"
 
 void	ft_nbr(va_list ap, t_info *options)
 {
-	long long			cast_ap;
-	unsigned long long	tmp;
+	long long		cast_ap;
+	intmax_t		tmp;
 
 	cast_ap = (options->type == 0 ? va_arg(ap, int) : 0);
 	cast_ap = (options->type == 1 ? (short)va_arg(ap, int) : cast_ap);
@@ -31,7 +32,7 @@ void	ft_nbr(va_list ap, t_info *options)
 	tmp = cast_ap;
 	if (cast_ap < 0)
 	{
-		if (options->type == 4/* && (tmp == 9223372036854775808)*/)
+		if (tmp == LONG_MIN)
 		{
 			cast_ap = -922337203685477580;
 			options->llmin = 1;

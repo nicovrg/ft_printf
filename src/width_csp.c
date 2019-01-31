@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:13 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/28 18:03:17 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/31 19:14:43 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,11 @@ void		addwidth_pointer(int nb, char * __unused cast_ap, t_info *options)
 void		char_null(int cast_ap, t_info *options)
 {
 	options->ret++;
-	options->buff[options->index++] = '^';
-	if (options->index == BUFF_SIZE)
+	(void)cast_ap;
+	//options->buff[options->index++] = '';
+	/*if (options->index == BUFF_SIZE)
 		append_to_buff(0, 1, options);
-	options->buff[options->index++] = '@' + cast_ap;
+	options->buff[options->index++] = '\0' + cast_ap;*/
 }
 
 char	*string_for_null(void)

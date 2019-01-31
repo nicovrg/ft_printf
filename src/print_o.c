@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:33:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/31 17:32:44 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/31 20:21:26 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	ft_addoct(unsigned long long cast_ap, t_info *options)
 	int 		size;
 	
 	size = width_size_o(options, cast_ap);
-	if (cast_ap == 0 && options->hashtag == 1 && options->accuracy < 0)
-		options->hashtag = 0;
 	options->accuracy > 0 && options->minus ? ft_accuracy(options) : 0;
 	options->minus == 1 && options->hashtag == 1 ? append_to_buff('0', 0, options) : 0;
 	options->minus == 1 ? ft_adduns_core(cast_ap, options, 8) : 0;
@@ -52,7 +50,7 @@ void	ft_addoct(unsigned long long cast_ap, t_info *options)
 void	oct_for_null(t_info *options)
 {
 	options->accuracy > 0 && options->minus ? ft_accuracy(options) : 0;
-	options->accuracy < 0 && options->minus == 1 && options->hashtag == 1 ? ft_addnbr_core(0, options) : 0;
+	options->accuracy <= 0 && options->minus == 1 && options->hashtag == 1 ? ft_addnbr_core(0, options) : 0;
 	options->minus && options->accuracy < 0 && !options->hashtag ? ft_addnbr_core(0, options) : 0;
 	if (options->accuracy > 1)
 		options->width = options->width - (options->accuracy >= 1 + options->hashtag ?
@@ -66,6 +64,6 @@ void	oct_for_null(t_info *options)
 		append_to_buff(options->zero && !options->minus &&
 				options->accuracy < 0 ? '0' : ' ', 0, options);
 	options->accuracy > 0 && !options->minus ? ft_accuracy(options) : 0;
-	options->accuracy < 0 && options->minus == 0 && options->hashtag == 1 ? ft_addnbr_core(0, options) : 0;
+	options->accuracy <= 0 && options->minus == 0 && options->hashtag == 1 ? ft_addnbr_core(0, options) : 0;
 	!options->minus && options->accuracy < 0 && !options->hashtag ? ft_addnbr_core(0, options) : 0;
 }

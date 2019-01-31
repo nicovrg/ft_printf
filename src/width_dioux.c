@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:15 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/31 16:49:41 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/31 21:08:49 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,18 @@ int		width_size_x(t_info *options, char *cast_ap)
 	width = options->width;
 	accuracy = options->accuracy;
 	size_ap = ft_strlen(cast_ap);
-	width = width - (accuracy > size_ap ? accuracy : size_ap) - (options->hashtag == 1 ? 2 : 0);
-	options->accuracy = options->accuracy - size_ap;
+	if (options->hashtag == 1)
+		options->hashtag = 2;
+	width = width - (accuracy > size_ap ? accuracy : size_ap) - options->hashtag;
+	if (options->accuracy != -1)
+	{
+		if (options->accuracy - size_ap < 0)
+			options->accuracy = 0;
+		else
+		{
+			options->accuracy = options->accuracy - size_ap;
+		}
+	}
 	return (width);
 }
 
@@ -75,7 +85,7 @@ int		width_size_o(t_info *options, unsigned long long cast_ap)
 	width = width - (options->accuracy > size_nb + options->hashtag ? options->accuracy : size_nb + options->hashtag);
 	if (options->accuracy != -1)
 	{
-		if (options->accuracy - size_nb  - (options->hashtag == 1 ? 1 : 0) < 0)
+		if (options->accuracy - size_nb - (options->hashtag == 1 ? 1 : 0) < 0)
 			options->accuracy = 0;
 		else
 		{

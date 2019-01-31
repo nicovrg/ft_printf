@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/31 16:50:03 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/01/31 21:26:36 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 //# include <string.h>
 # include "libft.h"
 
-# define BUFF_SIZE 64
+# define BUFF_SIZE 256
 
 typedef struct	s_float
 {
@@ -81,13 +81,12 @@ void			ft_putstr(char const *s);
 void			ft_putnbr(int n);
 size_t			ft_strlen(const char *s);
 int				ft_atoi(const char *str);
+char			*ft_strjoin(char const *s1, char const *s2);
 
 //itoa_base.c
-long long		ft_abs(long long value);
-long long		res_size(long long value, int base);
+unsigned long long		res_size(unsigned long long value, int base);
 char			*fill_base(int base, int l);
-char			*neg_int(long long value);
-char			*ft_itoa_base(long long value, int base, int l);
+char			*ft_itoa_base(unsigned long long value, int base, int l);
 
 //print_%.c
 void			ft_addpercent(va_list ap, t_info *options);
@@ -121,6 +120,7 @@ void			oct_for_null(t_info *options);
 void			ft_hex(va_list ap, t_info *options);
 void			ft_addhexmin(char *cast_ap, t_info *options);
 void			ft_addhexmaj(char *cast_ap, t_info *options);
+void			hex_for_null(t_info *options);
 
 //print_b.c
 void			ft_addbin(va_list ap, t_info *options);
