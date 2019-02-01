@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/31 21:21:46 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/01 01:36:51 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int		main(int __unused ac, char __unused **av)
 	// fflush(stdout);
 	// ft_printf("coucou %.42d\n", t_int);
 	// printf("coucou %.42d\n", t_int);
-	printf("true : %d\n", printf("%#.24x\n", 670551290));
+	printf("%lc\n", 128150);
 	fflush(stdout);
-	printf("mine : %d\n", ft_printf("%#.24x\n", 670551290));
+	ft_printf("-->%lc\n", 128150);
 	// printf("%d\n", i);
 	// fflush(stdout);
 	//ft_printf("%hU\n", 4294967296);

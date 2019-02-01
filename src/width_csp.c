@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_csp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:13 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/31 19:14:43 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/01 01:57:11 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ void		char_null(int cast_ap, t_info *options)
 {
 	options->ret++;
 	(void)cast_ap;
-	//options->buff[options->index++] = '';
-	/*if (options->index == BUFF_SIZE)
+	//options->buff[options->index++] = '\x';
+	if (options->index == BUFF_SIZE)
 		append_to_buff(0, 1, options);
-	options->buff[options->index++] = '\0' + cast_ap;*/
+	options->buff[options->index++] = '\0' + cast_ap;
 }
 
 char	*string_for_null(void)

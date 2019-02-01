@@ -6,7 +6,7 @@
 /*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:27:03 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/27 14:37:18 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/02/01 02:01:22 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,73 @@ void	ft_addchar(va_list ap, t_info *options)
 {	
 	int		cast_ap;
 
-	cast_ap = va_arg(ap, int);
-	if (cast_ap < 32 && cast_ap >= 0)
+	if (options->type == 2 || options->conversion == 12)
 	{
-		if (options->minus == 1)
-			char_null(cast_ap, options);
-		addwidth_char(options->width, options);
-		if (options->minus == 0)
-			char_null(cast_ap, options);
+		ft_addwchar(ap, options);
+		return ;
 	}
-	else if (options->width > 0)
+	cast_ap = va_arg(ap, int);
+	/*if (cast_ap < 32 && cast_ap >= 0)
 	{
 		if (options->minus == 1)
-			append_to_buff(' ' + cast_ap - 32, 0, options);
+			char_null(cast_ap, options);
 		addwidth_char(options->width, options);
 		if (options->minus == 0)
-			append_to_buff(' ' + cast_ap - 32, 0, options);
+			char_null(cast_ap, options);
 	}
 	else
-		append_to_buff(' ' + cast_ap - 32, 0, options);
+	{*/
+		if (options->minus == 1)
+			append_to_buff(' ' + cast_ap - 32, 0, options);
+		addwidth_char(options->width, options);
+		if (options->minus == 0)
+			append_to_buff(' ' + cast_ap - 32, 0, options);
+	//}
+}
+
+void	ft_addwchar(va_list ap, t_info *options)
+{
+	wchar_t	cast_ap;
+
+	cast_ap = va_arg(ap, wchar_t);
+	if (options->minus == 1)
+	{
+		append_to_buff(0, 1, options);
+		ft_putwchar(cast_ap, options);
+		options->ret++;
+	}
+	addwidth_char(options->width, options);
+	if (options->minus == 0)
+	{
+		append_to_buff(0, 1, options);
+		ft_putwchar(cast_ap, options);
+		options->ret++;
+	}
+}
+
+void	ft_putwchar(wchar_t c, t_info *options)
+{
+	if (c <= 0x7F)
+		ft_putchar(c);
+	else if (c <= 0x7FF)
+	{
+		ft_putchar((c >> 6) | 0xC0);
+		ft_putchar((c & 0x3F) | 0x80);
+		options->ret++;
+	}
+	else if (c <= 0xFFFF)
+	{
+		ft_putchar((c >> 12) | 0xE0);
+		ft_putchar(((c >> 6) & 0x3F) | 0x80);
+		ft_putchar((c & 0x3F) | 0x80);
+		options->ret ++;
+	}
+	else if (c <= 0x10FFFF)
+	{
+		ft_putchar((c >> 18) | 0xF0);
+		ft_putchar(((c >> 12) & 0x3F) | 0x80);
+		ft_putchar(((c >> 6) & 0x3F) | 0x80);
+		ft_putchar((c & 0x3F) | 0x80);
+		options->ret ++;
+	}
 }

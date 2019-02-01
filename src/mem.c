@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mem.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 17:10:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/31 21:26:09 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/01 02:03:07 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_putchar(char c)
 
 void	ft_putstr(char const *s)
 {
-	if (s != NULL)
+	if (s)
 		write(1, s, ft_strlen(s));
 }
 

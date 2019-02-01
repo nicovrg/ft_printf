@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/31 21:26:36 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/01 01:45:09 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,9 @@ int				parse_str(char *buff, t_info *options);
 int				append_to_buff(char c, int print, t_info *options);
 int				ft_printf(char *buff, ...); 
 
+
+void	ft_putwchar(wchar_t c, t_info *options);
+void	ft_addwchar(va_list ap, t_info *options);
 // mettre attribute __attribute__ ((format (printf, 1, 2))) 
 
 #endif
