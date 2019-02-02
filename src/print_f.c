@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 21:19:05 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 08:55:39 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/02 20:04:25 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,19 @@ void	ft_add_fsign(t_info *options)
 void	ft_add_fexpo(t_info *options)
 {
 	int exponent;
-	
+	//mettre exponent -> buff 
 	exponent = (int)options->f.exponent;
 	exponent -= 16383;
 }
+
+void	ft_add_fmant(t_info *options)
+{
+	int mantis;
+	//mettre mantis -> buff 
+	mantis = (int)options->f.mantis;
+	mantis -= 0/*big*/;
+}
+
 
 void	ft_addfloat(va_list ap, t_info *options)
 {
@@ -34,7 +43,7 @@ void	ft_addfloat(va_list ap, t_info *options)
 	unsigned char		*char_ap;
 
 	cast_ap = (long double)va_arg(ap, double);
-	// cast_ap = __LDBL_MAX__;
+	cast_ap = __LDBL_MAX__;
 	char_ap = (unsigned char *)&cast_ap;
 
 	ft_initfloat(options);

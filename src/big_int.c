@@ -6,12 +6,51 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 03:02:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 09:41:33 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/02 20:27:24 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h" 
+
+/*
+
+L'idée serait de faire une fonction qui récupère l'exponent en binaire et parcours chaqun de ses bits:
+à chaque fois qu'il y a un 1, on ajoute au resultat (qui vaut initialement 0) la puissance de 2 
+associé à l'index du bit, sachant qu'il faut faire des opérations sur des chaines de caractères.
+
+
+char *big_int <- FCT: powertwo_to_string <- int bit (1of63 bits)
+char *big_int <- FCT: powertwo_add_string <- char *big_int1, char *big_int2
+
+*/
+
+char	*exponent_bigint(t_info *options)
+{
+	int					i;
+	char				result[10000];
+	unsigned long long	exponent;
+
+	i = 0;
+	ft_bzero(result, 10000);
+	exponent = options->f.exponent;
+	while (i < 15)
+	{
+		if (exponent & (1ULL << i))
+			// call function
+		i++;
+	}
+}
+
+//PENSER AU BIT EXPLICITE
+
+// uint32_t carry=0;
+// for(i=0; i<len; i++) {
+//     uint64_t tmp = n*(uint64_t)big[i] + carry;
+//     big[i] = tmp;
+//     carry = tmp >> 32;
+// }
+// if (carry) big[len++] = carry;
 
 /*
 long long power_two(long long nb, long long power)
