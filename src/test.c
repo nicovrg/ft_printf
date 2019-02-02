@@ -6,12 +6,95 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 22:08:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/30 01:17:45 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/02 08:59:01 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
+
+
+void	ft_put_binary1(unsigned char byte)
+{
+	if (byte >= 2)
+		ft_put_binary1(byte / 2);
+	ft_putchar('0' + byte % 2);
+}
+
+void	ft_put_binary2(unsigned long long byte)
+{
+	if (byte >= 2)
+		ft_put_binary2(byte / 2);
+	ft_putchar('0' + byte % 2);
+}
+
+void		ft_show_extracted(unsigned char __unused *char_ap, t_info *options)
+{
+	ft_putstr("// *********************************** \\\\\n");
+	ft_putstr("|\t\tSIGN\t\t\t|\n");
+	ft_putstr("|\t\t|");
+	ft_putnbr(options->f.sign);
+	ft_putstr("|\t\t\t|");
+	ft_putstr("\n\\\\ *********************************** //\n\n\n");
+
+	ft_putstr("// *********************************** \\\\\n");
+	ft_putstr("|\t\tEXPONENT\t\t|\n");
+	ft_putstr("|\t\t|");
+	ft_putunll(options->f.exponent);
+	ft_putstr("|\t\t\t|");
+	ft_putstr("\n\\\\ *********************************** //\n\n\n");
+
+	ft_putstr("// *********************************** \\\\\n");
+	ft_putstr("|\t\tMANTIS\t\t\t|\n");
+	ft_putstr("|\t|");
+	ft_putunll(options->f.mantis);
+	ft_putstr("|\t\t|");
+	ft_putstr("\n\\\\ *********************************** //\n\n\n");
+}
+
+void	ft_showbin_sign(t_info *options)
+{
+	ft_putstr("// *********************************** \\\\\n");
+	ft_putstr("|\t\tSIGN\t\t\t|\n");
+	ft_putstr("|\t\t|");
+	ft_put_binary2(options->f.sign);
+	ft_putstr("|\t\t\t|");
+	ft_putstr("\n\\\\ *********************************** //\n\n\n");
+}
+
+void	ft_showbin_expo(t_info *options)
+{
+	ft_putstr("// *********************************** \\\\\n");
+	ft_putstr("|\t\tEXPONENT\t\t|\n");
+	ft_putstr("|\t    |");
+	ft_put_binary2(options->f.exponent);
+	ft_putstr("|\t\t|");
+	ft_putstr("\n\\\\ *********************************** //\n\n\n");
+}
+
+void	ft_showbin_mant(t_info *options)
+{
+	ft_putstr("mantis =\t");
+	ft_put_binary2(options->f.mantis);
+	ft_putstr("\n");
+}
+
+void	ft_showbin_addfloat(unsigned char *char_ap)
+{
+	ft_putstr("binary =\t");
+	for (size_t i = 0; i < 10; i++)
+	{
+		int mag = 1;
+		unsigned char bkp = char_ap[i];
+		while (bkp /= 2)
+			mag++;
+		write(1, "00000000", 8 - mag);
+		ft_put_binary1(char_ap[i]);
+		if (i != 9)
+			ft_putchar(' ');
+	}
+	ft_putchar('\n');
+}
 
 void	ft_put_info(t_info *info)
 {
@@ -79,6 +162,21 @@ void	ft_put_info(t_info *info)
 }
 
 /*
+
+	ft_putstr("sign =\t\t");
+	ft_putnbr(options->f.sign);
+	ft_putstr("\n");
+	ft_putstr("exponent =\t");
+	ft_putunll(options->f.exponent);
+	ft_putstr("\n");
+	ft_putstr("mantis =\t");
+	ft_putunll(options->f.mantis);
+	ft_putstr("\n");
+
+	printf("sign =\t\t%d\n", options->f.sign);
+	printf("exponent =\t%llu\n", options->f.exponent);
+	printf("mantis =\t%llu\n", options->f.mantis);
+
 int	get_size(int n, int base)
 {
 	int	size;

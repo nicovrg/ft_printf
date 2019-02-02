@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 17:10:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 02:59:51 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/02 07:58:18 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,21 @@ unsigned char	*esreverse(unsigned char *str)
 	}
 	return (str);
 }
+
+void	ft_putunll(unsigned long long n)
+{
+	unsigned long long nbr;
+
+	nbr = (unsigned long long)n;
+	if (nbr >= 10)
+	{
+		ft_putunll(nbr / 10);
+		ft_putchar(nbr % 10 + '0');
+	}
+	else
+		ft_putchar(nbr % 10 + '0');
+}
+
 
 // void	ft_putstr_test(unsigned char *s)
 // {

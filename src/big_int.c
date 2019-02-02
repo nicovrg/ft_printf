@@ -6,31 +6,56 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 03:02:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 05:25:10 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/02 09:41:33 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h" 
 
+/*
+long long power_two(long long nb, long long power)
+{
+    long long result;
+    
+    result = 1;
+    while (power > 0) 
+    {
+        if (power % 2 == 0)
+        {
+            power = power / 2; 
+            nb = nb * nb;
+        }
+        else
+        {
+
+            power = power - 1;
+            result = result * nb;
+            power = power / 2;
+            nb = nb * nb;
+        }
+    }
+    return (result);
+}
+
 int multiply(int x, char *res, int res_size)
 {
     int i;
-    int prod;
+    int mult;
     int carry;
     
     i = 0;
-    prod = 0;
-    carry = 0; 
+    mult = 0;
+    carry = 0;
     while (i < res_size) 
     { 
-        prod = res[i] * x + carry; 
+        mult = res[i] * x + carry; 
         i++;
     }
-    res[i] = prod % 10; 
-    carry = prod / 10; 
-    while (carry) 
-    { 
+    res[i] = mult % 10; 
+    carry = mult / 10; 
+    while (carry)
+    {
         res[res_size] = carry % 10; 
         carry = carry / 10; 
         res_size++; 
@@ -75,15 +100,12 @@ void power(int x, int n)
 
 // char    *big_int(t_info *options)
 // {
-//     int                 i;
-//     unsigned char       *exponent;
-//     unsigned char       *result;
+//     int                     i;
+//     unsigned long long      exponent;
+//     unsigned long long      result;
     
-//     i = 0;
 //     exponent = options->f.exponent;
-//     while (exponent[i])
-//     {
-
-//     }
 //     return (result);
 // }
+
+*/

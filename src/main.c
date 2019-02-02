@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 06:23:48 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/02 09:42:56 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,15 @@ int		main(int __unused ac, char __unused **av)
 	t_hexmin = 42;
 	t_hexmax = 42;
 	t_float = 1.5;
-	// t_float = 42.424242424242f;
 	t_float2 = -42.424242424242f;
 
 
-	// power(5, 2);
-	printf("printf:\t\t%f\n", t_float);
-	fflush(stdout);
-	ft_printf("ft_printf:\t\t%f\n", t_float);
-	// printf("-%f\n", t_float2);
-	// ft_printf("+%f\n", t_float2);
 
 
 
 	// printf("%lc\n", 128150);
 	// fflush(stdout);
 	// ft_printf("-->%lc\n", 128150);
-
-
-
 
 
 
@@ -267,8 +257,16 @@ int		main(int __unused ac, char __unused **av)
 
 /*
 
-
-gcc -Wall -Werror -Wextra print_b.c print_c.c print_i.c print_u.c print_s.c print_p.c print_o.c print_x.c print_%.c print_f.c print_ff.c ft_printf.c itoa_base.c main.c mem.c parse.c else.c test.c width_csp.c width_dioux.c -g3 -fsanitize=address -o test && ./test | cat -e
+// gcc -Wall -Wextra print_b.c print_c.c print_i.c print_u.c print_s.c print_p.c print_o.c print_x.c print_%.c print_f.c print_ff.c big_int.c ft_printf.c itoa_base.c main.c mem.c parse.c else.c test.c width_csp.c width_dioux.c -o test && ./test | cat -e
+// power(5, 5);
+// ft_putchar('\n');
+// printf("power_two =\t%lld\n\n", power_two(2, 8));
+// ft_putchar('\n');
+// printf("printf:\t\t%f\n", t_float);
+// fflush(stdout);
+// ft_printf("ft_printf:\t%f", t_float);
+// // printf("-%f\n", t_float2);
+// ft_printf("+%f\n", t_float2);
 
 
 Bonus: gestion de buffer, couleur, multi fd (write(fd, ..., ...)), %* (padding sur le 1er arg), binaire etc ...

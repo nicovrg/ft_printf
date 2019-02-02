@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 06:23:25 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/02 09:43:01 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,30 @@ typedef struct	s_info
 //main.c
 
 //big_int.c
-char			*big_int(t_info *options);
-void			power(int x, int n);
-int				multiply(int x, char *res, int res_size);
+// char				*big_int(t_info *options);
+// void				power(int x, int n);
+// int				multiply(int x, char *res, int res_size);
+// long long 		power_two(long long nb, long long power);
 
 //print_f.c
-void			ft_put_binary(unsigned char byte);
+void			ft_addfloat(va_list ap, t_info *options);
 void			ft_add_fsign(t_info *options);
 void			ft_add_fexpo(t_info *options);
-
-
-void			ft_addfloat(va_list ap, t_info *options);
-
 //print_ff.c
+
 void			ft_initfloat(t_info *options);
 void			ft_extract_sign(unsigned char *char_ap, t_info *options);
-void			ft_extract_exponent(unsigned char *char_ap, t_info *options);
-void				ft_extract_mantis(unsigned char *char_ap, t_info *options);
-int				ft_show_extracted(unsigned char *char_ap, t_info *options);
-//test.c
+void			ft_extract_expo(unsigned char *char_ap, t_info *options);
+void			ft_extract_mant(unsigned char *char_ap, t_info *options);
 
+//test.c
+void			ft_put_binary1(unsigned char byte);
+void			ft_put_binary2(unsigned long long byte);
+void			ft_show_extracted(unsigned char *char_ap, t_info *options);
+void			ft_showbin_sign(t_info *options);
+void			ft_showbin_expo(t_info *options);
+void			ft_showbin_mant(t_info *options);
+void			ft_showbin_addfloat(unsigned char *char_ap);
 void			ft_put_info(t_info *info);
 
 //else.c
@@ -89,6 +93,7 @@ void			ft_putnbr(int n);
 size_t			ft_strlen(const char *s);
 int				ft_atoi(const char *str);
 char			*ft_strjoin(char const *s1, char const *s2);
+void			ft_putunll(unsigned long long n);
 
 void			paws(unsigned char *a, unsigned char *b);
 unsigned char	*esreverse(unsigned char *str);

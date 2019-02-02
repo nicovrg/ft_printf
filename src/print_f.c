@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 21:19:05 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 06:45:38 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/02 08:55:39 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,67 +14,45 @@
 #include "../include/ft_printf.h"
 #include <limits.h>
 
-void	ft_put_binary(unsigned char byte)
-{
-	if (byte >= 2)
-		ft_put_binary(byte / 2);
-	ft_putchar('0' + byte % 2);
-}
-
 void	ft_add_fsign(t_info *options)
 {
 	if (options->f.sign == -1)
 		append_to_buff('-', 0, options);
 }
 
-void	ft_add_fexponent(t_info *options)
+void	ft_add_fexpo(t_info *options)
 {
 	int exponent;
 	
 	exponent = (int)options->f.exponent;
 	exponent -= 16383;
-	ft_putchar('\n');
-	ft_putchar('\n');
-	ft_putchar('\n');
-	ft_putchar('\n');
-	ft_putchar('\n');
-	ft_putnbr(exponent);
-	ft_putchar('\n');
 }
-
 
 void	ft_addfloat(va_list ap, t_info *options)
 {
 	long double			cast_ap;
 	unsigned char		*char_ap;
 
-	// cast_ap = (long double)va_arg(ap, double);
-	cast_ap = __LDBL_MAX__;
+	cast_ap = (long double)va_arg(ap, double);
+	// cast_ap = __LDBL_MAX__;
 	char_ap = (unsigned char *)&cast_ap;
 
 	ft_initfloat(options);
 	ft_extract_sign(char_ap, options);
-	ft_extract_exponent(char_ap, options);
-	ft_extract_mantis(char_ap, options);
+	ft_extract_expo(char_ap, options);
+	ft_extract_mant(char_ap, options);
+
 	ft_show_extracted(char_ap, options);
 
-	ft_putstr("binary = ");
-	ft_putchar('\t');
-	for (size_t i = 0; i < 10; i++)
-	{
-		int mag = 1;
-		unsigned char bkp = char_ap[i];
-		while (bkp /= 2)
-			mag++;
-		write(1, "00000000", 8 - mag);
-		ft_put_binary(char_ap[i]);
-		ft_putchar(' ');
-	}
-	// ft_putchar('\n');
-
+	ft_showbin_sign(options);
+	ft_showbin_expo(options);
+	ft_showbin_mant(options);
+	ft_showbin_addfloat(char_ap);
+	
 	ft_add_fsign(options);
-	ft_add_fexponent(options);
+	ft_add_fexpo(options);
 	// ft_add_fmantis(options);
+
 }
 // 00000000 00000000 00000000 00000000 00000000 00000000 00000000 11000000 11111111 00111111
 
