@@ -6,37 +6,76 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 21:19:05 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/29 21:42:57 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/02 05:22:41 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
+void	ft_put_binary(unsigned char byte)
+{
+	if (byte >= 2)
+		ft_put_binary(byte / 2);
+	ft_putchar('0' + byte % 2);
+}
+
+void	ft_add_fsign(t_info *options)
+{
+	if (options->f.sign == -1)
+		append_to_buff('-', 0, options);
+}
+
+void	ft_add_fexponent(t_info *options)
+{
+	int exponent;
+	
+	exponent = (int)options->f.exponent;
+	// exponent -= 16383;
+	ft_putchar('\n');
+	ft_putnbr(exponent);
+	ft_putchar('\n');
+}
+
+
 void	ft_addfloat(va_list ap, t_info *options)
 {
-	unsigned long long int		cast_ap;
+	long double			cast_ap;
+	unsigned char		*char_ap;
 
-	cast_ap = va_arg(ap, unsigned long long int);
+	cast_ap = (long double)va_arg(ap, double);
+	char_ap = (unsigned char *)&cast_ap;
+
 	ft_initfloat(options);
-	ft_signfloat(cast_ap, options);
-	ft_expofloat(cast_ap, options);
-	ft_mantfloat(cast_ap, options);
-	ft_printfbin(cast_ap, options);
+	ft_extract_sign(char_ap, options);
+	ft_extract_exponent(char_ap, options);
+	ft_extract_mantis(char_ap, options);
+	ft_show_extracted(char_ap, options);
+
+	ft_putstr("binary = ");
+	ft_putchar('\t');
+	for (size_t i = 0; i < 10; i++)
+	{
+		int mag = 1;
+		unsigned char bkp = char_ap[i];
+		while (bkp /= 2)
+			mag++;
+		write(1, "00000000", 8 - mag);
+		ft_put_binary(char_ap[i]);
+		ft_putchar(' ');
+	}
+	ft_putchar('\n');
+
+	ft_add_fsign(options);
+	ft_add_fexponent(options);
+	// ft_add_fmantis(options);
+}
 
 
-// 00000000 00000000 10000000 00111111 - 00000000 00000000 10000000 00111111 -- 00000000 |0|0000000 
-
-
-	//convertir expo en base 10 et puissance de 2 et enlever ce qu il faut si besoin 
-	//
-	
-	
-	
+	// 00000000 00000000 10000000 00111111 - 00000000 00000000 10000000 00111111 -- 		00000000 |0|0000000 
 	// ft_addnbr(((exponent)) * sign, options);
 	// append_to_buff('.', 0, options);
 	// ft_addmantis(cast_ap);
-}
 
 // void	ft_addmantis(double cast_ap)
 // {

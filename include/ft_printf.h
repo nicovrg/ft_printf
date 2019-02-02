@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/01 01:45:09 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/02/02 04:35:40 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-//# include <string.h>
+# include <wchar.h>
 # include "libft.h"
 
 # define BUFF_SIZE 256
 
 typedef struct	s_float
 {
-	int		i;
-	int		sign;
-	int		power_two[15];
-	char	exponent[15];
-	char	mantis[64];
+	int				i;
+	int				sign;
+	int				power_two[15];
+	unsigned char	exponent[15];
+	unsigned char	mantis[64];
 
 }				t_float;
 
@@ -53,18 +53,27 @@ typedef struct	s_info
 
 //main.c
 
+//big_int.c
+char			*big_int(t_info *options);
+void			power(int x, int n);
+int				multiply(int x, char *res, int res_size);
+
 //print_f.c
+void			ft_put_binary(unsigned char byte);
+void			ft_add_fsign(t_info *options);
+void			ft_add_fexpo(t_info *options);
+
+
 void			ft_addfloat(va_list ap, t_info *options);
 
 //print_ff.c
 int				ft_initfloat(t_info *options);
-int				ft_signfloat(unsigned long long cast_ap, t_info *options);
-int				ft_expofloat(unsigned long long cast_ap, t_info *options);
-int				ft_mantfloat(unsigned long long cast_ap, t_info *options);
-int				ft_printfbin(unsigned long long __unused cast_ap, t_info *options);
-
-
+int				ft_extract_sign(unsigned char *char_ap, t_info *options);
+int				ft_extract_exponent(unsigned char *char_ap, t_info *options);
+int				ft_extract_mantis(unsigned char *char_ap, t_info *options);
+int				ft_show_extracted(unsigned char *char_ap, t_info *options);
 //test.c
+
 void			ft_put_info(t_info *info);
 
 //else.c
@@ -82,6 +91,11 @@ void			ft_putnbr(int n);
 size_t			ft_strlen(const char *s);
 int				ft_atoi(const char *str);
 char			*ft_strjoin(char const *s1, char const *s2);
+
+void			paws(unsigned char *a, unsigned char *b);
+unsigned char	*esreverse(unsigned char *str);
+// void			ft_putstr_test(unsigned char *s);
+// size_t		ft_strlen_test(unsigned char *s);
 
 //itoa_base.c
 unsigned long long		res_size(unsigned long long value, int base);

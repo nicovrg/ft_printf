@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 21:19:05 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/30 01:11:15 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/02 05:18:12 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		ft_initfloat(t_info *options)
 
 	i = 1;
 	options->f.i = 1;
+	options->f.sign = 0;
 	ft_bzero(options->f.exponent, 15);
 	ft_bzero(options->f.mantis, 64);
 	ft_bzero(options->f.power_two, 15);
@@ -32,25 +33,26 @@ int		ft_initfloat(t_info *options)
 	return (0);
 }
 
-int		ft_signfloat(unsigned long long cast_ap, t_info *options)
+int		ft_extract_sign(unsigned char *char_ap, t_info *options)
 {
-	if (cast_ap & 1UL << 7)
+	if (char_ap[9] & (1 << 7))
 		options->f.sign = -1;
 	else
 		options->f.sign = 1;
 	return (0);
 }
 
-int		ft_expofloat(unsigned long long cast_ap, t_info *options)
+int		ft_extract_exponent(unsigned char *char_ap, t_info *options)
 {
 	int i;
 	int j;
 
 	i = 0;
 	j = 0;
+
 	while (i < 7)
 	{
-		if (cast_ap & (1UL << (6 - i)))
+		if (char_ap[9] & (1 << (6 - i)))
 			options->f.exponent[i] = '1';
 		else
 			options->f.exponent[i] = '0';
@@ -58,7 +60,7 @@ int		ft_expofloat(unsigned long long cast_ap, t_info *options)
 	}
 	while (i < 15)
 	{
-		if (cast_ap & (1UL << (15 - j)))
+		if (char_ap[8] & (1 << (7 - j)))
 			options->f.exponent[i] = '1';
 		else
 			options->f.exponent[i] = '0';
@@ -68,64 +70,75 @@ int		ft_expofloat(unsigned long long cast_ap, t_info *options)
 	return (0);
 }
 
-int		ft_mantfloat(unsigned long long cast_ap, t_info *options)
+int		ft_extract_mantis(unsigned char *char_ap, t_info *options)
 {
 	int i;
-	int add;
+	int oct;
+	int index;
 
-	add = 0;
-	while (add < 64)
+	oct = 7;
+	index = 0;
+	while (oct >= 0)
 	{
 		i = 0;
 		while (i < 8)
 		{
-			if (cast_ap & (1UL << (15 + add - i)))
-				options->f.mantis[i + add] = '1';
+			if (char_ap[oct] & (1 << (7 - i)))
+				options->f.mantis[i + index] = '1';
 			else
-				options->f.mantis[i + add] = '0';
+				options->f.mantis[i + index] = '0';
 			i++;
 		}
-		add += 8;
+		index = index + 8;
+		oct--;
 	}
 	return (0);
 }
 
-int		ft_printfbin(unsigned long long __unused cast_ap, t_info *options)
+int		ft_show_extracted(unsigned char __unused *char_ap, t_info *options)
 {
 	int i;
 
+	ft_putstr("sign = ");
+	ft_putchar('\t');
+	ft_putchar('\t');
+	ft_putnbr(options->f.sign);
+	ft_putchar('\n');
+	ft_putstr("exponent = ");
+	ft_putchar('\t');
 	i = 0;
-	printf("\n");
-	printf("power_two = \t");
-	while (i < 14)
-	{
-		printf("%d", options->f.power_two[i]);
-		printf(" ");
-		i++;
-	}
-	printf("%d", options->f.power_two[i]);
-	printf("\n");
-	printf("sign = \t\t%d", options->f.sign);
-	printf("\n");
-	i = 0;
-	printf("exponent = \t");
 	while (i < 15)
 	{
-		printf("%c", options->f.exponent[i]);
+		ft_putchar(options->f.exponent[i]);
 		i++;
 	}
-	printf("\n");
-	printf("mantis = \t");
+	ft_putchar('\n');
+	ft_putstr("mantis = ");
+	ft_putchar('\t');
 	i = 0;
 	while (i < 64)
 	{
-		printf("%c", options->f.mantis[i]);
+		ft_putchar(options->f.mantis[i]);
 		i++;
 	}
-	printf("\n");
+	ft_putchar('\n');
 	return (0);
 }
 
 // 15-23-31-39-47-55-63-71-79 (+8)
 // 00000000 00000000 10000000 00111111 - 00000000 00000000 10000000 00111111 -- 00000000 |0|0000000
+
+
+
 //options->f.power_two = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384};
+// printf("\n");
+// printf("power_two = \t");
+// while (i < 14)
+// {
+// 	printf("%d", options->f.power_two[i]);
+// 	printf(" ");
+// 	i++;
+// }
+// printf("%d", options->f.power_two[i]);
+// printf("\n");
+// i = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mem.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 17:10:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/01 02:03:07 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/02/02 02:59:51 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,3 +135,56 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str[c] = '\0';
 	return (str);
 }
+
+void	paws(unsigned char *a, unsigned char *b)
+{
+	char temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+unsigned char	*esreverse(unsigned char *str)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (str[i] != '\0')
+		i++;
+	i--;
+	while (i > j)
+	{
+		paws(&str[i], &str[j]);
+		i--;
+		j++;
+	}
+	return (str);
+}
+
+// void	ft_putstr_test(unsigned char *s)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	while (s[i++])
+// 		s[i] += 48;
+// 	i = 0;	
+// 	while (s[i++])
+// 		write(1, s[i], 1);
+// 	// if (s)
+// 	// 	write(1, s, ft_strlen_test(s));
+// }
+
+// size_t		ft_strlen_test(unsigned char *s)
+// {
+// 	size_t	i;
+
+// 	i = 0;
+// 	while (s[i])
+// 		i++;
+// 	return (i);
+// }
+
