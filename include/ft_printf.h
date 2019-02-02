@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 04:35:40 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/02 06:23:25 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@
 
 typedef struct	s_float
 {
-	int				i;
-	int				sign;
-	int				power_two[15];
-	unsigned char	exponent[15];
-	unsigned char	mantis[64];
+	int					sign;
+	unsigned long long	exponent;
+	unsigned long long	mantis;
 
 }				t_float;
 
@@ -67,10 +65,10 @@ void			ft_add_fexpo(t_info *options);
 void			ft_addfloat(va_list ap, t_info *options);
 
 //print_ff.c
-int				ft_initfloat(t_info *options);
-int				ft_extract_sign(unsigned char *char_ap, t_info *options);
-int				ft_extract_exponent(unsigned char *char_ap, t_info *options);
-int				ft_extract_mantis(unsigned char *char_ap, t_info *options);
+void			ft_initfloat(t_info *options);
+void			ft_extract_sign(unsigned char *char_ap, t_info *options);
+void			ft_extract_exponent(unsigned char *char_ap, t_info *options);
+void				ft_extract_mantis(unsigned char *char_ap, t_info *options);
 int				ft_show_extracted(unsigned char *char_ap, t_info *options);
 //test.c
 

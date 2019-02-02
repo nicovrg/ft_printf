@@ -6,122 +6,107 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 21:19:05 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 05:18:12 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/02 06:42:36 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
-int		ft_initfloat(t_info *options)
+void	ft_initfloat(t_info *options)
 {
 	int i;
 
 	i = 1;
-	options->f.i = 1;
 	options->f.sign = 0;
-	ft_bzero(options->f.exponent, 15);
-	ft_bzero(options->f.mantis, 64);
-	ft_bzero(options->f.power_two, 15);
-	options->f.power_two[0] = 1;
-	while (i < 14)
-	{
-		options->f.power_two[i] = options->f.power_two[i - 1] * 2;
-		i++;
-	}
-	options->f.power_two[i] = options->f.power_two[i - 1] * 2;
-	return (0);
+	options->f.exponent = 0;
+	options->f.mantis = 0;
 }
 
-int		ft_extract_sign(unsigned char *char_ap, t_info *options)
+void	ft_extract_sign(unsigned char *char_ap, t_info *options)
 {
 	if (char_ap[9] & (1 << 7))
 		options->f.sign = -1;
 	else
 		options->f.sign = 1;
-	return (0);
 }
 
-int		ft_extract_exponent(unsigned char *char_ap, t_info *options)
+void	ft_extract_exponent(unsigned char *char_ap, t_info *options)
+{
+	int mask;
+
+	mask = 0b01111111;
+	options->f.exponent |= ((char_ap[9] & mask) << 8);
+	options->f.exponent |= char_ap[8];
+}
+
+void	ft_put_binary2(unsigned long long byte)
+{
+	if (byte >= 2)
+		ft_put_binary2(byte / 2);
+	ft_putchar('0' + byte % 2);
+}
+
+void		ft_extract_mantis(unsigned char *char_ap, t_info *options)
 {
 	int i;
-	int j;
 
-	i = 0;
-	j = 0;
-
-	while (i < 7)
+	i = 7;
+	ft_put_binary2(options->f.mantis);
+	while (i >= 0)
 	{
-		if (char_ap[9] & (1 << (6 - i)))
-			options->f.exponent[i] = '1';
-		else
-			options->f.exponent[i] = '0';
-		i++;
+		options->f.mantis |= ((unsigned long long)(char_ap[i]) << ((unsigned long long)i * 8ULL));
+		printf("octet = %hhd\n", char_ap[i]);
+		i--;
 	}
-	while (i < 15)
-	{
-		if (char_ap[8] & (1 << (7 - j)))
-			options->f.exponent[i] = '1';
-		else
-			options->f.exponent[i] = '0';
-		i++;
-		j++;
-	}
-	return (0);
+	ft_putstr("coucou");
+	ft_put_binary2(options->f.mantis);
 }
+	// int i;
+	// int oct;
+	// int index;
 
-int		ft_extract_mantis(unsigned char *char_ap, t_info *options)
-{
-	int i;
-	int oct;
-	int index;
-
-	oct = 7;
-	index = 0;
-	while (oct >= 0)
-	{
-		i = 0;
-		while (i < 8)
-		{
-			if (char_ap[oct] & (1 << (7 - i)))
-				options->f.mantis[i + index] = '1';
-			else
-				options->f.mantis[i + index] = '0';
-			i++;
-		}
-		index = index + 8;
-		oct--;
-	}
-	return (0);
-}
+	// oct = 7;
+	// index = 0;
+	// while (oct >= 0)
+	// {
+	// 	i = 0;
+	// 	while (i < 8)
+	// 	{
+	// 		if (char_ap[oct] & (1 << (7 - i)))
+	// 			options->f.mantis[i + index] = '1';
+	// 		else
+	// 			options->f.mantis[i + index] = '0';
+	// 		i++;
+	// 	}
+	// 	index = index + 8;
+	// 	oct--;
+	// }
 
 int		ft_show_extracted(unsigned char __unused *char_ap, t_info *options)
 {
-	int i;
-
-	ft_putstr("sign = ");
-	ft_putchar('\t');
-	ft_putchar('\t');
-	ft_putnbr(options->f.sign);
-	ft_putchar('\n');
-	ft_putstr("exponent = ");
-	ft_putchar('\t');
-	i = 0;
-	while (i < 15)
-	{
-		ft_putchar(options->f.exponent[i]);
-		i++;
-	}
-	ft_putchar('\n');
-	ft_putstr("mantis = ");
-	ft_putchar('\t');
-	i = 0;
-	while (i < 64)
-	{
-		ft_putchar(options->f.mantis[i]);
-		i++;
-	}
-	ft_putchar('\n');
+	// ft_putstr("sign = ");
+	// ft_putchar('\t');
+	// ft_putchar('\t');
+	printf("sign = %d\n", options->f.sign);
+	// ft_putchar('\n');
+	// ft_putstr("exponent = ");
+	// ft_putchar('\t');
+	printf("exponent = %llu\n", options->f.exponent);
+	// ft_putstr("mantis = ");
+	// ft_putchar('\t');
+	printf("mantis = %llu\n", options->f.mantis);
+	
+	// ft_putchar('\n');
+	// ft_putstr("mantis = ");
+	// ft_putchar('\t');
+	// i = 0;
+	// while (i < 64)
+	// {
+	// 	ft_putchar(options->f.mantis[i]);
+	// 	i++;
+	// }
+	// ft_putchar('\n');
 	return (0);
 }
 
