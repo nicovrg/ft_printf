@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 21:19:05 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 20:04:25 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/05 01:23:41 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_add_fsign(t_info *options)
 void	ft_add_fexpo(t_info *options)
 {
 	int exponent;
-	//mettre exponent -> buff 
+	//mettre exponent -> buff
 	exponent = (int)options->f.exponent;
 	exponent -= 16383;
 }
@@ -41,9 +41,9 @@ void	ft_addfloat(va_list ap, t_info *options)
 {
 	long double			cast_ap;
 	unsigned char		*char_ap;
-
+	
 	cast_ap = (long double)va_arg(ap, double);
-	cast_ap = __LDBL_MAX__;
+	// cast_ap = __LDBL_MAX__;
 	char_ap = (unsigned char *)&cast_ap;
 
 	ft_initfloat(options);
@@ -51,16 +51,13 @@ void	ft_addfloat(va_list ap, t_info *options)
 	ft_extract_expo(char_ap, options);
 	ft_extract_mant(char_ap, options);
 
-	ft_show_extracted(char_ap, options);
-
-	ft_showbin_sign(options);
-	ft_showbin_expo(options);
-	ft_showbin_mant(options);
-	ft_showbin_addfloat(char_ap);
+	show_float_test(char_ap, options);
 	
+	exponent_bigint(options);
+
 	ft_add_fsign(options);
 	ft_add_fexpo(options);
-	// ft_add_fmantis(options);
+	ft_add_fmant(options);
 
 }
 // 00000000 00000000 00000000 00000000 00000000 00000000 00000000 11000000 11111111 00111111

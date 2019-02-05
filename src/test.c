@@ -6,13 +6,12 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 22:08:14 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 08:59:01 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/05 01:22:26 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
-
 
 void	ft_put_binary1(unsigned char byte)
 {
@@ -26,6 +25,15 @@ void	ft_put_binary2(unsigned long long byte)
 	if (byte >= 2)
 		ft_put_binary2(byte / 2);
 	ft_putchar('0' + byte % 2);
+}
+
+void	show_float_test(unsigned char *char_ap, t_info *options)
+{
+	ft_show_extracted(char_ap, options);
+	ft_showbin_sign(options);
+	ft_showbin_expo(options);
+	ft_showbin_mant(options);
+	ft_showbin_addfloat(char_ap);
 }
 
 void		ft_show_extracted(unsigned char __unused *char_ap, t_info *options)

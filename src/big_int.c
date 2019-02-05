@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 03:02:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 20:27:24 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/05 01:26:10 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,78 @@ L'idée serait de faire une fonction qui récupère l'exponent en binaire et par
 à chaque fois qu'il y a un 1, on ajoute au resultat (qui vaut initialement 0) la puissance de 2 
 associé à l'index du bit, sachant qu'il faut faire des opérations sur des chaines de caractères.
 
-
 char *big_int <- FCT: powertwo_to_string <- int bit (1of63 bits)
 char *big_int <- FCT: powertwo_add_string <- char *big_int1, char *big_int2
 
 */
 
-char	*exponent_bigint(t_info *options)
+
+void	update_bigstring(int i, t_info *options)
 {
-	int					i;
-	char				result[10000];
-	unsigned long long	exponent;
+	if (i == 0)
+		options->f.big_expo[0] = (unsigned char *)48;
+	if (i % 2 == 1)
+	{
+		multi_bigstring(options); 
+		i--;
+	}
+	while (i > 0)
+	{
+		multi_bigstring(options); 
+	}
+}
+
+void	multi_bigstring(t_info *options)
+{
+	(void)options;
+	// int i;
+
+	// i = 0;
+	// while (options->f.big_expo[i])
+	// {
+	// 	if (((char)(options->f.big_expo[i] - 48) * 2) < 10)
+	// 		options->f.big_expo[i] = (((char)options->f.big_expo[i] - 48) * 2) + 48;
+	// 	else
+	// 	{
+	// 		options->f.big_expo[i] = ((((char)options->f.big_expo[i] - 48) * 2) % 10) + 48;
+	// 		options->f.big_expo[i + 1] = 49; 
+	// 	}
+	// 	//gerer les cas ou big expo[i] est déjà set à une valeur?
+	// 	//pas besoin
+	// }
+}
+
+void	exponent_bigint(t_info *options)
+{
+	int	i;
 
 	i = 0;
-	ft_bzero(result, 10000);
-	exponent = options->f.exponent;
 	while (i < 15)
 	{
-		if (exponent & (1ULL << i))
-			// call function
+		if (options->f.exponent & (1ULL << i))
+			update_bigstring(i, options);
 		i++;
 	}
 }
 
+/*
+2^127
+0b01111111
+1er tour
+il y a 1 donc je rentre dans le if binaire et j appelle la fct
+Je mulitplie la string par 2, autant de fois que l'index me l'indique
+
+*/
+
+
+
+	
+
 //PENSER AU BIT EXPLICITE
+
+// ft_put_binary2(options->f.exponent);
+// ft_putstr("let's see\n");
+// ft_putstr("\n");
 
 // uint32_t carry=0;
 // for(i=0; i<len; i++) {

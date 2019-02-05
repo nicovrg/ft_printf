@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/05 00:53:50 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/05 01:29:17 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,8 +247,36 @@ int		main(int __unused ac, char __unused **av)
 	// printf("%ll42x\n", t_int);
 	// fflush(stdout);
 
+/*
+|======================== NICO ========================|
+int i = 0;
+	int t_dolphin = 128044;
+	while (i++ < 90)
+		ft_printf("%lc", t_dolphin);
+	ft_printf("\n");
+
+	// power(5, 5);
+	// ft_putchar('\n');
+	// printf("power_two =\t%lld\n\n", power_two(2, 8));
+	ft_putchar('\n');
+	printf("printf:\t\t%f\n", t_float);
+	fflush(stdout);
+	ft_printf("ft_printf:\t%f\n", t_float);
+	// printf("-%f\n", t_float2);
+	// ft_printf("+%f\n", t_float2);
 
 
+	i = 0;
+	while (i++ < 90)
+		ft_printf("%lc", t_dolphin);
+	ft_printf("\n");
+
+
+	// printf("%lc\n", 128150);
+	// fflush(stdout);
+	// ft_printf("-->%lc\n", 128150);
+|======================== NICO ========================|
+*/
 
 	//TEST: cspdiouxX
 	//ft_printf("hello\nchar\t\t\t:\t\t%c\nstring\t\t\t:\t\t%s\naddress\t\t\t:\t\t%p\ninteger\t\t\t:\t\t%d\ninteger\t\t\t:\t\t%i\noctal\t\t\t:\t\t%o\nunsigned integer\t:\t\t%u\nhexamin\t\t\t:\t\t%x\nhexamaj\t\t\t:\t\t%X\n\n", t_char, t_string, t_string, t_int, t_int2, t_oct, t_uns, t_hexmin, t_hexmax);
