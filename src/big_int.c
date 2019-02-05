@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 03:02:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/05 18:38:32 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/05 19:04:52 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	multi_bigstring(t_info *options)
 		{
             ft_putstr("\nelse\n");
 			options->f.big_expo[i] = (((options->f.big_expo[i] - 48) * 2) % 10) + 48;
-			options->f.big_expo[i + 1] = 49;
+			options->f.big_expo[i + 1] = options->f.big_expo[i + 1] + 1;
 		}
 		//gerer les cas ou big expo[i] est déjà set à une valeur?
 		//pas besoin
