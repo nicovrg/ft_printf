@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_c.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:27:03 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 07:22:14 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/04 20:19:42 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,18 @@ void	ft_addchar(va_list ap, t_info *options)
 		return ;
 	}
 	cast_ap = va_arg(ap, int);
-	/*if (cast_ap < 32 && cast_ap >= 0)
+	if (cast_ap < 32 && cast_ap >= 0)
 	{
-		if (options->minus == 1)
-			char_null(cast_ap, options);
-		addwidth_char(options->width, options);
-		if (options->minus == 0)
-			char_null(cast_ap, options);
+		char_null(cast_ap, options);
 	}
 	else
-	{*/
+	{
 		if (options->minus == 1)
 			append_to_buff(' ' + cast_ap - 32, 0, options);
 		addwidth_char(options->width, options);
 		if (options->minus == 0)
 			append_to_buff(' ' + cast_ap - 32, 0, options);
-	//}
+	}
 }
 
 void	ft_addwchar(va_list ap, t_info *options)
@@ -76,7 +72,7 @@ void	ft_putwchar(wchar_t c, t_info *options)
 		ft_putchar((c >> 12) | 0xE0);
 		ft_putchar(((c >> 6) & 0x3F) | 0x80);
 		ft_putchar((c & 0x3F) | 0x80);
-		options->ret ++;
+		options->ret += 2;
 	}
 	else if (c <= 0x10FFFF)
 	{
@@ -84,6 +80,6 @@ void	ft_putwchar(wchar_t c, t_info *options)
 		ft_putchar(((c >> 12) & 0x3F) | 0x80);
 		ft_putchar(((c >> 6) & 0x3F) | 0x80);
 		ft_putchar((c & 0x3F) | 0x80);
-		options->ret ++;
+		options->ret += 3;
 	}
 }

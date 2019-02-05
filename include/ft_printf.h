@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 09:43:01 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/04 23:26:48 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <wchar.h>
 # include "libft.h"
 
-# define BUFF_SIZE 256
+# define BUFF_SIZE 32
 
 typedef struct	s_float
 {
@@ -113,6 +113,10 @@ void			ft_addchar(va_list ap, t_info *options);
 
 //print_s.c
 void			ft_addstr(va_list ap, t_info *options);
+void			ft_strwchar(const void *tmp, t_info *options);
+void			print_ls(wchar_t *str, t_info *options);
+char			*ft_strcpy(char *dest, const char *src);
+void			addwidth_wstring(int nb, wchar_t *cast_ap, t_info *options);
 
 //print_p.c
 void			ft_addaddr(va_list ap, t_info *options);

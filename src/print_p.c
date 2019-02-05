@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:29:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/31 21:24:40 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/04 15:57:25 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	ft_addaddr(va_list ap, t_info *options)
 {
-	char *cast;
+	void *cast;
 	char *tmp;
 
 	cast = (options->type == 0 ? ft_itoa_base(va_arg(ap, unsigned int), 16, 1) : 0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/01 01:45:21 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/02/04 15:56:32 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int		append_to_buff(char c, int print, t_info *options)
 {
 	if (print == 0)
 		options->buff[options->index] = c;
-	else if (print == 1 && ft_strlen(options->buff) != 0)
+	else if (print == 1)
 	{
 		options->index = 0;
 		ft_putstr(options->buff);
