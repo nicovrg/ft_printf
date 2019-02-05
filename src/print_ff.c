@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 21:19:05 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/05 19:06:57 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/05 19:19:53 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	ft_initfloat(t_info *options)
 	options->f.sign = 0;
 	options->f.exponent = 0;
 	options->f.mantis = 0;
-	ft_memset(options->f.big_expo, 48,  10000);
-	options->f.big_expo[10000] = 0;
-	ft_memset(options->f.big_mant, 48, 10000);
-	options->f.big_mant[10000] = 0;
+	ft_memset(options->f.big_expo, 48,  9999);
+	options->f.big_expo[9999] = 0;
+	ft_memset(options->f.big_mant, 48, 9999);
+	options->f.big_mant[9999] = 0;
 }
 
 void	ft_extract_sign(unsigned char *char_ap, t_info *options)

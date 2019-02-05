@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 03:02:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/05 19:04:52 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/05 19:21:12 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,15 @@ void	multi_bigstring(t_info *options)
 	{
 		if (((options->f.big_expo[i] - 48) * 2) < 10)
 		{
-            ft_putstr("\navant");
-            ft_putchar(options->f.big_expo[i]);
+            // ft_putstr("\navant");
+            // ft_putchar(options->f.big_expo[i]);
             options->f.big_expo[i] = ((options->f.big_expo[i] - 48) * 2) + 48;
-            ft_putchar(options->f.big_expo[i]);
-            ft_putstr("\napres");
+            // ft_putchar(options->f.big_expo[i]);
+            // ft_putstr("\napres");
         }	
 		else
 		{
-            ft_putstr("\nelse\n");
+            // ft_putstr("\nelse\n");
 			options->f.big_expo[i] = (((options->f.big_expo[i] - 48) * 2) % 10) + 48;
 			options->f.big_expo[i + 1] = options->f.big_expo[i + 1] + 1;
 		}
