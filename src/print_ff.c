@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 21:19:05 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/05 01:23:36 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/05 16:54:48 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,11 @@ void	ft_extract_sign(unsigned char *char_ap, t_info *options)
 void	ft_extract_expo(unsigned char *char_ap, t_info *options)
 {
 	int mask;
-	// int mask2;
 
 	mask = 0b01111111;
-	// mask2 = 0b11111111;
 	options->f.exponent |= ((char_ap[9] & mask) << 8);
 	options->f.exponent |= char_ap[8];
-	// options->f.exponent |= ((char_ap[8] & mask2));
 }
-
-
 
 void		ft_extract_mant(unsigned char *char_ap, t_info *options)
 {

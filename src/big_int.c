@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/02 03:02:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/05 01:26:10 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/05 18:38:32 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char *big_int <- FCT: powertwo_add_string <- char *big_int1, char *big_int2
 void	update_bigstring(int i, t_info *options)
 {
 	if (i == 0)
-		options->f.big_expo[0] = (unsigned char *)48;
+		options->f.big_expo[0] = 49;
 	if (i % 2 == 1)
 	{
 		multi_bigstring(options); 
@@ -36,28 +36,36 @@ void	update_bigstring(int i, t_info *options)
 	}
 	while (i > 0)
 	{
-		multi_bigstring(options); 
+		multi_bigstring(options);
+        i--;
 	}
 }
 
 void	multi_bigstring(t_info *options)
 {
-	(void)options;
-	// int i;
+	int i;
 
-	// i = 0;
-	// while (options->f.big_expo[i])
-	// {
-	// 	if (((char)(options->f.big_expo[i] - 48) * 2) < 10)
-	// 		options->f.big_expo[i] = (((char)options->f.big_expo[i] - 48) * 2) + 48;
-	// 	else
-	// 	{
-	// 		options->f.big_expo[i] = ((((char)options->f.big_expo[i] - 48) * 2) % 10) + 48;
-	// 		options->f.big_expo[i + 1] = 49; 
-	// 	}
-	// 	//gerer les cas ou big expo[i] est déjà set à une valeur?
-	// 	//pas besoin
-	// }
+	i = 0;
+	while (options->f.big_expo[i])
+	{
+		if (((options->f.big_expo[i] - 48) * 2) < 10)
+		{
+            ft_putstr("\navant");
+            ft_putchar(options->f.big_expo[i]);
+            options->f.big_expo[i] = ((options->f.big_expo[i] - 48) * 2) + 48;
+            ft_putchar(options->f.big_expo[i]);
+            ft_putstr("\napres");
+        }	
+		else
+		{
+            ft_putstr("\nelse\n");
+			options->f.big_expo[i] = (((options->f.big_expo[i] - 48) * 2) % 10) + 48;
+			options->f.big_expo[i + 1] = 49;
+		}
+		//gerer les cas ou big expo[i] est déjà set à une valeur?
+		//pas besoin
+        i++;
+	}
 }
 
 void	exponent_bigint(t_info *options)
@@ -68,9 +76,19 @@ void	exponent_bigint(t_info *options)
 	while (i < 15)
 	{
 		if (options->f.exponent & (1ULL << i))
+        {
+            ft_putstr("\n");
+            ft_putstr("entering in if exponent_bigint - i = ");
+            ft_putnbr(i);
 			update_bigstring(i, options);
+        }
 		i++;
 	}
+    ft_putstr("\n");
+    ft_putstr("bigexponent =\t");
+    ft_putstr_test(options->f.big_expo);
+    ft_putstr("\n");
+    ft_putstr("\n");
 }
 
 /*

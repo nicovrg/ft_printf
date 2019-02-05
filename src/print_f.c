@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 21:19:05 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/05 01:23:41 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/05 16:57:14 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,45 +47,50 @@ void	ft_addfloat(va_list ap, t_info *options)
 	char_ap = (unsigned char *)&cast_ap;
 
 	ft_initfloat(options);
+	//read & store bin from float
 	ft_extract_sign(char_ap, options);
 	ft_extract_expo(char_ap, options);
 	ft_extract_mant(char_ap, options);
-
+	//show bin for debug
 	show_float_test(char_ap, options);
-	
+	//compute bigint value of expo & mant
 	exponent_bigint(options);
 
+	//add float to buff
 	ft_add_fsign(options);
 	ft_add_fexpo(options);
 	ft_add_fmant(options);
 
 }
-// 00000000 00000000 00000000 00000000 00000000 00000000 00000000 11000000 11111111 00111111
 
-	// 00000000 00000000 10000000 00111111 - 00000000 00000000 10000000 00111111 -- 		00000000 |0|0000000 
-	// ft_addnbr(((exponent)) * sign, options);
-	// append_to_buff('.', 0, options);
-	// ft_addmantis(cast_ap);
-
-// void	ft_addmantis(double cast_ap)
-// {
-// 	int					i;
-// 	unsigned long		mantis;
-
-// 	i = 0;
-// 	mantis = 0;
-// 	while (i < 31)
-// 	{
-// 		if ((uint32_t)cast_ap & 1 << (23 - i))
-// 			mantis = mantis + mantis * 10 ^ -i;
-// 		i++;
-// 	}
-// 	printf("mantis = %lu\n", mantis);
-// }
-
-// 15-23-31-39-47-55-63-71-79 (+8)
 
 /*
+
+00000000 00000000 00000000 00000000 00000000 00000000 00000000 11000000 11111111 00111111
+
+	00000000 00000000 10000000 00111111 - 00000000 00000000 10000000 00111111 -- 		00000000 |0|0000000 
+	ft_addnbr(((exponent)) * sign, options);
+	append_to_buff('.', 0, options);
+	ft_addmantis(cast_ap);
+
+void	ft_addmantis(double cast_ap)
+{
+	int					i;
+	unsigned long		mantis;
+
+	i = 0;
+	mantis = 0;
+	while (i < 31)
+	{
+		if ((uint32_t)cast_ap & 1 << (23 - i))
+			mantis = mantis + mantis * 10 ^ -i;
+		i++;
+	}
+	printf("mantis = %lu\n", mantis);
+}
+
+15-23-31-39-47-55-63-71-79 (+8)
+
 0
 00011000
 11101110110011000011101

@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 17:10:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/02 07:58:18 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/05 18:00:52 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,19 +179,19 @@ void	ft_putunll(unsigned long long n)
 }
 
 
-// void	ft_putstr_test(unsigned char *s)
-// {
-// 	int i;
+void	ft_putstr_test(unsigned char *s)
+{
+	int i;
 
-// 	i = 0;
-// 	while (s[i++])
-// 		s[i] += 48;
-// 	i = 0;	
-// 	while (s[i++])
-// 		write(1, s[i], 1);
-// 	// if (s)
-// 	// 	write(1, s, ft_strlen_test(s));
-// }
+	i = 0;
+	// while (s[i++])
+		// s[i] += 48;
+	i = 0;	
+	while (s[i++])
+		write(1, &s[i], 1);
+	// if (s)
+	// 	write(1, s, ft_strlen_test(s));
+}
 
 // size_t		ft_strlen_test(unsigned char *s)
 // {

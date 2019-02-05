@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/05 01:29:17 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/05 18:34:54 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		main(int __unused ac, char __unused **av)
 	t_oct = 420;
 	t_hexmin = 42;
 	t_hexmax = 42;
-	t_float = 1.5;
+	t_float = 32.5;
 	t_float2 = -42.424242424242f;
 
 	// int i = 0;
@@ -44,14 +44,19 @@ int		main(int __unused ac, char __unused **av)
 	// 	ft_printf("%lc", t_dolphin);
 	// ft_printf("\n");
 
-	// power(5, 5);
-	// ft_putchar('\n');
-	// printf("power_two =\t%lld\n\n", power_two(2, 8));
-	// ft_putchar('\n');
-	setlocale(LC_ALL, "");
-	printf("\nmine : %d\n", ft_printf("%2.2ls", L"(┬─┬ ノ( ゜-゜ノ)"));
-	printf("\ntrue : %d\n", printf("%2.2ls", L"(┬─┬ ノ( ゜-゜ノ)"));
+	ft_putchar('\n');
+	printf("printf:\t\t%f\n", t_float);
 	fflush(stdout);
+	ft_printf("ft_printf:\t%f\n", t_float);
+
+	// printf("%lc\n", 128150);
+	// fflush(stdout);
+	// ft_printf("-->%lc\n", 128150);
+
+	// setlocale(LC_ALL, "");
+	// printf("\nmine : %d\n", ft_printf("%2.2ls", L"(┬─┬ ノ( ゜-゜ノ)"));
+	// printf("\ntrue : %d\n", printf("%2.2ls", L"(┬─┬ ノ( ゜-゜ノ)"));
+	// fflush(stdout);
 	// printf("-%f\n", t_float2);
 	// ft_printf("+%f\n", t_float2);
 
@@ -270,11 +275,6 @@ int i = 0;
 	while (i++ < 90)
 		ft_printf("%lc", t_dolphin);
 	ft_printf("\n");
-
-
-	// printf("%lc\n", 128150);
-	// fflush(stdout);
-	// ft_printf("-->%lc\n", 128150);
 |======================== NICO ========================|
 */
 

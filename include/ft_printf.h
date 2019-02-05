@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/05 01:25:47 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/05 17:55:26 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct	s_float
 	int					sign;
 	unsigned long long	exponent;
 	unsigned long long	mantis;
-	unsigned char		*big_expo[10000];
-	unsigned char		*big_mant[10000];
+	unsigned char		big_expo[10000];
+	unsigned char		big_mant[10000];
 }				t_float;
 
 
@@ -100,10 +100,10 @@ int				ft_atoi(const char *str);
 char			*ft_strjoin(char const *s1, char const *s2);
 //not in libft
 void				ft_putunll(unsigned long long n);
+void				ft_putstr_test(unsigned char *s);
+// size_t			ft_strlen_test(unsigned char *s);
 // void				paws(unsigned char *a, unsigned char *b);
 // unsigned char	*esreverse(unsigned char *str);
-// void				ft_putstr_test(unsigned char *s);
-// size_t			ft_strlen_test(unsigned char *s);
 
 //itoa_base.c
 unsigned long long		res_size(unsigned long long value, int base);
