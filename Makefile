@@ -42,6 +42,7 @@ SRC_NAME =	./mem.c \
 			./print_ff.c \
 			./width_csp.c \
 			./width_dioux.c \
+			./big_int.c \
 			./itoa_base.c \
 			./parse.c \
 			./ft_printf.c

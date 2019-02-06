@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/05 17:55:26 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/06 20:11:07 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +115,14 @@ void			ft_addpercent(va_list ap, t_info *options);
 
 //print_c.c
 void			ft_addchar(va_list ap, t_info *options);
+void			ft_addwchar(va_list ap, t_info *options);
+void			ft_putwchar(wchar_t c, t_info *options);
+void			addwidth_wchar(wchar_t c, int nb, t_info *options);
+int				size_wchar(wchar_t c);
 
 //print_s.c
 void			ft_addstr(va_list ap, t_info *options);
-void			ft_strwchar(const void *tmp, t_info *options);
+void			ft_strwchar(char *tmp, t_info *options);
 void			print_ls(wchar_t *str, t_info *options);
 char			*ft_strcpy(char *dest, const char *src);
 void			addwidth_wstring(int nb, wchar_t *cast_ap, t_info *options);
@@ -179,12 +183,10 @@ void			(*funptr[12])(va_list, t_info *);
 void			addbuff(char *str, t_info *options);
 int				parse_str(char *buff, t_info *options);
 int				append_to_buff(char c, int print, t_info *options);
-int				ft_printf(char *buff, ...); 
+int				ft_printf(char *buff, ...);
 
 
-void	ft_putwchar(wchar_t c, t_info *options);
-void	ft_addwchar(va_list ap, t_info *options);
-// mettre attribute __attribute__ ((format (printf, 1, 2))) 
+// mettre attribute __attribute__ ((format (printf, 1, 2)))
 
 #endif
 

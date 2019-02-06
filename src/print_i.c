@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 03:18:33 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/31 18:09:25 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/06 17:12:37 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_addnbr(long long cast_ap, t_info *options)
 	if (options->zero && options->accuracy == -1)
 		ft_nbrsign(options);
 	if (options->width >= 0 && size > 0)
-		while (size--)
+		while (size-- > 0)
 			append_to_buff(options->zero && !options->minus &&
 				options->accuracy < 0 ? '0' : ' ', 0, options);
 	if (!(options->zero && options->accuracy == -1))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/05 18:34:54 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/06 20:52:29 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,66 +35,35 @@ int		main(int __unused ac, char __unused **av)
 	t_oct = 420;
 	t_hexmin = 42;
 	t_hexmax = 42;
-	t_float = 32.5;
+	t_float = 1.5;
 	t_float2 = -42.424242424242f;
 
-	// int i = 0;
-	// int t_dolphin = 128044;
-	// while (i++ < 90)
-	// 	ft_printf("%lc", t_dolphin);
-	// ft_printf("\n");
+	int i = 0;
+	int t_dolphin = 129297;
+	while (i++ < 45)
+		ft_printf("%lc %lc ", t_dolphin, 127817);
+	ft_printf("\n\n");
 
-	ft_putchar('\n');
-	printf("printf:\t\t%f\n", t_float);
+	// ft_printf("%s\n", "noque ta mere");
+	setlocale(LC_ALL, "");
+	printf("\nmine : %d\n", ft_printf("%2.2ls", L"ʕノ•ᴥ•ʔノ ︵ ┻━┻ "));
+	printf("\ntrue : %d\n", printf("%2.2ls", L"ʕノ•ᴥ•ʔノ ︵ ┻━┻ "));
 	fflush(stdout);
-	ft_printf("ft_printf:\t%f\n", t_float);
 
-	// printf("%lc\n", 128150);
-	// fflush(stdout);
-	// ft_printf("-->%lc\n", 128150);
-
-	// setlocale(LC_ALL, "");
-	// printf("\nmine : %d\n", ft_printf("%2.2ls", L"(┬─┬ ノ( ゜-゜ノ)"));
-	// printf("\ntrue : %d\n", printf("%2.2ls", L"(┬─┬ ノ( ゜-゜ノ)"));
-	// fflush(stdout);
-	// printf("-%f\n", t_float2);
-	// ft_printf("+%f\n", t_float2);
-
-
-	// i = 0;
-	// while (i++ < 90)
-	// 	ft_printf("%lc", t_dolphin);
-	// ft_printf("\n");
+	ft_printf("\n\n");
+	i = 0;
+	while (i++ < 45)
+		ft_printf("%lc %lc ", t_dolphin, 127817);
+	ft_printf("\n");
 
 
 	// printf("%lc\n", 128150);
 	// fflush(stdout);
 	// ft_printf("-->%lc\n", 128150);
-
-
-
-	// TEST: BEHAVIOUR
-	// ft_printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
-	// printf("@main_ftprintf: %####0000 33..1..#00d\n", 256);
-	// fflush(stdout);
-	// ft_printf("coucou %.42d\n", t_int);
-	// printf("coucou %.42d\n", t_int);
-	
-	
-	// // printf("%d\n", i);
-	// fflush(stdout);
-	//ft_printf("%hU\n", 4294967296);
-	//printf("%hU\n", 4294967296);
-	//fflush(stdout);
-	// ft_printf("mine :% d\n", 42);
-	// printf("true :% d\n", 42);
-	// ft_printf("true :%#o\n", 42);
-	// printf("true :%#o\n", 42);
-	// printf("true :% 05d\n", t_int);
 
 	// TEST: CHAR
 	// gestion du '-' et width
-	// printf("----------------\n");	
+	// printf("----------------\n");
 	// -------------------------------------------
 	// ft_printf("%42c\n", t_char);
 	// printf("%42c\n", t_char);
@@ -104,9 +73,9 @@ int		main(int __unused ac, char __unused **av)
 	// printf("%-42c\n", t_char);
 	// fflush(stdout);
 	// -------------------------------------------
-	
 
-	
+
+
 	// TEST: STRING
 	// gestion du '-' et width
 	// -------------------------------------------
@@ -136,7 +105,7 @@ int		main(int __unused ac, char __unused **av)
 
 
 	// TEST: INTEGER
-	// gestion de '0', ' ', '+', '-' 
+	// gestion de '0', ' ', '+', '-'
 	// -------------------------------------------
 	// ft_printf("%-42d\n", t_int);
 	// printf("%-42d\n", t_int);
@@ -161,7 +130,7 @@ int		main(int __unused ac, char __unused **av)
 
 
 	// TEST: UNSIGNED INTEGER
-	// gestion de 
+	// gestion de
 	// -------------------------------------------
 	// ft_printf("%-42u\n", t_int);
 	// printf("%-42u\n", t_int);
@@ -183,11 +152,11 @@ int		main(int __unused ac, char __unused **av)
 	// printf("%-42d\n", t_int);
 	// fflush(stdout);
 	// -------------------------------------------
-	
+
 
 
 	// TEST: OCTAL
-	// gestion de  
+	// gestion de
 	// -------------------------------------------
 	// ft_printf("%-42o\n", t_int);
 	// printf("%-42o\n", t_int);
@@ -216,7 +185,7 @@ int		main(int __unused ac, char __unused **av)
 
 
 	// TEST: Hexa
-	// gestion de  
+	// gestion de
 	//ft_printf("%010x\n", 542);
 	//printf("%010x\n", 542);
 	//fflush(stdout);
@@ -252,31 +221,8 @@ int		main(int __unused ac, char __unused **av)
 	// printf("%ll42x\n", t_int);
 	// fflush(stdout);
 
-/*
-|======================== NICO ========================|
-int i = 0;
-	int t_dolphin = 128044;
-	while (i++ < 90)
-		ft_printf("%lc", t_dolphin);
-	ft_printf("\n");
-
-	// power(5, 5);
-	// ft_putchar('\n');
-	// printf("power_two =\t%lld\n\n", power_two(2, 8));
-	ft_putchar('\n');
-	printf("printf:\t\t%f\n", t_float);
-	fflush(stdout);
-	ft_printf("ft_printf:\t%f\n", t_float);
-	// printf("-%f\n", t_float2);
-	// ft_printf("+%f\n", t_float2);
 
 
-	i = 0;
-	while (i++ < 90)
-		ft_printf("%lc", t_dolphin);
-	ft_printf("\n");
-|======================== NICO ========================|
-*/
 
 	//TEST: cspdiouxX
 	//ft_printf("hello\nchar\t\t\t:\t\t%c\nstring\t\t\t:\t\t%s\naddress\t\t\t:\t\t%p\ninteger\t\t\t:\t\t%d\ninteger\t\t\t:\t\t%i\noctal\t\t\t:\t\t%o\nunsigned integer\t:\t\t%u\nhexamin\t\t\t:\t\t%x\nhexamaj\t\t\t:\t\t%X\n\n", t_char, t_string, t_string, t_int, t_int2, t_oct, t_uns, t_hexmin, t_hexmax);
@@ -291,7 +237,7 @@ int i = 0;
 	//printf("bonjour\n%+-#- 0+12.1234hhs\n%00d%%\n", t_string, t_int);
 	//printf("flagexplorer%c\n", t_char);
 	//printf("bonjour\n%+-#- 0+12.1234hhs\n%00d%%\n", t_string, t_int);
-	
+
 	//TEST-MEDHI
 	// printf("%5%-\n");
 	// printf("%5q-\n");

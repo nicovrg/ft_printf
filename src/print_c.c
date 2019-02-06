@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:27:03 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/04 20:19:42 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/06 15:52:36 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_addwchar(va_list ap, t_info *options)
 		ft_putwchar(cast_ap, options);
 		options->ret++;
 	}
-	addwidth_char(options->width, options);
+	addwidth_wchar(cast_ap, options->width, options);
 	if (options->minus == 0)
 	{
 		append_to_buff(0, 1, options);
@@ -81,5 +81,22 @@ void	ft_putwchar(wchar_t c, t_info *options)
 		ft_putchar(((c >> 6) & 0x3F) | 0x80);
 		ft_putchar((c & 0x3F) | 0x80);
 		options->ret += 3;
+	}
+}
+
+void		addwidth_wchar(wchar_t c, int nb, t_info *options)
+{
+	if (c <= 0x7F)
+		nb--;
+	else if (c <= 0x7FF)
+		nb -= 2;
+	else if (c <= 0xFFFF)
+		nb -= 3;
+	else if (c <= 0x10FFFF)
+		nb -= 4;
+	while (nb > 0)
+	{
+		append_to_buff(options->zero && !options->minus && options->accuracy < 0 ? '0' : ' ', 0, options);
+		nb--;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:15 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/31 21:08:49 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/06 17:14:57 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	width_for_null(t_info *options)
 		options->plus && !options->neg ? append_to_buff('+', 0, options) : 0;
 		options->space && !options->plus && !options->neg ? append_to_buff(' ', 0, options) : 0;
 	}
-	while (options->width--)
+	while (options->width-- > 0)
 		append_to_buff(' ', 0, options);
 	if (!options->minus)
 	{
