@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/04 15:56:32 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/07 21:35:50 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	(*funptr[12])(va_list, t_info *) = {
 	&ft_addpercent,
 };
 
-void	addbuff(char *str, t_info __unused *options)
+void	addbuff(char *str, t_info *o)
 {
 	int		i;
 
@@ -37,55 +37,53 @@ void	addbuff(char *str, t_info __unused *options)
 	{
 		while (str[i] != '\0')
 		{
-			append_to_buff(str[i], 0, options);
+			append_to_buff(str[i], 0, o);
 			i++;
 		}
 	}
 }
 
-int		parse_str(char *str, t_info *options)
+int		parse_str(char *str, t_info *o)
 {
 	int		shift;
 	int		i;
 
 	shift = 0;
 	i = 0;
-	while (!check_conversion(str[shift], options) && str[i] != '\0')
+	while (!check_conversion(str[shift], o) && str[i] != '\0')
 	{
-		while (check_flag(str[shift], options) == 1)
+		while (check_flag(str[shift], o) == 1)
 			shift++;
-		while (check_width(str[shift], options) == 1)
+		while (check_width(str[shift], o) == 1)
 			shift++;
-		if (check_accuracy_one(str[shift], options) == 1)
+		if (check_accuracy_one(str[shift], o) == 1)
 			shift++;
-		while (check_accuracy_two(str[shift], options) == 1)
+		while (check_accuracy_two(str[shift], o) == 1)
 			shift++;
-		while (check_type(str[shift], options) == 1)
+		while (check_type(str[shift], o) == 1)
 			shift++;
 		i++;
 	}
-	if (check_conversion(str[shift], options) == 1)
+	if (check_conversion(str[shift], o) == 1)
 		shift++;
-		//usage();
-	//ft_put_info(options);
 	return (shift);
 }
 
-int		append_to_buff(char c, int print, t_info *options)
+int		append_to_buff(char c, int print, t_info *o)
 {
 	if (print == 0)
-		options->buff[options->index] = c;
+		o->buff[o->index] = c;
 	else if (print == 1)
 	{
-		options->index = 0;
-		ft_putstr(options->buff);
-		ft_bzero(options->buff, BUFF_SIZE);
-		return (options->ret);
+		o->index = 0;
+		ft_putstr(o->buff);
+		ft_bzero(o->buff, BUFF_SIZE);
+		return (o->ret);
 	}
-	options->index++;
-	if (options->index == BUFF_SIZE - 1)
-		append_to_buff(0, 1, options);
-	return (options->ret++);
+	o->index++;
+	if (o->index == BUFF_SIZE - 1)
+		append_to_buff(0, 1, o);
+	return (o->ret++);
 }
 
 int		ft_printf(char *str, ...)
@@ -93,26 +91,26 @@ int		ft_printf(char *str, ...)
 	int		i;
 	int		j;
 	va_list	arg;
-	t_info	options;
+	t_info	o;
 
 	i = 0;
 	j = 0;
 	va_start(arg, str);
-	t_info_init(&options, i);
+	t_info_init(&o, i);
 	while (str[i])
 	{
 		if (str[i] == '%')
 		{
-			t_info_init(&options, i);
-			i = i + parse_str(str + i + 1, &options);
-			options.conversion != -1 ? funptr[options.conversion % 12](arg, &options): 0;
+			t_info_init(&o, i);
+			i = i + parse_str(str + i + 1, &o);
+			o.conversion != -1 ? funptr[o.conversion % 12](arg, &o): 0;
 		}
 		else
-			append_to_buff(str[i], 0, &options);
-		i == BUFF_SIZE - 1 ? append_to_buff(0, 1, &options) : 0;
+			append_to_buff(str[i], 0, &o);
+		i == BUFF_SIZE - 1 ? append_to_buff(0, 1, &o) : 0;
 		j++;
 		i++;
 	}
 	va_end(arg);
-	return (append_to_buff(0, 1, &options));
+	return (append_to_buff(0, 1, &o));
 }

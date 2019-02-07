@@ -27,7 +27,6 @@ OBJ_PATH = ./obj
 #OBJLIB_PATH = ./obj
 
 SRC_NAME =	./mem.c \
-			./test.c \
 			./else.c \
 			./print_%.c \
 			./print_b.c \
@@ -39,11 +38,9 @@ SRC_NAME =	./mem.c \
 			./print_u.c \
 			./print_x.c \
 			./print_f.c \
-			./print_ff.c \
 			./width_csp.c \
 			./width_dioux.c \
-			./big_int.c \
-			./itoa_base.c \
+			./convert_base.c \
 			./parse.c \
 			./ft_printf.c
 
@@ -56,6 +53,7 @@ SRC_NAME =	./mem.c \
 	ft_strlwr.c\
 	ft_wstrlen.c\
 	ft_wstrsub.c
+			# ./print_ff.c \
 
 INC_NAME = ft_printf.h
 

@@ -3,61 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   print_c.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:27:03 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/06 15:52:36 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/07 21:32:39 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
-void	ft_addchar(va_list ap, t_info *options)
-{	
-	int		cast_ap;
+void			ft_addchar(va_list ap, t_info *o)
+{
+	int	cast_ap;
 
-	if (options->type == 2 || options->conversion == 12)
+	if (o->type == 2 || o->conversion == 12)
 	{
-		ft_addwchar(ap, options);
+		ft_addwchar(ap, o);
 		return ;
 	}
 	cast_ap = va_arg(ap, int);
 	if (cast_ap < 32 && cast_ap >= 0)
 	{
-		char_null(cast_ap, options);
+		char_null(cast_ap, o);
 	}
 	else
 	{
-		if (options->minus == 1)
-			append_to_buff(' ' + cast_ap - 32, 0, options);
-		addwidth_char(options->width, options);
-		if (options->minus == 0)
-			append_to_buff(' ' + cast_ap - 32, 0, options);
+		if (o->minus == 1)
+			append_to_buff(' ' + cast_ap - 32, 0, o);
+		addwidth_char(o->width, o);
+		if (o->minus == 0)
+			append_to_buff(' ' + cast_ap - 32, 0, o);
 	}
 }
 
-void	ft_addwchar(va_list ap, t_info *options)
+void			ft_addwchar(va_list ap, t_info *o)
 {
 	wchar_t	cast_ap;
 
 	cast_ap = va_arg(ap, wchar_t);
-	if (options->minus == 1)
+	if (o->minus == 1)
 	{
-		append_to_buff(0, 1, options);
-		ft_putwchar(cast_ap, options);
-		options->ret++;
+		append_to_buff(0, 1, o);
+		ft_putwchar(cast_ap, o);
+		o->ret++;
 	}
-	addwidth_wchar(cast_ap, options->width, options);
-	if (options->minus == 0)
+	addwidth_wchar(cast_ap, o->width, o);
+	if (o->minus == 0)
 	{
-		append_to_buff(0, 1, options);
-		ft_putwchar(cast_ap, options);
-		options->ret++;
+		append_to_buff(0, 1, o);
+		ft_putwchar(cast_ap, o);
+		o->ret++;
 	}
 }
 
-void	ft_putwchar(wchar_t c, t_info *options)
+void			ft_putwchar(wchar_t c, t_info *o)
 {
 	if (c <= 0x7F)
 		ft_putchar(c);
@@ -65,14 +65,14 @@ void	ft_putwchar(wchar_t c, t_info *options)
 	{
 		ft_putchar((c >> 6) | 0xC0);
 		ft_putchar((c & 0x3F) | 0x80);
-		options->ret++;
+		o->ret++;
 	}
 	else if (c <= 0xFFFF)
 	{
 		ft_putchar((c >> 12) | 0xE0);
 		ft_putchar(((c >> 6) & 0x3F) | 0x80);
 		ft_putchar((c & 0x3F) | 0x80);
-		options->ret += 2;
+		o->ret += 2;
 	}
 	else if (c <= 0x10FFFF)
 	{
@@ -80,11 +80,11 @@ void	ft_putwchar(wchar_t c, t_info *options)
 		ft_putchar(((c >> 12) & 0x3F) | 0x80);
 		ft_putchar(((c >> 6) & 0x3F) | 0x80);
 		ft_putchar((c & 0x3F) | 0x80);
-		options->ret += 3;
+		o->ret += 3;
 	}
 }
 
-void		addwidth_wchar(wchar_t c, int nb, t_info *options)
+void			addwidth_wchar(wchar_t c, int nb, t_info *o)
 {
 	if (c <= 0x7F)
 		nb--;
@@ -96,7 +96,8 @@ void		addwidth_wchar(wchar_t c, int nb, t_info *options)
 		nb -= 4;
 	while (nb > 0)
 	{
-		append_to_buff(options->zero && !options->minus && options->accuracy < 0 ? '0' : ' ', 0, options);
+		append_to_buff(o->zero && !o->minus && o->accuracy < 0
+		? '0' : ' ', 0, o);
 		nb--;
 	}
 }

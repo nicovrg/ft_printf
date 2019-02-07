@@ -3,75 +3,77 @@
 /*                                                        :::      ::::::::   */
 /*   width_csp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:13 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/04 17:54:20 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/07 21:31:36 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
-void		addwidth_char(int nb, t_info *options)
+void		addwidth_char(int nb, t_info *o)
 {
 	while (nb > 1)
 	{
-		append_to_buff(options->zero && !options->minus && options->accuracy < 0 ? '0' : ' ', 0, options);
+		append_to_buff(o->zero && !o->minus && o->accuracy < 0
+		? '0' : ' ', 0, o);
 		nb--;
 	}
 }
 
-void		addwidth_string(int nb, char *cast_ap, t_info *options)
+void		addwidth_string(int nb, char *cast_ap, t_info *o)
 {
 	int	len;
 	int	size;
 
 	size = ft_strlen(cast_ap);
-	if (options->accuracy > 0)
-		len = nb - (size > options->accuracy ? options->accuracy : size);
-	else if (options->accuracy == -1)
+	if (o->accuracy > 0)
+		len = nb - (size > o->accuracy ? o->accuracy : size);
+	else if (o->accuracy == -1)
 		len = nb - size;
 	else
 		len = nb;
 	while (len > 0)
 	{
-		append_to_buff(options->zero && !options->minus && options->accuracy < 0 ? '0' : ' ', 0, options);
+		append_to_buff(o->zero && !o->minus && o->accuracy < 0
+		? '0' : ' ', 0, o);
 		len--;
 	}
 }
 
-void		addwidth_pointer(int nb, char * __unused cast_ap, t_info *options)
+void		addwidth_pointer(int nb, char *cast_ap, t_info *o)
 {
 	int len;
 
 	len = nb - 11;
 	while (len > 0)
 	{
-		append_to_buff(' ', 0, options);
+		append_to_buff(' ', 0, o);
 		len--;
 	}
 }
 
-void		char_null(int cast_ap, t_info *options)
+void		char_null(int cast_ap, t_info *o)
 {
-	if (options->minus == 0)
+	if (o->minus == 0)
 	{
-		addwidth_char(options->width, options);
-		append_to_buff(0, 1, options);
+		addwidth_char(o->width, o);
+		append_to_buff(0, 1, o);
 		write(1, &cast_ap, 1);
 	}
-	else if (options->minus == 1)
+	else if (o->minus == 1)
 	{
-		append_to_buff(0, 1, options);
+		append_to_buff(0, 1, o);
 		write(1, &cast_ap, 1);
-		addwidth_char(options->width, options);
-		append_to_buff(0, 1, options);
+		addwidth_char(o->width, o);
+		append_to_buff(0, 1, o);
 	}
-	options->ret++;
+	o->ret++;
 }
 
-char	*string_for_null(void)
+char		*string_for_null(void)
 {
 	char	*str;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/06 20:52:29 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/07 21:38:18 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../include/ft_printf.h"
 #include <locale.h>
 
-int		main(int __unused ac, char __unused **av)
+int		main(int __unused ac, char ** __unused av)
 {
 	int				t_int;
 	int				t_int2;
@@ -44,11 +44,12 @@ int		main(int __unused ac, char __unused **av)
 		ft_printf("%lc %lc ", t_dolphin, 127817);
 	ft_printf("\n\n");
 
+
 	// ft_printf("%s\n", "noque ta mere");
-	setlocale(LC_ALL, "");
-	printf("\nmine : %d\n", ft_printf("%2.2ls", L"ʕノ•ᴥ•ʔノ ︵ ┻━┻ "));
-	printf("\ntrue : %d\n", printf("%2.2ls", L"ʕノ•ᴥ•ʔノ ︵ ┻━┻ "));
-	fflush(stdout);
+	// setlocale(LC_ALL, "");
+	// printf("\nmine : %d\n", ft_printf("%2.2ls", L"ʕノ•ᴥ•ʔノ ︵ ┻━┻ "));
+	// printf("\ntrue : %d\n", printf("%2.2ls", L"ʕノ•ᴥ•ʔノ ︵ ┻━┻ "));
+	// fflush(stdout);
 
 	ft_printf("\n\n");
 	i = 0;

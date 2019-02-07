@@ -1,17 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   itoa_base.c                                        :+:      :+:    :+:   */
+/*   convert_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 20:00:21 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/31 19:24:37 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/07 21:34:54 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
+
+unsigned long long	itooct(unsigned long long nb)
+{
+	unsigned long long	octnbr;
+	unsigned long long	i;
+
+	octnbr = 0;
+	i = 1;
+	while (nb > 0)
+	{
+		octnbr += (nb % 8) * i;
+		nb /= 8;
+		i *= 10;
+	}
+	return (octnbr);
+}
 
 unsigned long long	get_size(unsigned long long value, int base)
 {
@@ -28,7 +44,7 @@ unsigned long long	get_size(unsigned long long value, int base)
 	return (size);
 }
 
-char			*fill_base(int base, int l)
+char				*fill_base(int base, int l)
 {
 	int		i;
 	char	*base_arr;
@@ -50,7 +66,7 @@ char			*fill_base(int base, int l)
 	return (base_arr);
 }
 
-char			*ft_itoa_base(unsigned long long value, int base, int l)
+char				*conv(unsigned long long value, int base, int l)
 {
 	int					i;
 	unsigned long long	uns;
@@ -66,7 +82,7 @@ char			*ft_itoa_base(unsigned long long value, int base, int l)
 	base_res[i] = '\0';
 	i--;
 	while (i >= 0)
-	{ 
+	{
 		base_res[i] = base_arr[uns % (unsigned long long)base];
 		uns = uns / (unsigned long long)base;
 		i--;

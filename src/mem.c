@@ -6,7 +6,7 @@
 /*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 17:10:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/05 18:00:52 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/07 20:55:20 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,42 +164,18 @@ unsigned char	*esreverse(unsigned char *str)
 	return (str);
 }
 
-void	ft_putunll(unsigned long long n)
-{
-	unsigned long long nbr;
-
-	nbr = (unsigned long long)n;
-	if (nbr >= 10)
-	{
-		ft_putunll(nbr / 10);
-		ft_putchar(nbr % 10 + '0');
-	}
-	else
-		ft_putchar(nbr % 10 + '0');
-}
-
-
-void	ft_putstr_test(unsigned char *s)
+char			*ft_strcpy(char *dest, const char *src)
 {
 	int i;
 
 	i = 0;
-	// while (s[i++])
-		// s[i] += 48;
-	i = 0;	
-	while (s[i++])
-		write(1, &s[i], 1);
-	// if (s)
-	// 	write(1, s, ft_strlen_test(s));
+	while (*src)
+	{
+		*dest = *src;
+		dest++;
+		src++;
+		i++;
+	}
+	*dest = '\0';
+	return (dest - i);
 }
-
-// size_t		ft_strlen_test(unsigned char *s)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (s[i])
-// 		i++;
-// 	return (i);
-// }
-

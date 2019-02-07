@@ -3,50 +3,78 @@
 /*                                                        :::      ::::::::   */
 /*   else.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 22:16:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/01 01:24:54 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/02/07 21:23:31 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
-int		t_info_init(t_info *options, int i)
+int		t_info_init(t_info *o, int i)
 {
-	options->zero = 0;
-	options->plus = 0;
-	options->minus = 0;
-	options->space = 0;
-	options->hashtag = 0;
-	options->percent = 0;
-	options->neg = 0;
-	options->width = -1;
-	options->accuracy = -1;
-	options->type = 0;
-	options->conversion = -1;
-	options->llmin = 0;
+	o->zero = 0;
+	o->plus = 0;
+	o->minus = 0;
+	o->space = 0;
+	o->hashtag = 0;
+	o->percent = 0;
+	o->neg = 0;
+	o->width = -1;
+	o->accuracy = -1;
+	o->type = 0;
+	o->conversion = -1;
+	o->llmin = 0;
 	if (i == 0)
 	{
-		options->ret = 0;
-		options->index = 0;
-		ft_bzero(&options->buff, BUFF_SIZE);
+		o->ret = 0;
+		o->index = 0;
+		ft_bzero(&o->buff, BUFF_SIZE);
 	}
 	return (0);
 }
 
-int		ft_accuracy(t_info *options)
+int		check_type(char c, t_info *o)
 {
-	int accu;
-
-	accu = options->accuracy;
-	while(accu-- > 0)
-		append_to_buff('0', 0, options);
+	if (c == 'h')
+	{
+		if (o->type == 1)
+			o->type = 3;
+		else
+			o->type = 1;
+		return (1);
+	}
+	else if (c == 'l')
+	{
+		if (o->type == 2)
+			o->type = 4;
+		else
+			o->type = 2;
+		return (1);
+	}
+	else if (c == 'j' || c == 'z')
+	{
+		o->type = 4;
+		return (1);
+	}
+	else if (c == 'q')
+		return (1);
 	return (0);
 }
 
-void	usage()
+int		ft_accuracy(t_info *o)
+{
+	int accu;
+
+	accu = o->accuracy;
+	while (accu-- > 0)
+		append_to_buff('0', 0, o);
+	return (0);
+}
+
+void	usage(void)
 {
 	ft_putstr("ft_printf usage:\n");
 	ft_putstr("write usage\n");

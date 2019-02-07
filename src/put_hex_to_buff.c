@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   put_hex_to_buff.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 14:47:08 by julesqvgn         #+#    #+#             */
-/*   Updated: 2019/01/27 14:47:20 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/02/07 19:35:27 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
-long long	abs_value(long long value)
+long long		abs_value(long long value)
 {
 	return (value < 0 ? -value : value);
 }
 
-long long	get_size(long long value, int base)
+long long		get_size(long long value, int base)
 {
 	int		size;
 
@@ -67,7 +67,7 @@ void			ft_itoa_base(long long value, int base, int l, t_info *opts)
 		return (NULL);
 	i--;
 	while (i >= 0)
-	{ 
+	{
 		opts->buff[opts->index++] = base_arr[uns % (unsigned long long)base];
 		if (opts->index == BUFF_SIZE)
 			append_to_buff(0, 1, opts);

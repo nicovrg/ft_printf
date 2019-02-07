@@ -3,95 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 19:01:31 by nivergne          #+#    #+#             */
-/*   Updated: 2019/01/31 19:17:36 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/07 21:23:33 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "ft_printf.h"
 #include "../include/ft_printf.h"
 
-int		check_flag(char c, t_info *options)
+int		check_flag(char c, t_info *o)
 {
 	if (c == '0')
-		options->zero = 1;
+		o->zero = 1;
 	else if (c == '+')
-		options->plus = 1;
+		o->plus = 1;
 	else if (c == '-')
-		options->minus = 1;
+		o->minus = 1;
 	else if (c == ' ')
-		options->space = 1;
+		o->space = 1;
 	else if (c == '#')
-		options->hashtag = 1;
+		o->hashtag = 1;
 	if (c == ' ' || c == '-' || c == '+' || c == '#' || c == '0')
 		return (1);
 	return (0);
 }
 
-int		check_width(char c, t_info *options)
+int		check_width(char c, t_info *o)
 {
 	if (c >= '0' && c <= '9')
 	{
-		if (options->width == -1)
-			options->width = c - '0';
+		if (o->width == -1)
+			o->width = c - '0';
 		else
-			options->width = options->width * 10 + c - '0';
+			o->width = o->width * 10 + c - '0';
 		return (1);
 	}
 	return (0);
 }
 
-int		check_accuracy_one(char c, t_info *options)
+int		check_accuracy_one(char c, t_info *o)
 {
 	if (c == '.')
 	{
-		options->accuracy = 0;
+		o->accuracy = 0;
 		return (1);
 	}
 	return (0);
 }
 
-int		check_accuracy_two(char c, t_info *options)
+int		check_accuracy_two(char c, t_info *o)
 {
 	if (c >= '0' && c <= '9')
 	{
-		options->accuracy = options->accuracy * 10 + c - '0';
+		o->accuracy = o->accuracy * 10 + c - '0';
 		return (1);
 	}
 	return (0);
 }
 
-int		check_type(char c, t_info *options)
-{
-	if (c == 'h')
-	{
-		if (options->type == 1)
-			options->type = 3;
-		else
-			options->type = 1;
-		return (1);
-	}
-	else if (c == 'l')
-	{
-		if (options->type == 2)
-			options->type = 4;
-		else
-			options->type = 2;
-		return (1);
-	}
-	else if (c == 'j' || c == 'z')
-	{
-		options->type = 4;
-		return (1);
-	}
-	else if (c == 'q')
-		return (1);
-	return (0);
-}
-
-int		check_conversion(char c, t_info *options)
+int		check_conversion(char c, t_info *o)
 {
 	int		i;
 	char	*str;
@@ -102,8 +74,8 @@ int		check_conversion(char c, t_info *options)
 	{
 		if (c == str[i])
 		{
-			i > 11 ? options->type = 4 : 0;
-			options->conversion = i;
+			i > 11 ? o->type = 4 : 0;
+			o->conversion = i;
 			return (1);
 		}
 		i++;
