@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:27:52 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/07 21:17:32 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/08 13:15:15 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	ft_adduns(long long cast_ap, t_info *o)
 
 void	ft_adduns_core(unsigned long long nb, t_info *o, int base)
 {
+	if (nb == 0 && o->accuracy == 0)
+		return ;
 	if (nb >= (unsigned long long)base)
 	{
 		ft_adduns_core(nb / base, o, base);

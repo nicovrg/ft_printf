@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   else.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 22:16:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/07 21:23:31 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/08 13:02:56 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		ft_accuracy(t_info *o)
 		append_to_buff('0', 0, o);
 	return (0);
 }
-
+//on ne l utilise pas ??
 void	usage(void)
 {
 	ft_putstr("ft_printf usage:\n");

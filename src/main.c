@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/07 21:38:18 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/08 13:28:20 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,10 @@ int		main(int __unused ac, char ** __unused av)
 		ft_printf("%lc %lc ", t_dolphin, 127817);
 	ft_printf("\n\n");
 
-
-	// ft_printf("%s\n", "noque ta mere");
 	// setlocale(LC_ALL, "");
-	// printf("\nmine : %d\n", ft_printf("%2.2ls", L"ʕノ•ᴥ•ʔノ ︵ ┻━┻ "));
-	// printf("\ntrue : %d\n", printf("%2.2ls", L"ʕノ•ᴥ•ʔノ ︵ ┻━┻ "));
-	// fflush(stdout);
+	printf("\nmine : %d\n", ft_printf("{%10R}"));
+	printf("\ntrue : %d\n", printf("{%10R}"));
+	fflush(stdout);
 
 	ft_printf("\n\n");
 	i = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/07 21:35:50 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/08 13:34:17 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ int		parse_str(char *str, t_info *o)
 	}
 	if (check_conversion(str[shift], o) == 1)
 		shift++;
+	else if (o->width > 0)
+		while (o->width-- > 1)
+			append_to_buff(' ', 0, o);
 	return (shift);
 }
 
@@ -114,3 +117,19 @@ int		ft_printf(char *str, ...)
 	va_end(arg);
 	return (append_to_buff(0, 1, &o));
 }
+
+/*
+-padding accuracy octal
+-check utilite toute les fonctions
+-leaks
+-normes
+-tester les min et les max
+-rechecker tout les test
+-voir avec les valeur 0
+-expliquer si fct non comprise
+-arranger le makefile
+-ajouter la libft au projets
+-valider ce projet de merde
+-octal long max
+-precision null pointeur
+*/ 
