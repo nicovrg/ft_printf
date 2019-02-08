@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_p.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:29:11 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/07 20:35:02 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:18:40 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 void	ft_addaddr(va_list ap, t_info *o)
 {

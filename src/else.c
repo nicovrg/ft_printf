@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   else.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 22:16:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 13:02:56 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/02/08 16:17:02 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 int		t_info_init(t_info *o, int i)
 {
@@ -72,11 +71,4 @@ int		ft_accuracy(t_info *o)
 	while (accu-- > 0)
 		append_to_buff('0', 0, o);
 	return (0);
-}
-//on ne l utilise pas ??
-void	usage(void)
-{
-	ft_putstr("ft_printf usage:\n");
-	ft_putstr("write usage\n");
-	exit(-1);
 }

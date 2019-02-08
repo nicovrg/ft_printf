@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 19:01:31 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/07 21:23:33 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:18:02 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 int		check_flag(char c, t_info *o)
 {

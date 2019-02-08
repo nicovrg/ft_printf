@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   width_dioux.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:15 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/07 19:33:54 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/08 18:09:02 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 int			width_size_diou(t_info *o, long long cast_ap, int base)
 {
@@ -68,7 +67,9 @@ int			width_size_o(t_info *o, unsigned long long cast_ap)
 {
 	int width;
 	int size_nb;
+	int	hash;
 
+	hash = o->hashtag;
 	cast_ap = itooct(cast_ap);
 	size_nb = cast_ap == 0 ? 1 : 0;
 	width = o->width;
@@ -77,14 +78,13 @@ int			width_size_o(t_info *o, unsigned long long cast_ap)
 		cast_ap /= 10;
 		size_nb++;
 	}
-	width = width - (o->accuracy > size_nb + o->hashtag
-	? o->accuracy : size_nb + o->hashtag);
+	width -= (o->accuracy > size_nb + hash ? o->accuracy : size_nb + hash);
 	if (o->accuracy != -1)
 	{
-		if (o->accuracy - size_nb - (o->hashtag == 1 ? 1 : 0) < 0)
+		if (o->accuracy - size_nb - hash <= 0)
 			o->accuracy = 0;
 		else
-			o->accuracy -= size_nb - (o->hashtag == 1 ? 1 : 0);
+			o->accuracy -= size_nb + hash;
 	}
 	return (width);
 }
@@ -113,8 +113,7 @@ int			width_bin(t_info *o)
 
 	size_nb = 8;
 	width = o->width;
-	width -= (o->accuracy > size_nb
-	? o->accuracy : size_nb) - o->space;
+	width -= (o->accuracy > size_nb ? o->accuracy : size_nb) - o->space;
 	if (o->accuracy != -1)
 	{
 		if (o->accuracy - size_nb < 0)

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   put_hex_to_buff.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/27 14:47:08 by julesqvgn         #+#    #+#             */
-/*   Updated: 2019/02/07 19:35:27 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:18:55 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 long long		abs_value(long long value)
 {

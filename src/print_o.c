@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_o.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:33:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/07 21:18:56 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/08 18:06:01 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 void	ft_oct(va_list ap, t_info *o)
 {
@@ -39,7 +38,7 @@ void	ft_addoct(unsigned long long cast_ap, t_info *o)
 	o->minus == 1 && o->hashtag == 1 ? append_to_buff('0', 0, o) : 0;
 	o->minus == 1 ? ft_adduns_core(cast_ap, o, 8) : 0;
 	if (o->width >= 0 && size > 0)
-		while (size--)
+		while (size-- > 0)
 			append_to_buff(o->zero && !o->minus &&
 				o->accuracy < 0 ? '0' : ' ', 0, o);
 	o->accuracy > 0 && !o->minus ? ft_accuracy(o) : 0;

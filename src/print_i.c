@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_i.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 03:18:33 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/07 19:30:40 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:18:28 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
-#include <limits.h>
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 void	ft_nbr(va_list ap, t_info *o)
 {

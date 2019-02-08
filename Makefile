@@ -16,19 +16,19 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-CPP_FLAGS = -Iinclude
-
 NAME = libftprintf.a
 
+INCLUDE = -I./include/
+
 SRC_PATH = ./src
-#LIB_PATH = ./libft
-INC_PATH = ./include
+LIB_PATH = ./libft
+INC_PATH = ./include/
 OBJ_PATH = ./obj
-#OBJLIB_PATH = ./obj
+OBJLIB_PATH = ./obj
 
 SRC_NAME =	./mem.c \
 			./else.c \
-			./print_%.c \
+			./print_per.c \
 			./print_b.c \
 			./print_c.c \
 			./print_s.c \
@@ -58,17 +58,17 @@ SRC_NAME =	./mem.c \
 INC_NAME = ft_printf.h
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
-	#OBJLIB_NAME = $(LIB_NAME:.c=.o)
+OBJLIB_NAME = $(LIB_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
-#LIB = $(addprefix $(LIB_PATH)/, $(LIB_NAME))
+LIB = $(addprefix $(LIB_PATH)/, $(LIB_NAME))
 INC = $(addprefix $(INC_PATH)/, $(INC_NAME))
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
-#OBJLIB = $(addprefix $(OBJLIB_PATH)/,$(OBJLIB_NAME))
+OBJLIB = $(addprefix $(OBJLIB_PATH)/,$(OBJLIB_NAME))
 
 all: $(NAME)
 
-$(NAME): $(OBJ) #$(OBJLIB)
+$(NAME): $(OBJ) $(OBJLIB)
 	@ar rc $(NAME) $(OBJ) $(OBJLIB)
 	@ranlib $(NAME)
 	@echo "          __, ___      __, __, _ _, _ ___ __,"
@@ -102,14 +102,14 @@ $(NAME): $(OBJ) #$(OBJLIB)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
-	@$(CC) -o $@ -c $<
+	@$(CC) $(FLAGS) $(INCLUDE) -o $@ -c $<
 
-#$(OBJLIB_PATH)/%.o: $(LIB_PATH)/%.c
-#	@mkdir $(OBJLIB_PATH) 2> /dev/null || true
-#	@$(CC) -o $@ -c $<
+$(OBJLIB_PATH)/%.o: $(LIB_PATH)/%.c
+	@mkdir $(OBJLIB_PATH) 2> /dev/null || true
+	@$(CC) $(FLAGS) $(INCLUDE) -o $@ -c $<
 
 clean:
-	@rm -rf $(OBJ) #$(OBJLIB)
+	@rm -rf $(OBJ) $(OBJLIB)
 	@echo "\033[1;34mft_printf\t\033[1;33mCleaning obj\t\033[0;32m[OK]\033[0m"
 
 fclean: clean

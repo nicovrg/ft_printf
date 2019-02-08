@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   convert_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 20:00:21 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/07 21:34:54 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:16:57 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 unsigned long long	itooct(unsigned long long nb)
 {

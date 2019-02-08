@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_c.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:27:03 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/07 21:32:39 by nivergne         ###   ########.fr       */
+/*   Updated: 2019/02/08 18:20:17 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 void			ft_addchar(va_list ap, t_info *o)
 {
@@ -43,44 +42,36 @@ void			ft_addwchar(va_list ap, t_info *o)
 
 	cast_ap = va_arg(ap, wchar_t);
 	if (o->minus == 1)
-	{
-		append_to_buff(0, 1, o);
 		ft_putwchar(cast_ap, o);
-		o->ret++;
-	}
 	addwidth_wchar(cast_ap, o->width, o);
 	if (o->minus == 0)
-	{
-		append_to_buff(0, 1, o);
 		ft_putwchar(cast_ap, o);
-		o->ret++;
-	}
 }
 
 void			ft_putwchar(wchar_t c, t_info *o)
 {
 	if (c <= 0x7F)
-		ft_putchar(c);
+		append_to_buff(c, 0, o);
 	else if (c <= 0x7FF)
 	{
-		ft_putchar((c >> 6) | 0xC0);
-		ft_putchar((c & 0x3F) | 0x80);
-		o->ret++;
+		append_to_buff((c >> 6) | 0xC0, 0, o);
+		append_to_buff((c & 0x3F) | 0x80, 0, o);
+		o->ret -= 1;
 	}
 	else if (c <= 0xFFFF)
 	{
-		ft_putchar((c >> 12) | 0xE0);
-		ft_putchar(((c >> 6) & 0x3F) | 0x80);
-		ft_putchar((c & 0x3F) | 0x80);
-		o->ret += 2;
+		append_to_buff((c >> 12) | 0xE0, 0, o);
+		append_to_buff(((c >> 6) & 0x3F) | 0x80, 0, o);
+		append_to_buff((c & 0x3F) | 0x80, 0, o);
+		o->ret -= 2;
 	}
 	else if (c <= 0x10FFFF)
 	{
-		ft_putchar((c >> 18) | 0xF0);
-		ft_putchar(((c >> 12) & 0x3F) | 0x80);
-		ft_putchar(((c >> 6) & 0x3F) | 0x80);
-		ft_putchar((c & 0x3F) | 0x80);
-		o->ret += 3;
+		append_to_buff((c >> 18) | 0xF0, 0, o);
+		append_to_buff(((c >> 12) & 0x3F) | 0x80, 0, o);
+		append_to_buff(((c >> 6) & 0x3F) | 0x80, 0, o);
+		append_to_buff((c & 0x3F) | 0x80, 0, o);
+		o->ret -= 3;
 	}
 }
 

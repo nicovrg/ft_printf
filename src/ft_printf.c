@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 13:34:17 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/02/08 18:30:51 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
-void	(*funptr[12])(va_list, t_info *) = {
+void	(*g_funptr[12])(va_list ap, t_info *o) = {
 	&ft_addchar,
 	&ft_addstr,
 	&ft_addaddr,
@@ -106,7 +105,7 @@ int		ft_printf(char *str, ...)
 		{
 			t_info_init(&o, i);
 			i = i + parse_str(str + i + 1, &o);
-			o.conversion != -1 ? funptr[o.conversion % 12](arg, &o): 0;
+			o.conversion != -1 ? g_funptr[o.conversion % 12](arg, &o) : 0;
 		}
 		else
 			append_to_buff(str[i], 0, &o);
@@ -117,19 +116,14 @@ int		ft_printf(char *str, ...)
 	va_end(arg);
 	return (append_to_buff(0, 1, &o));
 }
-
 /*
--padding accuracy octal
 -check utilite toute les fonctions
 -leaks
 -normes
--tester les min et les max
+-precision null pointeur
 -rechecker tout les test
 -voir avec les valeur 0
 -expliquer si fct non comprise
--arranger le makefile
 -ajouter la libft au projets
 -valider ce projet de merde
--octal long max
--precision null pointeur
-*/ 
+*/

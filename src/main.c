@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 13:28:20 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/02/08 18:14:11 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
+
 #include "../include/ft_printf.h"
 #include <locale.h>
 
@@ -45,8 +45,8 @@ int		main(int __unused ac, char ** __unused av)
 	ft_printf("\n\n");
 
 	// setlocale(LC_ALL, "");
-	printf("\nmine : %d\n", ft_printf("{%10R}"));
-	printf("\ntrue : %d\n", printf("{%10R}"));
+	printf("\nmine : %d\n", ft_printf("%2.1u", 0));
+	printf("\ntrue : %d\n", printf("%2.1u", 0));
 	fflush(stdout);
 
 	ft_printf("\n\n");

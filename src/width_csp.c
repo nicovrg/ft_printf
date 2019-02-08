@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   width_csp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:13 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 13:18:02 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/02/08 16:45:13 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_printf.h"
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 void		addwidth_char(int nb, t_info *o)
 {
@@ -42,18 +41,6 @@ void		addwidth_string(int nb, char *cast_ap, t_info *o)
 		len--;
 	}
 }
-
-/*void		addwidth_pointer(int nb, char *cast_ap, t_info *o)
-{
-	int len;
-
-	len = nb - 11;
-	while (len > 0)
-	{
-		append_to_buff(' ', 0, o);
-		len--;
-	}
-}*/
 
 void		char_null(int cast_ap, t_info *o)
 {
