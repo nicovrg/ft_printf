@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:27:52 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 16:18:47 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/08 19:24:08 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	ft_adduns(long long cast_ap, t_info *o)
 		ft_adduns_core(cast_ap, o, 10);
 	if (o->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(o->zero && !o->minus &&
-				o->accuracy < 0 ? '0' : ' ', 0, o);
+			append_to_buff(o->zero && !o->minus
+			&& o->accuracy < 0 ? '0' : ' ', 0, o);
 	o->accuracy > 0 && !o->minus ? ft_accuracy(o) : 0;
 	if (o->minus == 0)
 		ft_adduns_core(cast_ap, o, 10);

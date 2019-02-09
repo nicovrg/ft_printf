@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 21:51:28 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 16:18:49 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/08 19:25:36 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	ft_addhexmin(char *cast_ap, t_info *o)
 		o->minus == 0 && o->hashtag == 2 ? addbuff("0x", o) : 0;
 	if (o->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(o->zero && !o->minus &&
-				o->accuracy < 0 ? '0' : ' ', 0, o);
+			append_to_buff(o->zero && !o->minus
+			&& o->accuracy < 0 ? '0' : ' ', 0, o);
 	if (!(o->zero && o->accuracy == -1))
 		o->minus == 0 && o->hashtag == 2 ? addbuff("0x", o) : 0;
 	o->accuracy > 0 && !o->minus ? ft_accuracy(o) : 0;
@@ -69,8 +69,8 @@ void	ft_addhexmaj(char *cast_ap, t_info *o)
 		o->minus == 0 && o->hashtag == 2 ? addbuff("0X", o) : 0;
 	if (o->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(o->zero && !o->minus &&
-				o->accuracy < 0 ? '0' : ' ', 0, o);
+			append_to_buff(o->zero && !o->minus
+			&& o->accuracy < 0 ? '0' : ' ', 0, o);
 	if (!(o->zero && o->accuracy == -1))
 		o->minus == 0 && o->hashtag == 2 ? addbuff("0X", o) : 0;
 	o->accuracy > 0 && !o->minus ? ft_accuracy(o) : 0;
@@ -83,16 +83,16 @@ void	hex_for_null(t_info *o)
 	o->accuracy > 0 && o->minus ? ft_accuracy(o) : 0;
 	o->minus && o->accuracy < 0 ? ft_addnbr_core(0, o) : 0;
 	if (o->accuracy > 1)
-		o->width = o->width - (o->accuracy >= 1 ?
-			o->accuracy : 1);
+		o->width = o->width - (o->accuracy >= 1
+		? o->accuracy : 1);
 	else if (o->accuracy == 1)
-		o->width = o->width - (o->accuracy >= 1 ?
-			o->accuracy : 1);
+		o->width = o->width - (o->accuracy >= 1
+		? o->accuracy : 1);
 	else if (o->accuracy < 0)
 		o->width--;
 	while (o->width-- > 0)
-		append_to_buff(o->zero && !o->minus &&
-				o->accuracy < 0 ? '0' : ' ', 0, o);
+		append_to_buff(o->zero && !o->minus
+		&& o->accuracy < 0 ? '0' : ' ', 0, o);
 	o->accuracy > 0 && !o->minus ? ft_accuracy(o) : 0;
 	!o->minus && o->accuracy < 0 ? ft_addnbr_core(0, o) : 0;
 }

@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:27:03 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 18:20:17 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/08 18:44:18 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,12 @@ void			ft_putwchar(wchar_t c, t_info *o)
 	{
 		append_to_buff((c >> 6) | 0xC0, 0, o);
 		append_to_buff((c & 0x3F) | 0x80, 0, o);
-		o->ret -= 1;
 	}
 	else if (c <= 0xFFFF)
 	{
 		append_to_buff((c >> 12) | 0xE0, 0, o);
 		append_to_buff(((c >> 6) & 0x3F) | 0x80, 0, o);
 		append_to_buff((c & 0x3F) | 0x80, 0, o);
-		o->ret -= 2;
 	}
 	else if (c <= 0x10FFFF)
 	{
@@ -71,7 +69,6 @@ void			ft_putwchar(wchar_t c, t_info *o)
 		append_to_buff(((c >> 12) & 0x3F) | 0x80, 0, o);
 		append_to_buff(((c >> 6) & 0x3F) | 0x80, 0, o);
 		append_to_buff((c & 0x3F) | 0x80, 0, o);
-		o->ret -= 3;
 	}
 }
 

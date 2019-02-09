@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 18:30:51 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/09 02:20:46 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ void	addbuff(char *str, t_info *o)
 	int		i;
 
 	i = 0;
+	if (o->conversion == 1)
+		o->accuracy == -1 ? o->accuracy = ft_strlen(str) : 1;
 	if (str != NULL)
 	{
-		while (str[i] != '\0')
+		while (str[i] != '\0' && (o->conversion == 1 ? i < o->accuracy : 1))
 		{
 			append_to_buff(str[i], 0, o);
 			i++;
@@ -45,24 +47,18 @@ void	addbuff(char *str, t_info *o)
 int		parse_str(char *str, t_info *o)
 {
 	int		shift;
-	int		i;
 
 	shift = 0;
-	i = 0;
-	while (!check_conversion(str[shift], o) && str[i] != '\0')
-	{
-		while (check_flag(str[shift], o) == 1)
-			shift++;
-		while (check_width(str[shift], o) == 1)
-			shift++;
-		if (check_accuracy_one(str[shift], o) == 1)
-			shift++;
-		while (check_accuracy_two(str[shift], o) == 1)
-			shift++;
-		while (check_type(str[shift], o) == 1)
-			shift++;
-		i++;
-	}
+	while (check_flag(str[shift], o) == 1)
+		shift++;
+	while (check_width(str[shift], o) == 1)
+		shift++;
+	if (check_accuracy_one(str[shift], o) == 1)
+		shift++;
+	while (check_accuracy_two(str[shift], o) == 1)
+		shift++;
+	while (check_type(str[shift], o) == 1)
+		shift++;
 	if (check_conversion(str[shift], o) == 1)
 		shift++;
 	else if (o->width > 0)
@@ -91,12 +87,12 @@ int		append_to_buff(char c, int print, t_info *o)
 int		ft_printf(char *str, ...)
 {
 	int		i;
-	int		j;
 	va_list	arg;
 	t_info	o;
 
 	i = 0;
-	j = 0;
+	if (!str)
+		return (-1);
 	va_start(arg, str);
 	t_info_init(&o, i);
 	while (str[i])
@@ -110,7 +106,6 @@ int		ft_printf(char *str, ...)
 		else
 			append_to_buff(str[i], 0, &o);
 		i == BUFF_SIZE - 1 ? append_to_buff(0, 1, &o) : 0;
-		j++;
 		i++;
 	}
 	va_end(arg);

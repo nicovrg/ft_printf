@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:32:12 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 16:18:08 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/08 19:20:49 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	ft_addbin(va_list ap, t_info *o)
 	}
 	if (o->width >= 0 && size > 0)
 		while (size--)
-			append_to_buff(o->zero && !o->minus &&
-				o->accuracy < 0 ? '0' : ' ', 0, o);
+			append_to_buff(o->zero && !o->minus
+			&& o->accuracy < 0 ? '0' : ' ', 0, o);
 	if (!o->minus)
 	{
 		o->space ? append_to_buff(' ', 0, o) : 0;

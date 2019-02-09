@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 18:29:10 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/08 23:08:08 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char					*ft_strcpy(char *dest, const char *src);
 
 //print_f.c
 void					ft_addfloat(va_list ap, t_info *o);
+int						width_size_float(t_info *o, long long cast_ap);
 
 //else.c
 int						t_info_init(t_info *o, int i);
@@ -120,7 +121,7 @@ void					ft_addbin(va_list ap, t_info *o);
 void					addwidth_char(int nb, t_info *o);
 void					addwidth_string(int nb, char *cast_ap, t_info *o);
 void					char_null(int cast_ap, t_info *o);
-char					*string_for_null(void);
+char					*string_for_null(char *cast);
 
 //width_dioux.c
 int						width_size_diou(t_info *o, long long cast_ap, int base);

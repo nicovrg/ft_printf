@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 02:16:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 18:32:57 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/09 00:30:32 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,18 @@ void			ft_addstr(va_list ap, t_info *o)
 	int			len;
 
 	tmp = va_arg(ap, char *);
-	if (!tmp)
-	{
-		if (!(cast_ap = string_for_null()))
-			return ;
-	}
-	else if (o->type == 2 || o->conversion == 13)
-	{
-		ft_strwchar((char *)tmp, o);
-		return ;
-	}
+	cast_ap = NULL;
+	if ((o->type == 2 || o->conversion == 13) && tmp)
+		return (ft_strwchar((char *)tmp, o));
 	else
 	{
-		len = ft_strlen(tmp);
+		len = ft_strlen(tmp ? tmp : "(null)");
 		if (!(cast_ap = (char *)malloc(sizeof(char) * len)))
 			return ;
-		cast_ap = ft_strcpy(cast_ap, tmp);
+		cast_ap = ft_strcpy(cast_ap, tmp ? tmp : "(null)");
+		ft_strchar(cast_ap, o);
+		free(cast_ap);
 	}
-	ft_strchar(cast_ap, o);
-	//free(cast_ap);
 }
 
 void			ft_strchar(char *cast_ap, t_info *o)
@@ -45,8 +38,6 @@ void			ft_strchar(char *cast_ap, t_info *o)
 	int	size;
 
 	size = ft_strlen(cast_ap);
-	if (o->accuracy > 0 && o->accuracy < size)
-		cast_ap[o->accuracy] = '\0';
 	if (o->width > 0)
 	{
 		if (o->accuracy)
@@ -94,7 +85,6 @@ void			print_ls(wchar_t *str, t_info *o)
 	while (str[range])
 		range++;
 	range = o->accuracy == -1 ? range * 4 : o->accuracy;
-	append_to_buff(0, 1, o);
 	while (str[i++] && range > 0)
 	{
 		if ((range > 0 || range < 0) && str[i] <= 0x7F)
@@ -109,5 +99,4 @@ void			print_ls(wchar_t *str, t_info *o)
 			break ;
 		ft_putwchar(str[i], o);
 	}
-	append_to_buff(0, 1, o);
 }

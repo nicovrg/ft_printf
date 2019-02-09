@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 22:16:08 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 16:17:02 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/09 03:59:00 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		check_type(char c, t_info *o)
 			o->type = 2;
 		return (1);
 	}
-	else if (c == 'j' || c == 'z')
+	else if (c == 'j' || c == 'z' || c == 'L')
 	{
 		o->type = 4;
 		return (1);

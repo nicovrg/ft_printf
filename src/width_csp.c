@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:13 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 16:45:13 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/08 19:14:29 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,10 @@ void		char_null(int cast_ap, t_info *o)
 	o->ret++;
 }
 
-char		*string_for_null(void)
+char		*string_for_null(char *cast)
 {
-	char	*str;
+	const char	str[] = "(null)";
 
-	if (!(str = (char *)malloc(sizeof(char) * 6)))
-		return (NULL);
-	str = ft_strcpy(str, "(null)");
-	return (str);
+	cast = (char *)str;
+	return (cast);
 }
