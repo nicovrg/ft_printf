@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_s.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 02:16:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/11 18:04:29 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/11 20:26:05 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void			ft_addstr(va_list ap, t_info *o)
 {
 	char		*cast_ap;
-	const char	null[] = "(null)";
 	char		*tmp;
 	int			len;
+	const char	*str = "(null)";
 
 	tmp = va_arg(ap, char *);
 	cast_ap = NULL;
@@ -26,11 +26,8 @@ void			ft_addstr(va_list ap, t_info *o)
 	else
 	{
 		len = ft_strlen(tmp ? tmp : "(null)");
-		if (!(cast_ap = (char *)malloc(sizeof(char) * len)))
-			return ;
-		cast_ap = ft_strcpy(cast_ap, tmp ? tmp : null);
+		cast_ap = tmp ? (char *)tmp : (char *)str;
 		ft_strchar(cast_ap, o);
-		free(cast_ap);
 	}
 }
 

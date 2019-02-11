@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/11 18:10:18 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/11 18:48:47 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include				<unistd.h>
-# include				<limits.h>
-# include				<stdarg.h>
-# include				<wchar.h>
-# include				"libft.h"
+# include <unistd.h>
+# include <limits.h>
+# include <stdarg.h>
+# include <wchar.h>
+# include "libft.h"
 
 # define BUFF_SIZE		64
 # define UC				unsigned char
@@ -73,17 +73,6 @@ typedef struct			s_info
 	char				buff[BUFF_SIZE];
 }						t_info;
 
-void					ft_bzero(void *s, size_t n);
-void					*ft_memset(void *b, int c, size_t len);
-void					*ft_memalloc(size_t size);
-void					ft_putchar(char c);
-void					ft_putstr(char const *s);
-void					ft_putnbr(int n);
-size_t					ft_strlen(const char *s);
-int						ft_atoi(const char *str);
-char					*ft_strjoin(char const *s1, char const *s2);
-char					*ft_strcpy(char *dest, const char *src);
-
 void					ft_addfloat(va_list ap, t_info *o);
 int						width_size_float(t_info *o,
 						unsigned long long cast_ap);
@@ -99,12 +88,10 @@ int						t_info_init(t_info *o, int i);
 int						check_type(char c, t_info *o);
 int						ft_accuracy(t_info *o);
 
-
 unsigned long long		res_size(unsigned long long value, int base);
 char					*fill_base(int base, int l);
 char					*conv(unsigned long long value, int base, int l);
 unsigned long long		itooct(unsigned long long nb);
-
 
 void					ft_addpercent(va_list ap, t_info *o);
 
@@ -128,8 +115,7 @@ void					ft_addnbr_core(long long nb, t_info *o);
 
 void					ft_uns(va_list ap, t_info *o);
 void					ft_adduns(long long cast_ap, t_info *o);
-void					ft_adduns_core(unsigned long long nb,
-						t_info *o, int base);
+void					ft_adduns2(unsigned long long nb, t_info *o, int base);
 
 void					ft_oct(va_list ap, t_info *o);
 void					ft_addoct(unsigned long long cast_ap, t_info *o);
@@ -147,8 +133,7 @@ void					addwidth_string(int nb, char *cast_ap, t_info *o);
 void					char_null(int cast_ap, t_info *o);
 char					*string_for_null(char *cast);
 
-int						width_size_diou(t_info *o, long long cast_ap,
-						int base);
+int						width_size_diou(t_info *o, long long cast_ap, int base);
 int						width_size_x(t_info *o, char *cast_ap);
 int						width_size_o(t_info *o, unsigned long long cast_ap);
 void					width_for_null(t_info *o);
@@ -156,7 +141,7 @@ int						width_bin(t_info *o);
 
 int						check_flag(char c, t_info *o);
 int						check_width(char c, t_info *o);
-int						check_accuracy_one(char c, t_info __unused *o);
+int						check_accuracy_one(char c, t_info *o);
 int						check_accuracy_two(char c, t_info *o);
 int						check_conversion(char c, t_info *o);
 

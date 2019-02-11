@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_o.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:33:38 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 19:23:40 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/11 18:24:19 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ void	ft_addoct(unsigned long long cast_ap, t_info *o)
 	size = width_size_o(o, cast_ap);
 	o->accuracy > 0 && o->minus ? ft_accuracy(o) : 0;
 	o->minus == 1 && o->hashtag == 1 ? append_to_buff('0', 0, o) : 0;
-	o->minus == 1 ? ft_adduns_core(cast_ap, o, 8) : 0;
+	o->minus == 1 ? ft_adduns2(cast_ap, o, 8) : 0;
 	if (o->width >= 0 && size > 0)
 		while (size-- > 0)
 			append_to_buff(o->zero && !o->minus
 			&& o->accuracy < 0 ? '0' : ' ', 0, o);
 	o->accuracy > 0 && !o->minus ? ft_accuracy(o) : 0;
 	o->minus == 0 && o->hashtag == 1 ? append_to_buff('0', 0, o) : 0;
-	o->minus == 0 ? ft_adduns_core(cast_ap, o, 8) : 0;
+	o->minus == 0 ? ft_adduns2(cast_ap, o, 8) : 0;
 }
 
 void	oct_for_null(t_info *o)

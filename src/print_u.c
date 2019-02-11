@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:27:52 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 19:24:08 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/11 19:45:20 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,23 @@ void	ft_adduns(long long cast_ap, t_info *o)
 	size = width_size_diou(o, cast_ap, 10);
 	o->accuracy > 0 && o->minus ? ft_accuracy(o) : 0;
 	if (o->minus == 1)
-		ft_adduns_core(cast_ap, o, 10);
+		ft_adduns2(cast_ap, o, 10);
 	if (o->width >= 0 && size > 0)
 		while (size--)
 			append_to_buff(o->zero && !o->minus
 			&& o->accuracy < 0 ? '0' : ' ', 0, o);
 	o->accuracy > 0 && !o->minus ? ft_accuracy(o) : 0;
 	if (o->minus == 0)
-		ft_adduns_core(cast_ap, o, 10);
+		ft_adduns2(cast_ap, o, 10);
 }
 
-void	ft_adduns_core(unsigned long long nb, t_info *o, int base)
+void	ft_adduns2(unsigned long long nb, t_info *o, int base)
 {
-	if (nb == 0 && o->accuracy == 0)
+	if (nb == 0 && o->accuracy == 0 && o->fnull == 0)
 		return ;
 	if (nb >= (unsigned long long)base)
 	{
-		ft_adduns_core(nb / base, o, base);
+		ft_adduns2(nb / base, o, base);
 		append_to_buff(nb % base + '0', 0, o);
 	}
 	else

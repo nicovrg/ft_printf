@@ -26,8 +26,7 @@ INC_PATH = ./include/
 OBJ_PATH = ./obj
 OBJLIB_PATH = ./obj
 
-SRC_NAME =	./mem.c \
-			./else.c \
+SRC_NAME =	./else.c \
 			./print_per.c \
 			./print_b.c \
 			./print_c.c \
@@ -38,25 +37,24 @@ SRC_NAME =	./mem.c \
 			./print_u.c \
 			./print_x.c \
 			./print_f.c \
+			./print_ff.c \
 			./width_csp.c \
 			./width_dioux.c \
 			./convert_base.c \
 			./parse.c \
 			./ft_printf.c
 
-#LIB_NAME = 	ft_atoi.c\
-	ft_isdigit.c\
-	ft_itoa_base.c\
-	ft_strlen.c\
-	ft_strsub.c\
-	ft_wcharlen.c\
-	ft_strlwr.c\
-	ft_wstrlen.c\
-	ft_wstrsub.c
-			# ./print_ff.c \
+LIB_NAME = 	./ft_bzero.c\
+			./ft_memset.c\
+			./ft_memalloc.c\
+			./ft_putchar.c\
+			./ft_putstr.c\
+			./ft_putnbr.c\
+			./ft_strlen.c\
+			./ft_strjoin.c\
+			./ft_strcpy.c\
 
 INC_NAME = ft_printf.h
-
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJLIB_NAME = $(LIB_NAME:.c=.o)
 

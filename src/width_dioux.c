@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_dioux.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nivergne <nivergne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 22:11:15 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 18:09:02 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/11 19:54:12 by nivergne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int			width_size_diou(t_info *o, long long cast_ap, int base)
 	int width;
 	int size_nb;
 
+	o->fnull = o->accuracy == 0 ? 0 : 1;
 	size_nb = cast_ap == 0 ? 1 : 0;
 	width = o->width;
 	cast_ap < 0 ? size_nb++ : 0;
