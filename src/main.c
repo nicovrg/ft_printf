@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:44:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/09 04:01:13 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/11 02:31:01 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		main(int __unused ac, char ** __unused av)
 	t_float = 1.5;
 	t_float2 = -42.424242424242f;
 
-	long double nb = 45.12345678946534196854318654321574657694675464683424768F;
+	double nb = 45.123456789f;
 	// int i = 0;
 	// int t_dolphin = 129297;
 	// while (i++ < 45)
@@ -49,12 +49,12 @@ int		main(int __unused ac, char ** __unused av)
 	// printf("\nmine : %d\n", ft_printf("%f", t_float2));
 	// printf("\ntrue : %d\n", printf("%f", t_float2));
 	// fflush(stdout);
-	printf("\n\n===============================================\n\n");
+	// printf("\n\n===============================================\n\n");
 
-	ft_printf("big prec:%.50Lf\n", nb);
-    printf("big prec:%.50Lf\n", nb);
+	// ft_printf("big prec:%.0f\n", nb);
+    // printf("big prec:%.0f\n", nb);
+	// printf("\n\n===============================================\n\n");
 	printf("\n\n===============================================\n\n");
-	/*printf("\n\n===============================================\n\n");
 
 	ft_printf("space:% f\n", nb);
 	printf("space:% f\n", nb);
@@ -70,6 +70,7 @@ int		main(int __unused ac, char ** __unused av)
 
 	ft_printf("precision:%.2f\n", nb);
     printf("precision:%.2f\n", nb);
+	printf("\n\n===============================================\n\n");
 
 	ft_printf("precision + hash:%#.0f\n", nb);
     printf("precision + hash:%#.0f\n", nb);
@@ -185,7 +186,7 @@ int		main(int __unused ac, char ** __unused av)
 
 	ft_printf("size + minus + plus + prec + hash:%-#+5.1f\n", nb);
     printf("size + minus + plus + prec + hash:%-#+5.1f\n", nb);
-	printf("\n\n===============================================\n\n");*/
+	printf("\n\n===============================================\n\n");
 	// ft_printf("\n\n");
 	// i = 0;
 	// while (i++ < 45)

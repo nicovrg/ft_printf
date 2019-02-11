@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_f.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 21:19:05 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/09 04:00:04 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/11 02:28:30 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_padding(t_info *o)
 	? append_to_buff('+', 0, o) : 0;
 	!o->plus && !o->neg && o->space
 	? append_to_buff(' ', 0, o) : 0;
-	o->neg ? append_to_buff('-', 0, o) : 0;
 }
 
 void	ft_mantis(t_info *o, long double cast_ap, int flag, long long left)
@@ -26,6 +25,14 @@ void	ft_mantis(t_info *o, long double cast_ap, int flag, long long left)
 	long long tmp;
 
 	tmp = 0;
+	if (o->accuracy == 0)
+	{
+		cast_ap *= 10;
+		left = 0;
+		left += ((int)cast_ap % 10);
+		if (left >= 5)
+			o->hashtag ? o->buff[o->index - 2]++ : o->buff[o->index - 1]++;
+	}
 	while (o->accuracy > 0 && cast_ap)
 	{
 		if (tmp > 2147483647)
@@ -73,13 +80,16 @@ void	ft_addfloat(va_list ap, t_info *o)
 	int			size;
 
 	flag = 0;
-	cast_ap = o->type == 2 ? (double)va_arg(ap, double) : 0;
+	cast_ap = o->type != 4 ? (double)va_arg(ap, double) : 0;
 	cast_ap = o->type == 4 ? (long double)va_arg(ap, long double) : cast_ap;
 	left = (long long)cast_ap;
 	size = width_size_float(o, left);
 	cast_ap = cast_ap - left;
 	if (cast_ap < 0)
+	{
+		o->neg = 1;
 		cast_ap *= -1;
+	}
 	if (o->accuracy == 0 && left != 0)
 	{
 		flag = 1;
@@ -94,7 +104,8 @@ void	ft_addfloat(va_list ap, t_info *o)
 			&& o->accuracy < 0 ? '0' : ' ', 0, o);
 	ft_padding(o);
 	ft_addnbr_core(left, o);
-	append_to_buff('.', 0, o);
+	if (!(!o->hashtag && o->accuracy == 0))
+		append_to_buff('.', 0, o);
 	ft_mantis(o, cast_ap, flag, left);
 }
 
