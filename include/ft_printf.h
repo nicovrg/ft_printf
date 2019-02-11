@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:48:36 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 23:08:08 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/11 09:05:08 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ char					*ft_strcpy(char *dest, const char *src);
 //print_f.c
 void					ft_addfloat(va_list ap, t_info *o);
 int						width_size_float(t_info *o, long long cast_ap);
+void					ft_put_float(t_info *o, long long left, long double
+						cast_ap, int flag);
+void					ft_mantis(t_info *o, long double cast_ap, int flag,
+						long long left);
+void					ft_padding(t_info *o);
 
 //else.c
 int						t_info_init(t_info *o, int i);

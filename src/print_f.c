@@ -6,7 +6,7 @@
 /*   By: julesqvgn <julesqvgn@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 21:19:05 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/11 02:28:30 by julesqvgn        ###   ########.fr       */
+/*   Updated: 2019/02/11 09:54:17 by julesqvgn        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,17 @@ void	ft_padding(t_info *o)
 	? append_to_buff('+', 0, o) : 0;
 	!o->plus && !o->neg && o->space
 	? append_to_buff(' ', 0, o) : 0;
+}
+
+void	ft_put_float(t_info *o, long long left, long double cast_ap, int flag)
+{
+	if (o->minus)
+		ft_padding(o);
+	ft_addnbr_core(left, o);
+	if (!(!o->hashtag && o->accuracy == 0))
+		append_to_buff('.', 0, o);
+	if (left == 0 && o->hashtag == 0 && o->minus == 0)
+		ft_mantis(o, cast_ap, flag, left);
 }
 
 void	ft_mantis(t_info *o, long double cast_ap, int flag, long long left)
@@ -40,25 +51,21 @@ void	ft_mantis(t_info *o, long double cast_ap, int flag, long long left)
 			ft_addnbr_core(tmp, o);
 			cast_ap -= tmp;
 			tmp = 0;
+			continue ;
+		}
+		cast_ap *= 10;
+		if ((int)cast_ap == 0)
+		{
+			while ((int)cast_ap == 0 && o->accuracy-- > 0)
+			{
+				append_to_buff('0', 0, o);
+				cast_ap *= 10;
+			}
 		}
 		else
 		{
-			cast_ap *= 10;
-			if ((int)cast_ap == 0)
-			{
-				while ((int)cast_ap == 0 && o->accuracy > 0)
-				{
-					append_to_buff('0', 0, o);
-					cast_ap *= 10;
-					o->accuracy--;
-				}
-			}
-			else
-			{
-			tmp *= 10;
-			tmp += ((long long)cast_ap % 10);
+			tmp = tmp * 10 + ((long long)cast_ap % 10);
 			o->accuracy--;
-			}
 		}
 	}
 	while (o->accuracy-- > 1)
@@ -96,17 +103,16 @@ void	ft_addfloat(va_list ap, t_info *o)
 		if ((int)(cast_ap * 10) % 10 >= 5)
 			left = left >= 0 ? left++ : left--;
 	}
-	if (o->accuracy == -1)
-		o->accuracy = 6;
+	if (o->minus)
+		ft_put_float(o, left, cast_ap, flag);
+	else	
+		ft_padding(o);
 	if (o->width >= 0 && size > 0)
 		while (size-- > 0)
 			append_to_buff(o->zero && !o->minus
-			&& o->accuracy < 0 ? '0' : ' ', 0, o);
-	ft_padding(o);
-	ft_addnbr_core(left, o);
-	if (!(!o->hashtag && o->accuracy == 0))
-		append_to_buff('.', 0, o);
-	ft_mantis(o, cast_ap, flag, left);
+			? '0' : ' ', 0, o);
+	if (!o->minus)
+		ft_put_float(o, left, cast_ap, flag);
 }
 
 int			width_size_float(t_info *o, long long cast_ap)
@@ -116,6 +122,7 @@ int			width_size_float(t_info *o, long long cast_ap)
 
 	size_nb = cast_ap == 0 ? 1 : 0;
 	width = o->width;
+	o->accuracy = o->accuracy == -1 ? 6 : o->accuracy;
 	cast_ap < 0 ? size_nb++ : 0;
 	size_nb += 1 + o->accuracy;
 	cast_ap < 0 ? cast_ap *= -1 : 0;
