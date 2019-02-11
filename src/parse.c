@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 19:01:31 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 16:18:02 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/11 14:46:10 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ int		check_conversion(char c, t_info *o)
 	char	*str;
 
 	i = 0;
-	str = "cspdiouxXbf%CSPDIOU";
+	str = "cspdiouxXbf%aCSPDIOU";
 	while (str[i])
 	{
 		if (c == str[i])
 		{
-			i > 11 ? o->type = 4 : 0;
+			i > 12 ? o->type = 4 : 0;
 			o->conversion = i;
 			return (1);
 		}

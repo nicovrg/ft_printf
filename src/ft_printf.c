@@ -6,13 +6,13 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/23 16:58:54 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/09 02:20:46 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/11 17:23:00 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	(*g_funptr[12])(va_list ap, t_info *o) = {
+void	(*g_funptr[13])(va_list ap, t_info *o) = {
 	&ft_addchar,
 	&ft_addstr,
 	&ft_addaddr,
@@ -25,6 +25,7 @@ void	(*g_funptr[12])(va_list ap, t_info *o) = {
 	&ft_addbin,
 	&ft_addfloat,
 	&ft_addpercent,
+	&ft_color,
 };
 
 void	addbuff(char *str, t_info *o)
@@ -101,7 +102,7 @@ int		ft_printf(char *str, ...)
 		{
 			t_info_init(&o, i);
 			i = i + parse_str(str + i + 1, &o);
-			o.conversion != -1 ? g_funptr[o.conversion % 12](arg, &o) : 0;
+			o.conversion != -1 ? g_funptr[o.conversion % 13](arg, &o) : 0;
 		}
 		else
 			append_to_buff(str[i], 0, &o);
@@ -111,14 +112,3 @@ int		ft_printf(char *str, ...)
 	va_end(arg);
 	return (append_to_buff(0, 1, &o));
 }
-/*
--check utilite toute les fonctions
--leaks
--normes
--precision null pointeur
--rechecker tout les test
--voir avec les valeur 0
--expliquer si fct non comprise
--ajouter la libft au projets
--valider ce projet de merde
-*/

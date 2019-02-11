@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 03:18:33 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/09 00:59:51 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/11 17:58:15 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	ft_nbrsign(t_info *o)
 			append_to_buff(' ', 0, o) : 0;
 		o->neg ? append_to_buff('-', 0, o) : 0;
 	}
-
 }
 
 void	ft_addnbr(long long cast_ap, t_info *o)
@@ -78,7 +77,6 @@ void	ft_addnbr(long long cast_ap, t_info *o)
 	o->minus == 0 ? ft_addnbr_core(cast_ap, o) : 0;
 	o->minus == 0 && o->llmin == 1 ? ft_addnbr_core(8, o) : 0;
 }
-
 
 void	ft_addnbr_core(long long nb, t_info *o)
 {

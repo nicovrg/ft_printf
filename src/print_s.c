@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 02:16:02 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/09 00:30:32 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/11 18:04:29 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void			ft_addstr(va_list ap, t_info *o)
 {
 	char		*cast_ap;
+	const char	null[] = "(null)";
 	char		*tmp;
 	int			len;
 
@@ -27,7 +28,7 @@ void			ft_addstr(va_list ap, t_info *o)
 		len = ft_strlen(tmp ? tmp : "(null)");
 		if (!(cast_ap = (char *)malloc(sizeof(char) * len)))
 			return ;
-		cast_ap = ft_strcpy(cast_ap, tmp ? tmp : "(null)");
+		cast_ap = ft_strcpy(cast_ap, tmp ? tmp : null);
 		ft_strchar(cast_ap, o);
 		free(cast_ap);
 	}
@@ -58,7 +59,7 @@ void			ft_strwchar(char *tmp, t_info *o)
 	len = 0;
 	while (tmp[len])
 		len++;
-	if (!(str = (wchar_t *)malloc(sizeof(wchar_t) * (len + 1))))
+	if (!(str = (wchar_t *)malloc(sizeof(wchar_t) * (len * 4 + 1))))
 		return ;
 	str[len] = '\0';
 	str = (wchar_t *)tmp;
@@ -72,7 +73,6 @@ void			ft_strwchar(char *tmp, t_info *o)
 	}
 	else if (o->width == -1 && o->accuracy)
 		print_ls(str, o);
-	//free(str);
 }
 
 void			print_ls(wchar_t *str, t_info *o)

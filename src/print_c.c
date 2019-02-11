@@ -6,7 +6,7 @@
 /*   By: jquivogn <jquivogn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 23:27:03 by nivergne          #+#    #+#             */
-/*   Updated: 2019/02/08 18:44:18 by jquivogn         ###   ########.fr       */
+/*   Updated: 2019/02/11 17:58:30 by jquivogn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,17 @@ void			addwidth_wchar(wchar_t c, int nb, t_info *o)
 		append_to_buff(o->zero && !o->minus && o->accuracy < 0
 		? '0' : ' ', 0, o);
 		nb--;
+	}
+}
+
+void			ft_color(va_list ap, t_info *options)
+{
+	const char	*str = va_arg(ap, char *);
+
+	while (*str)
+	{
+		append_to_buff(*str, 0, options);
+		str++;
+		options->ret--;
 	}
 }
